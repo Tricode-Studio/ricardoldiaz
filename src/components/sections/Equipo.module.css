@@ -1,0 +1,76 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.member {
+  text-align: center;
+}
+
+.av {
+  aspect-ratio: 1;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(150deg, var(--beige), var(--sage));
+  margin-bottom: 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ini {
+  font-family: var(--serif);
+  font-size: 2.4rem;
+  color: var(--forest);
+}
+
+.member h4 {
+  font-size: 1.18rem;
+  color: var(--forest);
+}
+
+.role {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--sage);
+  text-transform: uppercase;
+  margin-top: 3px;
+  font-weight: 600;
+}
+
+.wa {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 10px;
+  transition: 0.25s;
+}
+
+.wa:hover {
+  color: var(--sage-deep);
+}
+
+.wa svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+}
+
+@media (max-width: 400px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}

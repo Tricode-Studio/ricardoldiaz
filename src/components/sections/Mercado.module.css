@@ -1,0 +1,143 @@
+.market {
+  background: var(--forest);
+  color: var(--bone);
+}
+
+.market .eyebrow::before {
+  background: var(--beige);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.priceRows {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.priceRow {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr auto;
+  gap: 20px;
+  align-items: center;
+  padding: 22px 4px;
+  border-bottom: 1px solid rgba(245, 241, 231, 0.12);
+}
+
+.cat {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--bone);
+}
+
+.cat small {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: rgba(245, 241, 231, 0.55);
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.val {
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  color: var(--beige);
+  text-align: right;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.val small {
+  font-size: 0.8rem;
+  color: rgba(245, 241, 231, 0.55);
+  font-family: var(--sans);
+}
+
+.chg {
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 78px;
+}
+
+.chg svg {
+  width: 13px;
+  height: 13px;
+}
+
+.up {
+  color: #9cc2a0;
+}
+
+.down {
+  color: #e0a08f;
+}
+
+.chart {
+  background: rgba(245, 241, 231, 0.05);
+  border: 1px solid rgba(245, 241, 231, 0.12);
+  border-radius: var(--r);
+  padding: 28px;
+}
+
+.chart h4 {
+  color: var(--bone);
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.sub {
+  font-size: 0.78rem;
+  color: rgba(245, 241, 231, 0.55);
+  margin-bottom: 20px;
+}
+
+.chart svg {
+  width: 100%;
+  height: auto;
+}
+
+.note {
+  font-size: 0.78rem;
+  color: rgba(245, 241, 231, 0.5);
+  margin-top: 22px;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .priceRow {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 8px 12px;
+  }
+
+  .val {
+    text-align: right;
+    font-size: 1.4rem;
+  }
+
+  .chg {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    min-width: 0;
+  }
+}

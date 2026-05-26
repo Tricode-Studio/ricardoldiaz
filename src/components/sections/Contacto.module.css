@@ -1,0 +1,204 @@
+.contact {
+  background: var(--forest);
+  color: var(--bone);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.infoCol h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--bone);
+  margin-top: 16px;
+}
+
+.intro {
+  color: rgba(245, 241, 231, 0.78);
+  margin-top: 18px;
+  max-width: 42ch;
+}
+
+.contactInfo {
+  margin-top: 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-style: normal;
+}
+
+.ci {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.ic {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: rgba(245, 241, 231, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--beige);
+  flex: none;
+}
+
+.ic svg {
+  width: 20px;
+  height: 20px;
+}
+
+.t b {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--beige);
+  margin-bottom: 3px;
+}
+
+.t span {
+  color: rgba(245, 241, 231, 0.88);
+  font-size: 0.98rem;
+}
+
+.formWrap {
+  background: rgba(245, 241, 231, 0.04);
+  border: 1px solid rgba(245, 241, 231, 0.12);
+  border-radius: var(--r);
+  padding: 36px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field {
+  margin-bottom: 18px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--beige);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  background: rgba(245, 241, 231, 0.06);
+  border: 1px solid rgba(245, 241, 231, 0.18);
+  border-radius: 9px;
+  padding: 13px 15px;
+  color: var(--bone);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  transition: 0.25s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.field select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d2c7b1' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.field select option {
+  background: var(--forest);
+  color: var(--bone);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(245, 241, 231, 0.4);
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--beige);
+  background: rgba(245, 241, 231, 0.1);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
+.err {
+  color: #e0a08f;
+  font-size: 0.74rem;
+  margin-top: 5px;
+  display: block;
+}
+
+.submitBtn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.successMsg {
+  text-align: center;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.successMsg svg {
+  width: 56px;
+  height: 56px;
+  color: #9cc2a0;
+}
+
+.successMsg h3 {
+  font-size: 1.6rem;
+  color: var(--bone);
+}
+
+.successMsg p {
+  color: rgba(245, 241, 231, 0.78);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 540px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .formWrap {
+    padding: 24px 18px;
+  }
+}

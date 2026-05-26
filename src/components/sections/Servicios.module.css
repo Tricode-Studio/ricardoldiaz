@@ -1,0 +1,97 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  padding: 38px 34px;
+  transition: 0.4s cubic-bezier(0.2, 0.7, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--sage);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+  border-color: transparent;
+}
+
+.card:hover::before {
+  transform: scaleY(1);
+}
+
+.ico {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  background: var(--bone-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sage-deep);
+  margin-bottom: 22px;
+}
+
+.ico svg {
+  width: 28px;
+  height: 28px;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  color: var(--forest);
+}
+
+.card p {
+  color: var(--muted);
+  margin-top: 12px;
+  font-size: 0.96rem;
+}
+
+.more {
+  margin-top: 18px;
+  font-weight: 600;
+  font-size: 0.86rem;
+  color: var(--sage-deep);
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.more svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.3s;
+}
+
+.card:hover .more svg {
+  transform: translateX(4px);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 28px 24px;
+  }
+}

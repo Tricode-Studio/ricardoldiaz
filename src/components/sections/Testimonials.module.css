@@ -1,0 +1,80 @@
+.results {
+  background: var(--bone-2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testi {
+  background: var(--paper);
+  border-radius: var(--r);
+  padding: 34px;
+  border: 1px solid var(--line-soft);
+  position: relative;
+}
+
+.q {
+  font-family: var(--serif);
+  font-size: 3.4rem;
+  color: var(--beige);
+  line-height: 0.7;
+  height: 30px;
+}
+
+.testi p {
+  font-size: 1rem;
+  color: #43483b;
+  font-style: italic;
+  margin: 8px 0 22px;
+  line-height: 1.6;
+}
+
+.who {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.av {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  flex: none;
+}
+
+.who b {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--forest);
+  font-family: var(--sans);
+}
+
+.who span {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: none;
+  }
+}
