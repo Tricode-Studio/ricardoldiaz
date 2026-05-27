@@ -245,7 +245,7 @@ export const LOTES: LoteCard[] = [
     weightAvg: 375,
     location: 'Treinta y Tres',
     time: '11:44 hs',
-    image: '/src/public/images/lote-1.jpg',
+    image: '/images/lote-1.jpg',
     status: 'vendido',
     price: 'US$ 2,44',
   },

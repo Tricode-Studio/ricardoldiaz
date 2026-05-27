@@ -9,7 +9,7 @@ export function Hero() {
       {/* Photo background */}
       <div className={styles.bg} aria-hidden="true">
         <img
-          src="src/public/images/portada-2.png"
+          src="/images/portada-2.png"
           alt="Campo y ganado en la pradera uruguaya al atardecer"
           loading="eager"
           fetchPriority="high"
