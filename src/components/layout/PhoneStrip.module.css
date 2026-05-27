@@ -1,0 +1,93 @@
+.strip {
+  background: var(--forest);
+  color: var(--bone);
+  padding: 48px 0;
+  border-top: 1px solid rgba(245, 241, 231, 0.1);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.inner h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--bone);
+}
+
+.inner p {
+  color: rgba(245, 241, 231, 0.65);
+  margin-top: 6px;
+  font-size: 0.95rem;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.inputWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputWrap input {
+  padding: 13px 18px;
+  border-radius: 100px;
+  border: 1px solid rgba(245, 241, 231, 0.25);
+  background: rgba(245, 241, 231, 0.08);
+  min-width: 220px;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--bone);
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.inputWrap input::placeholder {
+  color: rgba(245, 241, 231, 0.4);
+}
+
+.inputWrap input:focus {
+  outline: none;
+  border-color: var(--beige);
+  background: rgba(245, 241, 231, 0.12);
+}
+
+.error {
+  font-size: 0.78rem;
+  color: #e0a08f;
+  padding-left: 6px;
+}
+
+.ok {
+  font-weight: 600;
+  color: #9cc2a0;
+  font-size: 1rem;
+}
+
+@media (max-width: 700px) {
+  .inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .inputWrap {
+    width: 100%;
+  }
+
+  .inputWrap input {
+    min-width: 0;
+    width: 100%;
+  }
+}

@@ -9,7 +9,7 @@ export function Hero() {
       {/* Photo background */}
       <div className={styles.bg} aria-hidden="true">
         <img
-          src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=2000&auto=format&fit=crop"
+          src="src/public/images/portada-2.png"
           alt="Campo y ganado en la pradera uruguaya al atardecer"
           loading="eager"
           fetchPriority="high"
@@ -44,8 +44,8 @@ export function Hero() {
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
           </a>
-          <a href="#remates" className={`btn ${styles.ghostLight}`}>
-            Ver próximos remates
+          <a href="https://www.youtube.com/@lote21tv/streams" target="_blank" rel="noopener noreferrer" className={`btn ${styles.ghostLight}`}>
+            Ver remates
           </a>
         </div>
       </div>

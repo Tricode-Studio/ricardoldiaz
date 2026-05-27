@@ -7,9 +7,9 @@ export function Remates() {
       <div className="wrap">
         <div className="sec-head reveal">
           <span className="eyebrow">Agenda de remates</span>
-          <h2 id="remates-heading">Próximos remates por pantalla y ferias.</h2>
+          <h2 id="remates-heading">Próximos remates por pantalla.</h2>
           <p>
-            Consulte los catálogos, suscríbase a las alertas y participe desde donde esté. Calendario en
+            Consulte los lotes, suscríbase a las alertas y participe desde donde esté. Calendario en
             coordinación con el consorcio Lote&nbsp;21.
           </p>
         </div>
@@ -35,13 +35,13 @@ export function Remates() {
                 </div>
               </div>
 
-              <span className={`${styles.tag} ${auction.type === 'screen' ? styles.tagScreen : styles.tagFeria}`}>
+              {/* <span className={`${styles.tag} ${auction.type === 'screen' ? styles.tagScreen : styles.tagFeria}`}>
                 {auction.type === 'screen' ? 'Por pantalla' : 'Feria física'}
-              </span>
+              </span> */}
 
               <div className={styles.acts}>
-                <a href="#contacto">Ver catálogo</a>
-                <a href="#news">Alertas</a>
+                <a href="#contacto">Ver lotes</a>
+                {/* <a href="#news">Alertas</a> */}
               </div>
             </li>
           ))}

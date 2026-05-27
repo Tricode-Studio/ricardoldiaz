@@ -23,8 +23,8 @@ export function Nosotros() {
             con el productor.
           </p>
           <p>
-            Hoy combinamos esa tradición con herramientas digitales —remates por pantalla, datos de mercado
-            y asesoría integral— para que vender y comprar hacienda sea más simple, transparente y rentable.
+            Hoy combinamos esa tradición con herramientas digitales como remates por pantalla, datos de mercado
+            y asesoría integral para que vender y comprar hacienda sea más simple, transparente y rentable.
           </p>
 
           <div className={styles.values}>
@@ -40,8 +40,8 @@ export function Nosotros() {
         <div className={`${styles.media} reveal`} style={{ transitionDelay: '0.2s' }}>
           <div className={styles.photo}>
             <img
-              src="https://images.unsplash.com/photo-1773606517379-098687ee08b2?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Productor rural junto a su ganado"
+              src="src/public/images/ganado-1.png"
+              alt="Rematador Ricardo L. Díaz"
               loading="lazy"
             />
           </div>

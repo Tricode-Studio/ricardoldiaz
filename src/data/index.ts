@@ -9,14 +9,15 @@ import type {
   TeamMember,
   BlogPost,
   FooterColumn,
+  LoteCard,
 } from '../types'
 
 export const NAV_LINKS: NavLink[] = [
   { label: 'Nosotros', href: '#nosotros' },
   { label: 'Servicios', href: '#servicios' },
   { label: 'Remates', href: '#remates' },
+  { label: 'Lotes', href: '#lotes' },
   { label: 'Mercado', href: '#mercado' },
-  { label: 'Campos', href: '#campos' },
   { label: 'Equipo', href: '#equipo' },
   { label: 'Contacto', href: '#contacto' },
 ]
@@ -24,45 +25,54 @@ export const NAV_LINKS: NavLink[] = [
 export const STATS: Stat[] = [
   { value: '50+', label: 'Años de trayectoria', isCount: true, countTarget: 50, suffix: '+' },
   { value: 'Lote 21', label: 'Consorcio integrante' },
-  { value: '100+', label: 'Destinos de exportación', isCount: true, countTarget: 100, suffix: '+' },
-  { value: 'UY·AR·BR', label: 'Alcance regional' },
+  { value: '1000+', label: 'Clientes satisfechos', isCount: true, countTarget: 1000, suffix: '+' },
+  { value: 'UY', label: 'Alcance Nacional' },
 ]
 
 export const SERVICES: ServiceCard[] = [
   {
     id: 'intermediacion',
     icon: 'intermediacion',
-    title: 'Intermediación Ganadera',
+    title: 'Ventas Particulares',
     description:
-      'Conectamos a vendedores y compradores con agilidad y total transparencia. Negociamos las mejores condiciones aprovechando nuestra red y conocimiento del mercado.',
-    cta: 'Vender sin moverse del campo',
-    ctaHref: '#contacto',
+      'Gestionamos la venta directa de su hacienda entre productores, con total transparencia y sin intermediarios innecesarios. Conectamos comprador y vendedor de forma ágil y segura.',
+    cta: 'Consultar disponibilidad',
+    ctaHref: '#equipo',
   },
   {
     id: 'remates',
     icon: 'remates',
-    title: 'Remates por Pantalla (Lote 21)',
+    title: 'Remates en Vivo (Lote 21)',
     description:
       'Transmisión en vivo de cada remate a través de la plataforma Lote 21. Más alcance, más compradores y la comodidad de operar a distancia con respaldo profesional.',
-    cta: 'Ver próximos remates',
-    ctaHref: '#remates',
+    cta: 'Ver remates',
+    ctaHref: 'https://www.youtube.com/@lote21tv/streams',
   },
   {
-    id: 'campos',
+    id: 'Inscripción de lotes',
     icon: 'campos',
-    title: 'Venta de Campos y Cabañas',
+    title: 'Inscripción de Lotes',
     description:
-      'Comercialización de establecimientos ganaderos y propiedades rurales. Asesoramos a inversores locales e internacionales sobre rentabilidad y oportunidades de la zona.',
-    cta: 'Explorar campos disponibles',
-    ctaHref: '#campos',
+      'Servicio especializado en la inscripción de lotes para remates, incluyendo manejo y cuidado del ganado antes de la venta.',
+    cta: 'Saber más',
+    ctaHref: '#contacto',
   },
+  // {
+  //   id: 'campos',
+  //   icon: 'campos',
+  //   title: 'Venta de Campos y Cabañas',
+  //   description:
+  //     'Comercialización de establecimientos ganaderos y propiedades rurales. Asesoramos a inversores locales e internacionales sobre rentabilidad y oportunidades de la zona.',
+  //   cta: 'Explorar campos disponibles',
+  //   ctaHref: '#campos',
+  // },
   {
     id: 'asesoria',
     icon: 'asesoria',
-    title: 'Asesoría Agropecuaria',
+    title: 'Embarques a Frigoríficos',
     description:
-      'Orientación experta en categorías, momento de venta, precios de referencia y estrategias de comercialización para maximizar la rentabilidad de cada productor.',
-    cta: 'Solicitar asesoría',
+      'Coordinamos el envío de hacienda directamente a los principales frigoríficos del país. Gestionamos la logística, documentación y seguimiento para que el productor cobre en tiempo y forma.',
+    cta: 'Coordinar embarque',
     ctaHref: '#contacto',
   },
 ]
@@ -70,62 +80,174 @@ export const SERVICES: ServiceCard[] = [
 export const AUCTIONS: AuctionItem[] = [
   {
     id: 'a1',
-    day: '28',
-    month: 'May',
-    title: 'Remate por Pantalla · Lote 21',
-    details: ['Reposición e invernada', 'Trinidad, Flores', '14:00 h'],
+    day: '9',
+    month: 'Jun',
+    title: 'Remate · Lote 21',
+    details: ['', 'Montevideo, Uruguay', '9:00 hs'],
     type: 'screen',
   },
-  {
-    id: 'a2',
-    day: '11',
-    month: 'Jun',
-    title: 'Feria Mensual de Hacienda General',
-    details: ['Vacas, terneros y novillos', 'Local Feria Flores', '10:00 h'],
-    type: 'feria',
-  },
+  // {
+  //   id: 'a2',
+  //   day: '11',
+  //   month: 'Jun',
+  //   title: 'Feria Mensual de Hacienda General',
+  //   details: ['Vacas, terneros y novillos', 'Local Feria Flores', '10:00 h'],
+  //   type: 'feria',
+  // },
   {
     id: 'a3',
-    day: '25',
+    day: '10',
     month: 'Jun',
-    title: 'Remate Especial de Cría · Lote 21',
-    details: ['Vientres preñados y entoradas', 'Por pantalla', '15:00 h'],
+    title: 'Remate · Lote 21',
+    details: ['', 'Montevideo, Uruguay', '9:00 hs'],
     type: 'screen',
   },
 ]
 
 export const PRICES: PriceRow[] = [
   {
-    category: 'Terneros',
-    sub: 'Hasta 140 kg',
-    value: 'US$ 2,95',
-    unit: '/kg',
-    change: '3,1%',
+    category: 'Novillo',
+    sub: 'Por kilo en cuarta balanza',
+    value: '5,63',
+    unit: 'US$/kg',
+    change: '+0,06',
     direction: 'up',
+    group: 'Ganado a Faena',
+    prev: '5,57',
   },
   {
-    category: 'Novillos gordos',
-    sub: 'Faena',
-    value: 'US$ 2,42',
-    unit: '/kg',
-    change: '1,8%',
+    category: 'Vaca',
+    sub: 'Por kilo en cuarta balanza',
+    value: '5,28',
+    unit: 'US$/kg',
+    change: '+0,03',
     direction: 'up',
+    group: 'Ganado a Faena',
+    prev: '5,25',
   },
   {
+    category: 'Vaquillona',
+    sub: 'Por kilo en cuarta balanza',
+    value: '5,47',
+    unit: 'US$/kg',
+    change: '+0,04',
+    direction: 'up',
+    group: 'Ganado a Faena',
+    prev: '5,43',
+  },
+  {
+    category: 'Carne Bovina',
+    sub: 'Precio móvil 30 días · Fuente: INAC – IMC',
+    value: '6.078',
+    unit: 'US$/ton PC',
+    change: '',
+    direction: 'up',
+    group: 'Ganado a Faena',
+  },
+  {
+    category: 'Ternero',
+    sub: 'Por kilo en pie',
+    value: '4,28',
+    unit: 'US$/kg',
+    change: '+0,03',
+    direction: 'up',
+    group: 'Reposición',
+    prev: '4,25',
+  },
+  {
+    category: 'Ternera',
+    sub: 'Por kilo en pie',
+    value: '4,02',
+    unit: 'US$/kg',
+    change: '+0,01',
+    direction: 'up',
+    group: 'Reposición',
+    prev: '4,01',
+  },
+  {
+    category: 'Vaca de Invernada',
+    sub: 'Por kilo en pie',
+    value: '2,44',
+    unit: 'US$/kg',
+    change: '+0,02',
+    direction: 'up',
+    group: 'Reposición',
+    prev: '2,42',
+  },
+]
+
+export const LOTES: LoteCard[] = [
+  {
+    id: 'l1',
+    lote: 'Lote 6',
+    category: 'Terneros de 140 a 180 kg',
+    heads: 41,
+    weightAvg: 175,
+    location: 'Lavalleja',
+    time: '09:20 hs',
+    image: 'https://images.unsplash.com/photo-1590249426516-4ac3a513c4cd?w=700&q=80&fit=crop',
+    status: 'vendido',
+    price: 'US$ 4,02',
+  },
+  {
+    id: 'l2',
+    lote: 'Lote 13',
+    category: 'Terneros más de 180 kg',
+    heads: 55,
+    weightAvg: 196,
+    location: 'Treinta y Tres',
+    time: '09:52 hs',
+    image: 'https://images.unsplash.com/photo-1636300965325-83f9718b2ac2?w=700&q=80&fit=crop',
+    status: 'vendido',
+    price: 'US$ 4,12',
+  },
+  {
+    id: 'l3',
+    lote: 'Lote 17',
+    category: 'Terneros más de 180 kg',
+    heads: 48,
+    weightAvg: 198,
+    location: 'Rocha',
+    time: '10:08 hs',
+    image: 'https://images.unsplash.com/photo-1586113381167-c1e68e4b9507?w=700&q=80&fit=crop',
+    status: 'vendido',
+    price: 'US$ 4,05',
+  },
+  {
+    id: 'l4',
+    lote: 'Lote 22',
+    category: 'Terneros más de 180 kg',
+    heads: 60,
+    weightAvg: 229,
+    location: 'Maldonado',
+    time: '10:28 hs',
+    image: 'https://images.unsplash.com/photo-1603165022668-8502a0277471?w=700&q=80&fit=crop',
+    status: 'vendido',
+    price: 'US$ 4,12',
+  },
+  {
+    id: 'l5',
+    lote: 'Lote 31',
+    category: 'Novillos de 1 a 2 años',
+    heads: 54,
+    weightAvg: 275,
+    location: 'Maldonado',
+    time: '11:04 hs',
+    image: 'https://images.unsplash.com/photo-1658595152145-bdb556a1246c?w=700&q=80&fit=crop',
+    status: 'vendido',
+    price: 'US$ 3,40',
+  },
+  {
+    id: 'l6',
+    lote: 'Lote 42',
     category: 'Vacas de invernada',
-    sub: 'Reposición',
-    value: 'US$ 2,18',
-    unit: '/kg',
-    change: '0,9%',
-    direction: 'down',
-  },
-  {
-    category: 'Vientres preñados',
-    sub: 'Por cabeza',
-    value: 'US$ 820',
-    unit: '',
-    change: '2,4%',
-    direction: 'up',
+    heads: 31,
+    weightAvg: 375,
+    location: 'Treinta y Tres',
+    time: '11:44 hs',
+    image: '/src/public/images/lote-1.jpg',
+    status: 'vendido',
+    price: 'US$ 2,44',
   },
 ]
 
@@ -135,7 +257,7 @@ export const FIELDS: FieldCard[] = [
     location: 'Artigas',
     title: 'Campo Ganadero · 550 ha',
     image:
-      'https://www.inac.uy/innovaportal/file/26981/1/campos.png',
+      'https://images.unsplash.com/photo-1586113381167-c1e68e4b9507?q=80&w=1175&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     specs: [
       { label: 'Superficie', value: '550 ha' },
       { label: 'Aptitud', value: 'Ganadera' },
@@ -147,7 +269,7 @@ export const FIELDS: FieldCard[] = [
     location: 'Flores',
     title: 'Establecimiento Mixto · 1.200 ha',
     image:
-      'https://images.unsplash.com/photo-1761732941184-8f10e45409fb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1603165022668-8502a0277471?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     specs: [
       { label: 'Superficie', value: '1.200 ha' },
       { label: 'Aptitud', value: 'Agríc.-Gan.' },
@@ -196,11 +318,13 @@ export const TESTIMONIALS: Testimonial[] = [
 ]
 
 export const TEAM: TeamMember[] = [
-  { id: 'm1', name: 'Ricardo L. Díaz', role: 'Director', initials: 'RD', whatsapp: 'https://wa.me/59800000000' },
-  { id: 'm2', name: 'Alvaro  Diaz', role: 'Comercial', initials: 'AD', whatsapp: 'https://wa.me/59800000000' },
-  { id: 'm3', name: 'Fernando Paredes', role: 'Agente de campo', initials: 'FP', whatsapp: 'https://wa.me/59800000000' },
-  { id: 'm4', name: 'Maximiliano Molina', role: 'Administración', initials: 'MM', whatsapp: 'https://wa.me/59800000000' },
+  { id: 'm1', name: 'Federico Díaz', role: 'Director', initials: 'RD', whatsapp: 'https://wa.me/59899364509' },
+  { id: 'm2', name: 'Alvaro  Diaz', role: 'Comercial', initials: 'AD', whatsapp: 'https://wa.me/59899364490' },
+  { id: 'm3', name: 'Maximiliano Molina', role: 'Agente comercial', initials: 'MM', whatsapp: 'https://wa.me/59897769995' },
+  { id: 'm4', name: 'Romina Fernandez', role: 'Administrativa', initials: 'RN', whatsapp: 'https://wa.me/59898334256' },
 ]
+
+// Número Esctitorio 98334256
 
 export const BLOG_POSTS: BlogPost[] = [
   {
@@ -254,14 +378,15 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
       { label: 'Contacto', href: '#contacto' },
     ],
   },
-  {
-    heading: 'Legal',
-    links: [
-      { label: 'Aviso legal', href: '#' },
-      { label: 'Privacidad', href: '#' },
-      { label: 'Términos de uso', href: '#' },
-    ],
-  },
+  // Comentado-meet-1
+  // {
+  //   heading: 'Legal',
+  //   links: [
+  //     { label: 'Aviso legal', href: '#' },
+  //     { label: 'Privacidad', href: '#' },
+  //     { label: 'Términos de uso', href: '#' },
+  //   ],
+  // },
 ]
 
-export const WA_NUMBER = 'https://wa.me/59800000000'
+export const WA_NUMBER = 'https://wa.me/59898334256'

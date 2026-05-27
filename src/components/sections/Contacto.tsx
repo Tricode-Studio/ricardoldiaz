@@ -11,12 +11,10 @@ type FormState = {
 }
 
 const MOTIVOS = [
-  'Remate por pantalla',
-  'Venta de ganado',
+  'Inscripción de Lotes',
   'Compra de ganado',
-  'Venta de campo',
-  'Compra de campo',
-  'Asesoría agropecuaria',
+  'Ventas Particulares',
+  'Embarques a Frigoríficos',
   'Otro',
 ]
 

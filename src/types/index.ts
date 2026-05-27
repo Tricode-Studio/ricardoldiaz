@@ -36,6 +36,8 @@ export interface PriceRow {
   unit: string
   change: string
   direction: 'up' | 'down'
+  group?: string
+  prev?: string
 }
 
 export interface FieldCard {
@@ -74,4 +76,17 @@ export interface BlogPost {
 export interface FooterColumn {
   heading: string
   links: { label: string; href: string }[]
+}
+
+export interface LoteCard {
+  id: string
+  lote: string
+  category: string
+  heads: number
+  weightAvg: number
+  location: string
+  time: string
+  image: string
+  status: 'vendido' | 'disponible'
+  price?: string
 }

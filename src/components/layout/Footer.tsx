@@ -16,7 +16,7 @@ export function Footer() {
               </div>
             </a>
             <p>
-              Más de cincuenta años acompañando al productor ganadero en Uruguay, Argentina y Brasil.
+              Más de cincuenta años acompañando al productor ganadero en Uruguay.
             </p>
             <div className={styles.social}>
               <a href={WA_NUMBER} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
@@ -53,12 +53,12 @@ export function Footer() {
 
         <div className={styles.bottom}>
           <span>© {new Date().getFullYear()} Ricardo L. Díaz – Escritorio Rural. Trinidad, Flores, Uruguay.</span>
-          <span>RUT: 000000000000 · Inscripto en el MGAP</span>
+          {/* <span>RUT: 000000000000 · Inscripto en el MGAP</span> */}
+          {/* Comentado-meet-1 */}
         </div>
-
         <p className={styles.seoLine}>
           Escritorio Rural · Remates ganaderos por pantalla · Lote 21 · Comercialización de ganado Uruguay ·
-          Venta de campos Uruguay · Intermediación agropecuaria · Trinidad, Flores · UY · AR · BR
+          Venta de campos Uruguay · Intermediación agropecuaria · Trinidad, Flores · UY · Desde 1973
         </p>
       </div>
     </footer>
