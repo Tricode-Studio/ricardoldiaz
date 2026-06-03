@@ -58,7 +58,7 @@ export function PhoneStrip() {
                 )}
               </div>
               <button type="submit" className="btn btn-solid">
-                Que me llamen
+                Contactenme
               </button>
             </form>
           )}

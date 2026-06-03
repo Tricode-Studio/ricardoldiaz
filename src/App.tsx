@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { useScrollReveal } from './hooks/useScrollReveal'
 
 import { Header } from './components/layout/Header'
@@ -14,14 +16,23 @@ import { Lotes } from './components/sections/Lotes'
 import { Mercado } from './components/sections/Mercado'
 import { Equipo } from './components/sections/Equipo'
 import { Contacto } from './components/sections/Contacto'
+import { Historia } from './pages/Historia'
 
-export default function App() {
+function Home() {
   useScrollReveal()
+  const { hash } = useLocation()
+
+  useEffect(() => {
+    if (!hash) return
+    const timer = setTimeout(() => {
+      document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth' })
+    }, 80)
+    return () => clearTimeout(timer)
+  }, [hash])
 
   return (
     <>
       <Header />
-
       <main>
         <Hero />
         <Trust />
@@ -33,10 +44,18 @@ export default function App() {
         <Equipo />
         <Contacto />
       </main>
-
       <PhoneStrip />
       <Footer />
       <WhatsAppFab />
     </>
+  )
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/historia" element={<Historia />} />
+    </Routes>
   )
 }

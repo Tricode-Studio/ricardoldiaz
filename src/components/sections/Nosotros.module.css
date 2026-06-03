@@ -49,6 +49,37 @@
   margin-top: 6px;
 }
 
+.historiaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--bone);
+  background: var(--sage-deep);
+  border: 1.5px solid var(--sage-deep);
+  border-radius: 6px;
+  padding: 0.7em 1.3em;
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s, transform 0.25s;
+}
+
+.historiaBtn:hover {
+  background: transparent;
+  color: var(--sage-deep);
+  transform: translateY(-2px);
+}
+
+.historiaBtn svg {
+  transition: transform 0.25s;
+  flex-shrink: 0;
+}
+
+.historiaBtn:hover svg {
+  transform: translateX(4px);
+}
+
 .media {
   position: relative;
 }

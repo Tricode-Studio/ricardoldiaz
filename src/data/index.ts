@@ -10,6 +10,8 @@ import type {
   BlogPost,
   FooterColumn,
   LoteCard,
+  HistoriaEvent,
+  GalleryPhoto,
 } from '../types'
 
 export const NAV_LINKS: NavLink[] = [
@@ -19,6 +21,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Lotes', href: '#lotes' },
   { label: 'Mercado', href: '#mercado' },
   { label: 'Equipo', href: '#equipo' },
+  { label: 'Historia', href: '/historia' },
   { label: 'Contacto', href: '#contacto' },
 ]
 
@@ -56,6 +59,7 @@ export const SERVICES: ServiceCard[] = [
       'Servicio especializado en la inscripción de lotes para remates, incluyendo manejo y cuidado del ganado antes de la venta.',
     cta: 'Saber más',
     ctaHref: '#contacto',
+    motivo: 'Inscripción de Lotes',
   },
   // {
   //   id: 'campos',
@@ -74,6 +78,7 @@ export const SERVICES: ServiceCard[] = [
       'Coordinamos el envío de hacienda directamente a los principales frigoríficos del país. Gestionamos la logística, documentación y seguimiento para que el productor cobre en tiempo y forma.',
     cta: 'Coordinar embarque',
     ctaHref: '#contacto',
+    motivo: 'Embarques a Frigoríficos',
   },
 ]
 
@@ -185,7 +190,7 @@ export const LOTES: LoteCard[] = [
     weightAvg: 175,
     location: 'Lavalleja',
     time: '09:20 hs',
-    image: 'https://images.unsplash.com/photo-1590249426516-4ac3a513c4cd?w=700&q=80&fit=crop',
+    image: '/images/lote-3.jpeg',
     status: 'vendido',
     price: 'US$ 4,02',
   },
@@ -197,7 +202,7 @@ export const LOTES: LoteCard[] = [
     weightAvg: 196,
     location: 'Treinta y Tres',
     time: '09:52 hs',
-    image: 'https://images.unsplash.com/photo-1636300965325-83f9718b2ac2?w=700&q=80&fit=crop',
+    image: '/images/lote-2.jpg',
     status: 'vendido',
     price: 'US$ 4,12',
   },
@@ -209,7 +214,7 @@ export const LOTES: LoteCard[] = [
     weightAvg: 198,
     location: 'Rocha',
     time: '10:08 hs',
-    image: 'https://images.unsplash.com/photo-1586113381167-c1e68e4b9507?w=700&q=80&fit=crop',
+    image: '/images/lote-1.jpg',
     status: 'vendido',
     price: 'US$ 4,05',
   },
@@ -221,7 +226,7 @@ export const LOTES: LoteCard[] = [
     weightAvg: 229,
     location: 'Maldonado',
     time: '10:28 hs',
-    image: 'https://images.unsplash.com/photo-1603165022668-8502a0277471?w=700&q=80&fit=crop',
+    image: '/images/lote-4.png',
     status: 'vendido',
     price: 'US$ 4,12',
   },
@@ -233,7 +238,7 @@ export const LOTES: LoteCard[] = [
     weightAvg: 275,
     location: 'Maldonado',
     time: '11:04 hs',
-    image: 'https://images.unsplash.com/photo-1658595152145-bdb556a1246c?w=700&q=80&fit=crop',
+    image: '/images/lote-5.png',
     status: 'vendido',
     price: 'US$ 3,40',
   },
@@ -245,7 +250,7 @@ export const LOTES: LoteCard[] = [
     weightAvg: 375,
     location: 'Treinta y Tres',
     time: '11:44 hs',
-    image: '/images/lote-1.jpg',
+    image: '/images/lote-6.png',
     status: 'vendido',
     price: 'US$ 2,44',
   },
@@ -318,10 +323,34 @@ export const TESTIMONIALS: Testimonial[] = [
 ]
 
 export const TEAM: TeamMember[] = [
-  { id: 'm1', name: 'Federico Díaz', role: 'Director', initials: 'RD', whatsapp: 'https://wa.me/59899364509' },
-  { id: 'm2', name: 'Alvaro  Diaz', role: 'Comercial', initials: 'AD', whatsapp: 'https://wa.me/59899364490' },
-  { id: 'm3', name: 'Maximiliano Molina', role: 'Agente comercial', initials: 'MM', whatsapp: 'https://wa.me/59897769995' },
-  { id: 'm4', name: 'Romina Fernandez', role: 'Administrativa', initials: 'RN', whatsapp: 'https://wa.me/59898334256' },
+  {
+    id: 'm1', name: 'Federico Díaz', role: 'Director', initials: 'FD',
+    whatsapp: 'https://wa.me/59899364509', image: '',
+    phone: '+598 99 364 509',
+    bio: 'Hijo del fundador Ricardo L. Díaz, Federico lleva más de 20 años al frente del escritorio. Su conocimiento del campo uruguayo y su red de contactos en toda la región lo convierten en un referente del sector ganadero.',
+    specialties: ['Dirección comercial', 'Remates en pantalla', 'Ventas particulares'],
+  },
+  {
+    id: 'm2', name: 'Alvaro Díaz', role: 'Comercial', initials: 'AD',
+    whatsapp: 'https://wa.me/59899364490', image: '',
+    phone: '+598 99 364 490',
+    bio: 'Alvaro es el motor comercial del escritorio. Con amplia experiencia en la intermediación de hacienda, domina los circuitos de compra-venta en los principales mercados del sur uruguayo.',
+    specialties: ['Intermediación', 'Ventas directas', 'Campos'],
+  },
+  {
+    id: 'm3', name: 'Maximiliano Molina', role: 'Agente comercial', initials: 'MM',
+    whatsapp: 'https://wa.me/59897769995', image: '',
+    phone: '+598 97 769 995',
+    bio: 'Maxi acompaña a los productores en todo el ciclo de comercialización, desde la inscripción de lotes hasta la liquidación final. Su atención al detalle garantiza operaciones sin sorpresas.',
+    specialties: ['Inscripción de lotes', 'Embarques a frigoríficos', 'Atención al productor'],
+  },
+  {
+    id: 'm4', name: 'Romina Fernandez', role: 'Administrativa', initials: 'RF',
+    whatsapp: 'https://wa.me/59898334256', image: '',
+    phone: '+598 98 334 256',
+    bio: 'Romina es el punto de contacto del escritorio. Coordina la agenda, gestiona la documentación y asegura que cada operación se procese con precisión y en tiempo.',
+    specialties: ['Administración', 'Documentación', 'Coordinación operativa'],
+  },
 ]
 
 // Número Esctitorio 98334256
@@ -363,10 +392,10 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
   {
     heading: 'Servicios',
     links: [
-      { label: 'Intermediación ganadera', href: '#servicios' },
-      { label: 'Remates por pantalla', href: '#remates' },
-      { label: 'Venta de campos', href: '#campos' },
-      { label: 'Asesoría agropecuaria', href: '#servicios' },
+      { label: 'Ventas Particulares', href: '#servicios' },
+      { label: 'Remates en Vivo (Lote 21)', href: '#servicios' },
+      { label: 'Inscripción de Lotes', href: '#servicios' },
+      { label: 'Embarques a Frigoríficos', href: '#servicios' },
     ],
   },
   {
@@ -374,7 +403,7 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
     links: [
       { label: 'Nosotros', href: '#nosotros' },
       { label: 'Equipo', href: '#equipo' },
-      { label: 'Blog', href: '#blog' },
+      { label: 'Historia', href: '/historia' },
       { label: 'Contacto', href: '#contacto' },
     ],
   },
@@ -390,3 +419,77 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
 ]
 
 export const WA_NUMBER = 'https://wa.me/59898334256'
+
+export const HISTORIA_TIMELINE: HistoriaEvent[] = [
+  {
+    year: '1972',
+    title: 'Fundación del escritorio',
+    description:
+      'Ricardo Díaz establece el escritorio rural en el departamento de Flores, con el propósito de conectar productores ganaderos de la región y facilitar la comercialización de hacienda con transparencia y trato justo.',
+  },
+  {
+    year: '1985',
+    title: 'Expansión regional',
+    description:
+      'La confianza ganada en Flores abre puertas en los departamentos limítrofes. El escritorio consolida una red de productores que cubre el sur y centro del país, con remates regulares en múltiples localidades.',
+  },
+  {
+    year: '1998',
+    title: 'Segunda generación',
+    description:
+      'Federico y Álvaro Díaz se incorporan al negocio familiar, aportando nuevas herramientas y manteniendo los valores fundacionales: la palabra, la honestidad y el conocimiento del campo.',
+  },
+  {
+    year: '2008',
+    title: 'Alianza con Lote 21',
+    description:
+      'El escritorio se integra al Consorcio Lote 21, uno de los consorcios de remates más importantes del Uruguay. Este paso amplifica el alcance de cada operación a nivel nacional e internacional.',
+  },
+  {
+    year: '2015',
+    title: 'Remates por pantalla',
+    description:
+      'Adoptamos la tecnología de transmisión en vivo, permitiendo que compradores de todo el país participen en los remates sin necesidad de desplazarse. Más compradores, mejores precios para el productor.',
+  },
+  {
+    year: 'Hoy',
+    title: 'Más de 50 años de trayectoria',
+    description:
+      'El escritorio sigue siendo un referente en la comercialización ganadera uruguaya. Un equipo comprometido y una red de clientes fieles construida durante décadas respaldan cada operación.',
+  },
+]
+
+export const HISTORIA_GALLERY: GalleryPhoto[] = [
+  {
+    id: 'hg1',
+    src: '../images/ig-2.PNG',
+    caption: 'Trinidad, Flores',
+    span: 'wide',
+  },
+  {
+    id: 'hg2',
+    src: '../images/portada-2.png',
+    caption: 'Remate | años 90',
+  },
+  {
+    id: 'hg3',
+    src: '../images/ig-4.PNG',
+    caption: 'Panorama ganadero | Flores',
+  },
+  {
+    id: 'hg4',
+    src: '../images/ig-7.PNG',
+    caption: 'Raíces | Futuro | Amistad',
+  },
+  {
+    id: 'hg5',
+    src: '../images/ig-3.PNG',
+    caption: 'Panorama ganadero | Treinta y Tres',
+  },
+  {
+    id: 'hg6',
+    src: '../images/ig-8.PNG',
+    caption: 'Yerra | Junio 2023',
+    span: 'wide',
+  },
+]

@@ -1,3 +1,42 @@
+/* ---- Heading (dark background override) ---- */
+.secHead {
+  max-width: 760px;
+  margin-bottom: 54px;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--beige);
+  font-family: var(--sans);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 26px;
+  height: 1px;
+  background: var(--beige);
+  display: inline-block;
+}
+
+.secHead h2 {
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  color: var(--bone);
+  margin-top: 18px;
+}
+
+.secHead p {
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 18px;
+  font-size: 1.06rem;
+}
+
+/* ---- Grid ---- */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -6,12 +45,13 @@
 
 .card {
   background: var(--paper);
-  border: 1px solid var(--line-soft);
+  border: 1px solid transparent;
   border-radius: var(--r);
   padding: 38px 34px;
   transition: 0.4s cubic-bezier(0.2, 0.7, 0.3, 1);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
 }
 
 .card::before {
@@ -29,7 +69,7 @@
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.28);
   border-color: transparent;
 }
 

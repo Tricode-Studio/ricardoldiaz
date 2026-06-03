@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import styles from './Contacto.module.css'
 
 type FormState = {
@@ -19,16 +20,25 @@ const MOTIVOS = [
 ]
 
 export function Contacto() {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const motivoParam = searchParams.get('motivo') ?? ''
+  const initialMotivo = MOTIVOS.includes(motivoParam) ? motivoParam : ''
+
   const [form, setForm] = useState<FormState>({
     nombre: '',
     empresa: '',
     email: '',
     telefono: '',
-    motivo: '',
+    motivo: initialMotivo,
     mensaje: '',
   })
   const [submitted, setSubmitted] = useState(false)
   const [errors, setErrors] = useState<Partial<FormState>>({})
+
+  // Limpiar el query param de la URL una vez leído, sin afectar el historial
+  useEffect(() => {
+    if (motivoParam) setSearchParams({}, { replace: true })
+  }, [])
 
   const validate = () => {
     const next: Partial<FormState> = {}

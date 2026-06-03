@@ -6,13 +6,41 @@
 
 .member {
   text-align: center;
+  cursor: pointer;
+  outline: none;
+  border-radius: 12px;
+  padding: 8px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.member:hover,
+.member:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(10, 18, 10, 0.1);
+}
+
+.member:hover .viewHint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.viewHint {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--sage);
+  letter-spacing: 0.04em;
+  margin-top: 8px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s, transform 0.2s;
 }
 
 .av {
   aspect-ratio: 1;
-  border-radius: 14px;
+  border-radius: 50%;
   overflow: hidden;
-  background: linear-gradient(150deg, var(--beige), var(--sage));
+  background: linear-gradient(160deg, var(--beige-soft) 0%, var(--beige) 55%, #c5bca8 100%);
   margin-bottom: 16px;
   position: relative;
   display: flex;
@@ -24,6 +52,18 @@
   font-family: var(--serif);
   font-size: 2.4rem;
   color: var(--forest);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.avatarSvg {
+  width: 100%;
+  height: 100%;
 }
 
 .member h4 {

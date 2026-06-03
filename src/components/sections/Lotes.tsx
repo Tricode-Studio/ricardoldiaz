@@ -74,7 +74,7 @@ export function Lotes() {
   const translateX = -((page * perPage) / TOTAL) * 100
 
   return (
-    <section className={`block ${styles.section}`} id="lotes" aria-labelledby="lotes-heading">
+    <section className={`block ${styles.section}`} id="lotes" aria-labelledby="lotes-heading" style={{ paddingTop: 'clamp(36px, 4.5vw, 64px)' }}>
       <div className="wrap">
         <div className={`sec-head reveal ${styles.head}`}>
           <span className="eyebrow">Remate · Lote 21</span>

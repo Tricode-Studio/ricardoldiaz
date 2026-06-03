@@ -107,6 +107,11 @@
   width: 100%;
 }
 
+.activeLink::after {
+  width: 100% !important;
+  background: var(--sage) !important;
+}
+
 .heroMode .links a {
   color: var(--bone);
   opacity: 0.9;
@@ -123,21 +128,28 @@
 .lotesBtn {
   font-size: 0.82rem;
   padding: 0.7em 1.3em;
-  background: transparent;
+  background: var(--forest);
   border: 1.5px solid var(--forest);
-  color: var(--forest);
+  color: var(--bone);
   transition: background 0.28s, color 0.28s, border-color 0.28s, transform 0.28s;
 }
 
 .lotesBtn:hover {
-  background: var(--forest);
-  color: var(--bone);
+  background: transparent;
+  color: var(--forest);
+  border: 1.5px solid var(--forest);
   transform: translateY(-1px);
 }
 
 .heroMode .lotesBtn {
+  background: rgba(245, 241, 231, 0.15);
   border-color: rgba(245, 241, 231, 0.6);
   color: var(--bone);
+}
+
+.heroMode .lotesBtn:hover {
+  background: transparent;
+  border-color: var(--bone);
 }
 
 .heroMode .lotesBtn:hover {

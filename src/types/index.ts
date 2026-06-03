@@ -18,6 +18,7 @@ export interface ServiceCard {
   description: string
   cta: string
   ctaHref: string
+  motivo?: string
 }
 
 export interface AuctionItem {
@@ -62,6 +63,10 @@ export interface TeamMember {
   role: string
   initials: string
   whatsapp: string
+  image?: string
+  bio?: string
+  specialties?: string[]
+  phone?: string
 }
 
 export interface BlogPost {
@@ -89,4 +94,17 @@ export interface LoteCard {
   image: string
   status: 'vendido' | 'disponible'
   price?: string
+}
+
+export interface HistoriaEvent {
+  year: string
+  title: string
+  description: string
+}
+
+export interface GalleryPhoto {
+  id: string
+  src: string
+  caption: string
+  span?: 'wide'
 }

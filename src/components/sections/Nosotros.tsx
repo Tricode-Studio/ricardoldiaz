@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styles from './Nosotros.module.css'
 
 const values = [
@@ -35,6 +36,13 @@ export function Nosotros() {
               </div>
             ))}
           </div>
+
+          <Link to="/historia" className={styles.historiaBtn}>
+            Conocer nuestra historia
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true" width={16} height={16}>
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </Link>
         </div>
 
         <div className={`${styles.media} reveal`} style={{ transitionDelay: '0.2s' }}>

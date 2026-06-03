@@ -3,7 +3,7 @@ import { AUCTIONS } from '../../data'
 
 export function Remates() {
   return (
-    <section className={`block ${styles.remates}`} id="remates" aria-labelledby="remates-heading">
+    <section className={`block ${styles.remates}`} id="remates" aria-labelledby="remates-heading" style={{ paddingBottom: 0 }}>
       <div className="wrap">
         <div className="sec-head reveal">
           <span className="eyebrow">Agenda de remates</span>
@@ -40,14 +40,14 @@ export function Remates() {
               </span> */}
 
               <div className={styles.acts}>
-                <a href="#contacto">Ver lotes</a>
+                <a href="#lotes">Ver lotes</a>
                 {/* <a href="#news">Alertas</a> */}
               </div>
             </li>
           ))}
         </ul>
 
-        <a href="#news" className="btn btn-solid">
+        <a href="#contacto" className="btn btn-solid">
           Suscribirse a alertas de remates
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6" />

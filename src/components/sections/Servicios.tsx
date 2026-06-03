@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styles from './Servicios.module.css'
 import { SERVICES } from '../../data'
 import type { ServiceCard } from '../../types'
@@ -19,11 +20,16 @@ const icons: Record<ServiceCard['icon'], ReactElement> = {
   ),
   campos: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} aria-hidden="true">
-      <rect x="3" y="9" width="13" height="7" rx="2.5" />
-      <circle cx="18" cy="13" r="2.5" />
-      <path d="M17 11l-1-2.5M19 11l1-2" />
-      <path d="M5 16v4M8 16v4M12 16v4M15 16v4" />
-      <path d="M3 13c-2 0-2-3 0-3" />
+      <path d="M11 3H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" />
+      <path d="M11 3v4h6" />
+      <rect x="4" y="9" width="2.5" height="2.5" rx="0.4" />
+      <path d="M8 10.25h5" />
+      <rect x="4" y="13" width="2.5" height="2.5" rx="0.4" />
+      <path d="M8 14.25h5" />
+      <rect x="4" y="17" width="2.5" height="2.5" rx="0.4" />
+      <path d="M8 18.25h3" />
+      <circle cx="19" cy="19" r="4" />
+      <path d="M17 19l1.5 1.5 3-3" />
     </svg>
   ),
   asesoria: (
@@ -37,11 +43,19 @@ const icons: Record<ServiceCard['icon'], ReactElement> = {
 }
 
 export function Servicios() {
+  const navigate = useNavigate()
+
+  const handleContactCta = (e: React.MouseEvent, motivo: string) => {
+    e.preventDefault()
+    navigate(`/?motivo=${encodeURIComponent(motivo)}`)
+    document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
-    <section className="block" id="servicios" style={{ background: 'var(--paper)' }} aria-labelledby="servicios-heading">
+    <section className="block" id="servicios" style={{ background: 'var(--forest)' }} aria-labelledby="servicios-heading">
       <div className="wrap">
-        <div className="sec-head reveal">
-          <span className="eyebrow">Nuestros servicios</span>
+        <div className={`${styles.secHead} reveal`}>
+          <span className={styles.eyebrow}>Nuestros servicios</span>
           <h2 id="servicios-heading">Soluciones integrales para el negocio ganadero.</h2>
           <p>
             Acompañamos cada etapa de la comercialización agropecuaria con experiencia local y una red de
@@ -64,6 +78,7 @@ export function Servicios() {
                 className={styles.more}
                 target={service.icon === 'remates' ? '_blank' : undefined}
                 rel={service.icon === 'remates' ? 'noopener noreferrer' : undefined}
+                onClick={service.motivo ? (e) => handleContactCta(e, service.motivo!) : undefined}
               >
                 {service.cta}
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">

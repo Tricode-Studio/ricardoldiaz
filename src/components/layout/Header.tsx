@@ -1,3 +1,4 @@
+import { useLocation, Link } from 'react-router-dom'
 import styles from './Header.module.css'
 import { useScrolled } from '../../hooks/useScrolled'
 import { useMobileMenu } from '../../hooks/useMobileMenu'
@@ -14,6 +15,12 @@ export function Header() {
   const scrolled = useScrolled(60)
   const atTop = !scrolled
   const { open, toggle, close } = useMobileMenu()
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
+
+  // Anchor links need '/' prefix when not on home page
+  const resolveHref = (href: string) =>
+    href.startsWith('#') && !isHome ? `/${href}` : href
 
   return (
     <>
@@ -28,7 +35,7 @@ export function Header() {
         role="banner"
       >
         <div className={styles.inner}>
-          <a href="#inicio" className={styles.brand} aria-label="Ricardo L. Díaz — inicio">
+          <a href={resolveHref('#inicio')} className={styles.brand} aria-label="Ricardo L. Díaz — inicio">
             <img src={logo} alt="Logo Ricardo L. Díaz" width={42} height={42} />
             <div className={styles.brandText}>
               <b>Ricardo L. Díaz</b>
@@ -37,16 +44,29 @@ export function Header() {
           </a>
 
           <nav className={styles.links} aria-label="Navegación principal">
-            {NAV_LINKS.map((link) => (
-              <a key={link.href} href={link.href}>
-                {link.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isRoute = !link.href.startsWith('#')
+              const href = resolveHref(link.href)
+              const isActive = isRoute && pathname === link.href
+              return isRoute ? (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={isActive ? styles.activeLink : undefined}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a key={link.href} href={href}>
+                  {link.label}
+                </a>
+              )
+            })}
           </nav>
 
           <div className={styles.cta}>
             {/* Lotes button — visible on desktop, hidden on mobile */}
-            <a href="#lotes" className={`btn ${styles.lotesBtn}`}>
+            <a href={resolveHref('#lotes')} className={`btn ${styles.lotesBtn}`}>
               Lotes
             </a>
 
@@ -89,14 +109,26 @@ export function Header() {
         </button>
 
         <nav className={styles.menuNav} aria-label="Menú móvil">
-          {NAV_LINKS.map((link) => (
-            <a key={link.href} href={link.href} onClick={close} className={styles.menuLink}>
-              <span>{link.label}</span>
+          {NAV_LINKS.map((link) => {
+            const isRoute = !link.href.startsWith('#')
+            const href = resolveHref(link.href)
+            const chevron = (
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true" width={16} height={16}>
                 <path d="M9 18l6-6-6-6" />
               </svg>
-            </a>
-          ))}
+            )
+            return isRoute ? (
+              <Link key={link.href} to={link.href} onClick={close} className={styles.menuLink}>
+                <span>{link.label}</span>
+                {chevron}
+              </Link>
+            ) : (
+              <a key={link.href} href={href} onClick={close} className={styles.menuLink}>
+                <span>{link.label}</span>
+                {chevron}
+              </a>
+            )
+          })}
         </nav>
 
         <div className={styles.menuFooter}>
