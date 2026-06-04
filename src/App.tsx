@@ -17,6 +17,7 @@ import { Mercado } from './components/sections/Mercado'
 import { Equipo } from './components/sections/Equipo'
 import { Contacto } from './components/sections/Contacto'
 import { Historia } from './pages/Historia'
+import { CmsContentProvider } from './cms/CmsContentContext'
 
 function Home() {
   useScrollReveal()
@@ -53,9 +54,11 @@ function Home() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/historia" element={<Historia />} />
-    </Routes>
+    <CmsContentProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/historia" element={<Historia />} />
+      </Routes>
+    </CmsContentProvider>
   )
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import styles from './Lotes.module.css'
-import { LOTES } from '../../data'
+import { useCmsContent } from '../../cms/CmsContentContext'
 
 const PinIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -42,11 +42,11 @@ function usePerPage() {
   return perPage
 }
 
-const TOTAL = LOTES.length
-
 export function Lotes() {
+  const { lotes } = useCmsContent()
   const perPage = usePerPage()
-  const totalPages = Math.ceil(TOTAL / perPage)
+  const total = Math.max(lotes.length, 1)
+  const totalPages = Math.max(1, Math.ceil(total / perPage))
   const [page, setPage] = useState(0)
   const [paused, setPaused] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -71,7 +71,7 @@ export function Lotes() {
   }, [paused, totalPages])
 
   // translateX as % of track width: -(page * perPage / TOTAL * 100)
-  const translateX = -((page * perPage) / TOTAL) * 100
+  const translateX = -((page * perPage) / total) * 100
 
   return (
     <section className={`block ${styles.section}`} id="lotes" aria-labelledby="lotes-heading" style={{ paddingTop: 'clamp(36px, 4.5vw, 64px)' }}>
@@ -96,7 +96,7 @@ export function Lotes() {
               ['--per-page' as string]: perPage,
             }}
           >
-            {LOTES.map((lote) => (
+            {lotes.map((lote) => (
               <article key={lote.id} className={styles.card}>
                 <div className={styles.imgWrap}>
                   <img src={lote.image} alt={`${lote.lote} — ${lote.category}`} loading="lazy" />

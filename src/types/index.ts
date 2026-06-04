@@ -108,3 +108,10 @@ export interface GalleryPhoto {
   caption: string
   span?: 'wide'
 }
+
+export interface HistoriaHeroContent {
+  eyebrow?: string
+  title?: string
+  subtitle?: string
+  image?: string
+}

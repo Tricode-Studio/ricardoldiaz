@@ -1,5 +1,5 @@
 import styles from './Mercado.module.css'
-import { PRICES } from '../../data'
+import { useCmsContent } from '../../cms/CmsContentContext'
 
 const UpArrow = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
@@ -13,9 +13,10 @@ const DownArrow = () => (
   </svg>
 )
 
-const GROUPS = ['Ganado a Faena', 'Reposición'] as const
-
 export function Mercado() {
+  const { prices, mercadoUpdatedLabel, mercadoSourceNote } = useCmsContent()
+  const groups = Array.from(new Set(prices.map((price) => price.group).filter(Boolean))) as string[]
+
   return (
     <section className={`block ${styles.market}`} id="mercado" aria-labelledby="mercado-heading">
       <div className="wrap">
@@ -34,13 +35,13 @@ export function Mercado() {
           </p>
           <div className={styles.badge}>
             <span className={styles.dot} aria-hidden="true" />
-            Datos actualizados · Semana N°21 · 17/05/26 al 23/05/26
+            {mercadoUpdatedLabel}
           </div>
         </div>
 
         <div className={styles.priceGroups}>
-          {GROUPS.map((group) => {
-            const rows = PRICES.filter((p) => p.group === group)
+          {groups.map((group) => {
+            const rows = prices.filter((p) => p.group === group)
             return (
               <div key={group} className={`${styles.priceGroup} reveal`}>
                 <h3 className={styles.groupTitle}>{group}</h3>
@@ -75,9 +76,7 @@ export function Mercado() {
         </div>
 
         <p className={styles.note}>
-          * Valores orientativos con fines informativos. Fuente: ACG – Semana N°21. La ganadería es el
-          principal rubro exportador de Uruguay, con cerca de US$&nbsp;2.647 millones en exportaciones de
-          carne y casi 695.000 toneladas enviadas a unos 100 destinos.
+          {mercadoSourceNote}
         </p>
       </div>
     </section>

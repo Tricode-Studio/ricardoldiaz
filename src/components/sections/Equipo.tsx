@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import styles from './Equipo.module.css'
-import { TEAM } from '../../data'
 import type { TeamMember } from '../../types'
 import { TeamModal } from './TeamModal'
+import { useCmsContent } from '../../cms/CmsContentContext'
 
 export function Equipo() {
   const [selected, setSelected] = useState<TeamMember | null>(null)
+  const { team } = useCmsContent()
 
   return (
     <section className="block" id="equipo" aria-labelledby="equipo-heading">
@@ -20,7 +21,7 @@ export function Equipo() {
         </div>
 
         <div className={styles.grid}>
-          {TEAM.map((member, i) => (
+          {team.map((member, i) => (
             <div
               key={member.id}
               className={`${styles.member} reveal`}

@@ -1,7 +1,9 @@
 import styles from './Remates.module.css'
-import { AUCTIONS } from '../../data'
+import { useCmsContent } from '../../cms/CmsContentContext'
 
 export function Remates() {
+  const { auctions } = useCmsContent()
+
   return (
     <section className={`block ${styles.remates}`} id="remates" aria-labelledby="remates-heading" style={{ paddingBottom: 0 }}>
       <div className="wrap">
@@ -15,7 +17,7 @@ export function Remates() {
         </div>
 
         <ul className={styles.list} role="list">
-          {AUCTIONS.map((auction, i) => (
+          {auctions.map((auction, i) => (
             <li
               key={auction.id}
               className={`${styles.auction} reveal`}

@@ -1,8 +1,8 @@
 import type { ReactElement } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './Servicios.module.css'
-import { SERVICES } from '../../data'
 import type { ServiceCard } from '../../types'
+import { useCmsContent } from '../../cms/CmsContentContext'
 
 const icons: Record<ServiceCard['icon'], ReactElement> = {
   intermediacion: (
@@ -44,6 +44,7 @@ const icons: Record<ServiceCard['icon'], ReactElement> = {
 
 export function Servicios() {
   const navigate = useNavigate()
+  const { services } = useCmsContent()
 
   const handleContactCta = (e: React.MouseEvent, motivo: string) => {
     e.preventDefault()
@@ -64,7 +65,7 @@ export function Servicios() {
         </div>
 
         <div className={styles.grid}>
-          {SERVICES.map((service, i) => (
+          {services.map((service, i) => (
             <article
               key={service.id}
               className={`${styles.card} reveal`}

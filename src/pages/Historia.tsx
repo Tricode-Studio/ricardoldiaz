@@ -7,8 +7,9 @@ import { Footer } from '../components/layout/Footer'
 import { PhoneStrip } from '../components/layout/PhoneStrip'
 import { WhatsAppFab } from '../components/layout/WhatsAppFab'
 import { TeamModal } from '../components/sections/TeamModal'
-import { HISTORIA_TIMELINE, HISTORIA_GALLERY, TEAM, WA_NUMBER } from '../data'
+import { WA_NUMBER } from '../data'
 import type { TeamMember } from '../types'
+import { useCmsContent } from '../cms/CmsContentContext'
 
 const VALORES = [
   {
@@ -56,6 +57,7 @@ const VALORES = [
 export function Historia() {
   useScrollReveal()
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null)
+  const { historiaHero, historiaTimeline, historiaGallery, team } = useCmsContent()
 
   useEffect(() => {
     document.title = 'Nuestra Historia — Ricardo L. Díaz · Escritorio Rural'
@@ -75,7 +77,7 @@ export function Historia() {
           className={styles.hero}
           style={{
             backgroundImage:
-              'url(/images/ig-0.PNG)',
+              `url(${historiaHero.image || '/images/ig-0.PNG'})`,
           }}
         >
           <div className={styles.heroOverlay} />
@@ -86,10 +88,10 @@ export function Historia() {
               </svg>
               Volver al inicio
             </Link> */}
-            <span className={styles.heroEyebrow}>Desde 1972</span>
-            <h1>Nuestra Historia</h1>
+            <span className={styles.heroEyebrow}>{historiaHero.eyebrow || 'Desde 1972'}</span>
+            <h1>{historiaHero.title || 'Nuestra Historia'}</h1>
             <p className={styles.heroSub}>
-              Más de 50 años construyendo confianza en el campo uruguayo, operación a operación.
+              {historiaHero.subtitle || 'Más de 50 años construyendo confianza en el campo uruguayo, operación a operación.'}
             </p>
             <span className={styles.heroScroll}>Descubrir</span>
           </div>
@@ -139,7 +141,7 @@ export function Historia() {
             </div>
 
             <div className={styles.timeline}>
-              {HISTORIA_TIMELINE.map((ev, i) => (
+              {historiaTimeline.map((ev, i) => (
                 <div
                   key={ev.year}
                   className={`${styles.event} reveal`}
@@ -170,7 +172,7 @@ export function Historia() {
             </div>
 
             <div className={styles.gallery}>
-              {HISTORIA_GALLERY.map((photo, i) => (
+              {historiaGallery.map((photo, i) => (
                 <div
                   key={photo.id}
                   className={`${styles.photoCard} ${photo.span === 'wide' ? styles.photoWide : ''} reveal`}
@@ -197,7 +199,7 @@ export function Historia() {
             </div>
 
             <div className={styles.teamGrid}>
-              {TEAM.map((member, i) => (
+              {team.map((member, i) => (
                 <div
                   key={member.id}
                   className={`${styles.teamCard} reveal`}
