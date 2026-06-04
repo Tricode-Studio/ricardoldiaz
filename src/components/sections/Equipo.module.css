@@ -9,6 +9,8 @@
   cursor: pointer;
   outline: none;
   border-radius: 12px;
+    border-top-left-radius: 180px;
+  border-top-right-radius: 180px;
   padding: 8px;
   transition: transform 0.22s ease, box-shadow 0.22s ease;
 }

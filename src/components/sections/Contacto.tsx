@@ -100,11 +100,11 @@ export function Contacto() {
                 </div>
                 <div className={styles.t}>
                   <b>Teléfono</b>
-                  <span>+598 00 000 000</span>
+                  <span>+598 98 334 256</span>
                 </div>
               </div>
 
-              <div className={styles.ci}>
+              {/* <div className={styles.ci}>
                 <div className={styles.ic} aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -115,7 +115,7 @@ export function Contacto() {
                   <b>Email</b>
                   <span>contacto@ricardoldiaz.uy</span>
                 </div>
-              </div>
+              </div> */}
 
               <div className={styles.ci}>
                 <div className={styles.ic} aria-hidden="true">
