@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import styles from './Historia.module.css'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { Header } from '../components/layout/Header'
@@ -58,14 +58,22 @@ export function Historia() {
   useScrollReveal()
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null)
   const { historiaHero, historiaTimeline, historiaGallery, team } = useCmsContent()
+  const { hash } = useLocation()
 
   useEffect(() => {
     document.title = 'Nuestra Historia — Ricardo L. Díaz · Escritorio Rural'
-    window.scrollTo(0, 0)
+    if (!hash) {
+      window.scrollTo(0, 0)
+    } else {
+      const timer = setTimeout(() => {
+        document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth' })
+      }, 120)
+      return () => clearTimeout(timer)
+    }
     return () => {
       document.title = 'Ricardo L. Díaz · Escritorio Rural'
     }
-  }, [])
+  }, [hash])
 
   return (
     <>
@@ -105,7 +113,7 @@ export function Historia() {
                 <span className="eyebrow">Los orígenes</span>
                 <h2>Una historia de campo y confianza.</h2>
                 <p>
-                  En 1972, Ricardo Díaz fundó su escritorio rural en el departamento de Flores con una
+                  En 1973, Ricardo Díaz fundó su escritorio rural en el departamento de Flores con una
                   convicción simple: que entre productores, lo que vale es la palabra, el conocimiento
                   del campo y el trato honesto.
                 </p>
@@ -187,7 +195,7 @@ export function Historia() {
         </section>
 
         {/* ── EQUIPO ── */}
-        <section className="block" style={{ background: 'var(--bone)' }}>
+        <section id="equipo-hoy" className="block" style={{ background: 'var(--bone)' }}>
           <div className="wrap">
             <div className="sec-head reveal">
               <span className="eyebrow">El equipo hoy</span>

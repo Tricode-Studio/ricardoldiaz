@@ -13,6 +13,7 @@ import { Nosotros } from './components/sections/Nosotros'
 import { Servicios } from './components/sections/Servicios'
 import { Remates } from './components/sections/Remates'
 import { Lotes } from './components/sections/Lotes'
+import { VentasParticulares } from './components/sections/VentasParticulares'
 import { Mercado } from './components/sections/Mercado'
 import { Equipo } from './components/sections/Equipo'
 import { Contacto } from './components/sections/Contacto'
@@ -41,6 +42,7 @@ function Home() {
         <Servicios />
         <Remates />
         <Lotes />
+        <VentasParticulares />
         <Mercado />
         <Equipo />
         <Contacto />

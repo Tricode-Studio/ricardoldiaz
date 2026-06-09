@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import styles from './Lotes.module.css'
-import { useCmsContent } from '../../cms/CmsContentContext'
+import styles from './VentasParticulares.module.css'
+import { VENTAS_PARTICULARES } from '../../data'
 
 const PinIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -8,10 +8,12 @@ const PinIcon = () => (
   </svg>
 )
 
-const ClockIcon = () => (
+const CalendarIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-    <circle cx="12" cy="12" r="10" />
-    <path d="M12 6v6l4 2" />
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+    <line x1="16" y1="2" x2="16" y2="6" />
+    <line x1="8" y1="2" x2="8" y2="6" />
+    <line x1="3" y1="10" x2="21" y2="10" />
   </svg>
 )
 
@@ -42,11 +44,11 @@ function usePerPage() {
   return perPage
 }
 
-export function Lotes() {
-  const { lotes } = useCmsContent()
+const TOTAL = VENTAS_PARTICULARES.length
+
+export function VentasParticulares() {
   const perPage = usePerPage()
-  const total = Math.max(lotes.length, 1)
-  const totalPages = Math.max(1, Math.ceil(total / perPage))
+  const totalPages = Math.ceil(TOTAL / perPage)
   const [page, setPage] = useState(0)
   const [paused, setPaused] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -70,18 +72,17 @@ export function Lotes() {
     }
   }, [paused, totalPages])
 
-  // translateX as % of track width: -(page * perPage / TOTAL * 100)
-  const translateX = -((page * perPage) / total) * 100
+  const translateX = -((page * perPage) / TOTAL) * 100
 
   return (
-    <section className={`block ${styles.section}`} id="lotes" aria-labelledby="lotes-heading" style={{ paddingTop: 'clamp(36px, 4.5vw, 64px)', paddingBottom: 'clamp(20px, 2.5vw, 32px)' }}>
+    <section className={`block ${styles.section}`} id="ventas-particulares" aria-labelledby="ventas-particulares-heading" style={{ paddingTop: 'clamp(20px, 2.5vw, 32px)' }}>
       <div className="wrap">
         <div className={`sec-head reveal ${styles.head}`}>
-          <span className="eyebrow">Remate · Lote 21</span>
-          <h2 id="lotes-heading">Lotes por pantalla</h2>
-          <p>Resultados del últimos y próximos remates en pantalla. 
+          <span className="eyebrow">Venta Directa · Hacienda</span>
+          <h2 id="ventas-particulares-heading">Ventas Particulares</h2>
+          <p>Operaciones directas entre productores, gestionadas con total transparencia.
             <br />
-            Todos los lotes cotizados con transparencia.</p>
+            Conectamos comprador y vendedor de forma ágil y segura.</p>
         </div>
 
         <div
@@ -96,37 +97,37 @@ export function Lotes() {
               ['--per-page' as string]: perPage,
             }}
           >
-            {lotes.map((lote) => (
-              <article key={lote.id} className={styles.card}>
+            {VENTAS_PARTICULARES.map((venta) => (
+              <article key={venta.id} className={styles.card}>
                 <div className={styles.imgWrap}>
-                  <img src={lote.image} alt={`${lote.lote} — ${lote.category}`} loading="lazy" />
-                  <div className={`${styles.badge} ${lote.status === 'vendido' ? styles.badgeSold : styles.badgeAvail}`}>
-                    {lote.status === 'vendido' ? 'Vendido' : 'Disponible'}
-                    {lote.price && <span>{lote.price}</span>}
+                  <img src={venta.image} alt={`${venta.ref} — ${venta.category}`} loading="lazy" />
+                  <div className={`${styles.badge} ${venta.status === 'vendido' ? styles.badgeSold : styles.badgeAvail}`}>
+                    {venta.status === 'vendido' ? 'Vendido' : 'Disponible'}
+                    {venta.price && <span>{venta.price}</span>}
                   </div>
                   <div className={styles.imgMeta}>
                     <span>
                       <PinIcon />
-                      {lote.location}
+                      {venta.location}
                     </span>
                     <span>
-                      <ClockIcon />
-                      {lote.time}
+                      <CalendarIcon />
+                      {venta.date}
                     </span>
                   </div>
                 </div>
 
                 <div className={styles.body}>
-                  <p className={styles.loteNum}>{lote.lote}</p>
-                  <h3 className={styles.category}>{lote.category}</h3>
+                  <p className={styles.loteNum}>{venta.ref}</p>
+                  <h3 className={styles.category}>{venta.category}</h3>
                   <div className={styles.specs}>
                     <div className={styles.spec}>
-                      <span className={styles.specVal}>{lote.heads}</span>
+                      <span className={styles.specVal}>{venta.heads}</span>
                       <span className={styles.specLabel}>cabezas</span>
                     </div>
                     <div className={styles.specDivider} aria-hidden="true" />
                     <div className={styles.spec}>
-                      <span className={styles.specVal}>{lote.weightAvg} kg</span>
+                      <span className={styles.specVal}>{venta.weightAvg} kg</span>
                       <span className={styles.specLabel}>peso promedio</span>
                     </div>
                   </div>
@@ -140,7 +141,7 @@ export function Lotes() {
           <button
             className={styles.arrow}
             onClick={() => goTo(page - 1)}
-            aria-label="Lotes anteriores"
+            aria-label="Ventas anteriores"
           >
             <ChevronLeft />
           </button>
@@ -161,7 +162,7 @@ export function Lotes() {
           <button
             className={styles.arrow}
             onClick={() => goTo(page + 1)}
-            aria-label="Lotes siguientes"
+            aria-label="Ventas siguientes"
           >
             <ChevronRight />
           </button>

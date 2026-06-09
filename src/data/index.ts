@@ -12,6 +12,7 @@ import type {
   LoteCard,
   HistoriaEvent,
   GalleryPhoto,
+  VentaCard,
 } from '../types'
 
 export const NAV_LINKS: NavLink[] = [
@@ -256,6 +257,79 @@ export const LOTES: LoteCard[] = [
   },
 ]
 
+export const VENTAS_PARTICULARES: VentaCard[] = [
+  {
+    id: 'v1',
+    ref: 'VP · 01',
+    category: 'Terneros de 140 a 180 kg',
+    heads: 36,
+    weightAvg: 162,
+    location: 'Flores',
+    date: 'May 2025',
+    image: '/images/lote-3.jpeg',
+    status: 'vendido',
+    price: 'US$ 4,10',
+  },
+  {
+    id: 'v2',
+    ref: 'VP · 02',
+    category: 'Terneros más de 180 kg',
+    heads: 50,
+    weightAvg: 192,
+    location: 'Durazno',
+    date: 'May 2025',
+    image: '/images/lote-2.jpg',
+    status: 'vendido',
+    price: 'US$ 4,20',
+  },
+  {
+    id: 'v3',
+    ref: 'VP · 03',
+    category: 'Novillos de 1 a 2 años',
+    heads: 44,
+    weightAvg: 268,
+    location: 'Tacuarembó',
+    date: 'Abr 2025',
+    image: '/images/lote-1.jpg',
+    status: 'vendido',
+    price: 'US$ 3,45',
+  },
+  {
+    id: 'v4',
+    ref: 'VP · 04',
+    category: 'Vacas de invernada',
+    heads: 28,
+    weightAvg: 382,
+    location: 'Soriano',
+    date: 'Abr 2025',
+    image: '/images/lote-4.png',
+    status: 'vendido',
+    price: 'US$ 2,50',
+  },
+  {
+    id: 'v5',
+    ref: 'VP · 05',
+    category: 'Terneros más de 180 kg',
+    heads: 62,
+    weightAvg: 204,
+    location: 'Rivera',
+    date: 'Jun 2025',
+    image: '/images/lote-5.png',
+    status: 'disponible',
+  },
+  {
+    id: 'v6',
+    ref: 'VP · 06',
+    category: 'Vacas gordas',
+    heads: 33,
+    weightAvg: 430,
+    location: 'Paysandú',
+    date: 'Jun 2025',
+    image: '/images/lote-6.png',
+    status: 'disponible',
+  },
+]
+
 export const FIELDS: FieldCard[] = [
   {
     id: 'f1',
@@ -422,7 +496,7 @@ export const WA_NUMBER = 'https://wa.me/59898334256'
 
 export const HISTORIA_TIMELINE: HistoriaEvent[] = [
   {
-    year: '1972',
+    year: '1973',
     title: 'Fundación del escritorio',
     description:
       'Ricardo Díaz establece el escritorio rural en el departamento de Flores, con el propósito de conectar productores ganaderos de la región y facilitar la comercialización de hacienda con transparencia y trato justo.',
@@ -443,7 +517,7 @@ export const HISTORIA_TIMELINE: HistoriaEvent[] = [
     year: '2008',
     title: 'Alianza con Lote 21',
     description:
-      'El escritorio se integra al Consorcio Lote 21, uno de los consorcios de remates más importantes del Uruguay. Este paso amplifica el alcance de cada operación a nivel nacional e internacional.',
+      'El escritorio se integra al Consorcio Lote 21, siendo uno de los consorcios de remates más importantes del Uruguay. Este paso amplifica el alcance de cada operación a nivel nacional.',
   },
   {
     year: '2015',

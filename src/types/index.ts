@@ -96,6 +96,19 @@ export interface LoteCard {
   price?: string
 }
 
+export interface VentaCard {
+  id: string
+  ref: string
+  category: string
+  heads: number
+  weightAvg: number
+  location: string
+  date: string
+  image: string
+  status: 'vendido' | 'disponible'
+  price?: string
+}
+
 export interface HistoriaEvent {
   year: string
   title: string

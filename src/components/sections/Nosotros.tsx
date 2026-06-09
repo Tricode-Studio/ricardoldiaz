@@ -48,7 +48,7 @@ export function Nosotros() {
         <div className={`${styles.media} reveal`} style={{ transitionDelay: '0.2s' }}>
           <div className={styles.photo}>
             <img
-              src="/images/ganado-1.png"
+              src="/images/federico-3.png"
               alt="Rematador Ricardo L. Díaz"
               loading="lazy"
             />

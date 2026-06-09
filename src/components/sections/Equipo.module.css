@@ -101,6 +101,12 @@
   height: 15px;
 }
 
+.seeAll {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 800px) {
   .grid {

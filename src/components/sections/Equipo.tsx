@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './Equipo.module.css'
 import type { TeamMember } from '../../types'
 import { TeamModal } from './TeamModal'
@@ -21,7 +22,7 @@ export function Equipo() {
         </div>
 
         <div className={styles.grid}>
-          {team.map((member, i) => (
+          {team.slice(0, 4).map((member, i) => (
             <div
               key={member.id}
               className={`${styles.member} reveal`}
@@ -64,6 +65,14 @@ export function Equipo() {
             </div>
           ))}
         </div>
+
+        {team.length > 4 && (
+          <div className={styles.seeAll}>
+            <Link to="/historia#equipo-hoy" className="btn btn-ghost">
+              Conocer a todo el equipo
+            </Link>
+          </div>
+        )}
       </div>
 
       {selected && (
