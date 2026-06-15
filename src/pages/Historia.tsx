@@ -57,10 +57,8 @@ const VALORES = [
 export function Historia() {
   useScrollReveal()
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null)
-  const { historiaHero, historiaTimeline, historiaGallery, historiaIntroImage, aboutImage, team } = useCmsContent()
+  const { historiaHero, historiaTimeline, historiaGallery, team } = useCmsContent()
   const { hash } = useLocation()
-  const federicoImage = team.find((member) => member.name.toLowerCase().includes('federico'))?.image
-  const introImage = historiaIntroImage || aboutImage || federicoImage
   const visibleGallery = historiaGallery.filter((photo) => photo.src)
 
   useEffect(() => {
@@ -129,13 +127,11 @@ export function Historia() {
               </div>
 
               <div className={`${styles.introImg} reveal`} style={{ transitionDelay: '0.12s' }}>
-                {introImage && (
-                  <img
-                    src={introImage}
-                    alt="Rematador"
-                    loading="lazy"
-                  />
-                )}
+                <img
+                  src="/images/federico-1.png"
+                  alt="Rematador"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>

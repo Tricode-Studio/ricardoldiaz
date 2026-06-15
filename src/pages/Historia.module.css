@@ -167,6 +167,7 @@
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: center top;
   border-radius: 18px;
   box-shadow: 0 20px 60px rgba(44, 58, 44, 0.18);
 }
@@ -525,10 +526,6 @@
     gap: 44px;
   }
 
-  .introImg img {
-    aspect-ratio: 16 / 9;
-  }
-
   .gallery {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -558,7 +555,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 340px) {
   .teamCard {
     flex: 0 0 100%;
     max-width: 280px;

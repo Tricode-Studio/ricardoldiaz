@@ -46,8 +46,6 @@ type CmsContent = {
   heroPillLabel: string
   logoImage?: string
   homeHeroImage?: string
-  aboutImage?: string
-  historiaIntroImage?: string
   mercadoUpdatedLabel?: string
   mercadoSourceNote?: string
 }
@@ -70,8 +68,6 @@ const FALLBACK_CONTENT: CmsContent = {
   heroPillLabel: 'Consultar agenda',
   logoImage: '',
   homeHeroImage: '',
-  aboutImage: '',
-  historiaIntroImage: '',
   mercadoUpdatedLabel: 'Datos actualizados · Semana N°21 · 17/05/26 al 23/05/26',
   mercadoSourceNote:
     '* Valores orientativos con fines informativos. Fuente: ACG – Semana N°21. La ganadería es el principal rubro exportador de Uruguay, con cerca de US$ 2.647 millones en exportaciones de carne y casi 695.000 toneladas enviadas a unos 100 destinos.',
@@ -96,11 +92,6 @@ function asNumber(value: unknown, fallback = 0) {
   return Number.isFinite(parsed) ? parsed : fallback
 }
 
-function isEntryActive(item: PublicEntry) {
-  const active = item.data?.isactive ?? item.data?.isActive
-  return active !== false && active !== 'false' && active !== 0 && active !== '0'
-}
-
 function readData(data: Record<string, unknown>, ...keys: string[]) {
   for (const key of keys) {
     if (data[key] !== undefined && data[key] !== null && data[key] !== '') {
@@ -110,43 +101,31 @@ function readData(data: Record<string, unknown>, ...keys: string[]) {
   return undefined
 }
 
-function parseCmsDate(value: unknown) {
-  const text = asText(value)
-  if (!text) return null
-  const dateOnly = /^(\d{4})-(\d{2})-(\d{2})$/.exec(text)
-  const parsed = dateOnly
-    ? new Date(Date.UTC(Number(dateOnly[1]), Number(dateOnly[2]) - 1, Number(dateOnly[3])))
-    : new Date(text)
-  return Number.isNaN(parsed.getTime()) ? null : parsed
+const MONTH_NAMES_ES: Record<string, string> = {
+  ene: 'enero',
+  feb: 'febrero',
+  mar: 'marzo',
+  abr: 'abril',
+  may: 'mayo',
+  jun: 'junio',
+  jul: 'julio',
+  ago: 'agosto',
+  sep: 'septiembre',
+  set: 'septiembre',
+  oct: 'octubre',
+  nov: 'noviembre',
+  dic: 'diciembre',
 }
 
-function formatAuctionDateLabel(date: Date) {
-  return new Intl.DateTimeFormat('es-UY', {
-    day: 'numeric',
-    month: 'long',
-    timeZone: 'UTC',
-  }).format(date)
+function fullMonthNameEs(month: string) {
+  const key = month.trim().toLowerCase().replace(/\.$/, '').slice(0, 3)
+  return MONTH_NAMES_ES[key] || month
 }
 
-function getNextAuctionLabel(items: PublicEntry[]) {
-  const now = new Date()
-  const todayUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())
-  const upcoming = items
-    .filter(isEntryActive)
-    .map((item) => {
-      const date = parseCmsDate(item.data?.date)
-      return date ? { item, date } : null
-    })
-    .filter((item): item is { item: PublicEntry; date: Date } => Boolean(item))
-    .filter(({ date }) => date.getTime() >= todayUtc)
-    .sort((a, b) => {
-      if (a.date.getTime() !== b.date.getTime()) return a.date.getTime() - b.date.getTime()
-      return asNumber(a.item.data?.position, 9999) - asNumber(b.item.data?.position, 9999)
-    })
-
-  const next = upcoming[0]
-  if (!next) return ''
-  return formatAuctionDateLabel(next.date)
+function getNextAuctionLabel(auctions: AuctionItem[]) {
+  const next = auctions[0]
+  if (!next?.day || !next?.month) return ''
+  return `${next.day} de ${fullMonthNameEs(next.month)}`
 }
 
 function splitLines(value: unknown) {
@@ -344,20 +323,13 @@ function mapHistoria(items: PublicEntry[]) {
   }
 }
 
-function mapHeroSection(items: PublicEntry[], auctions: PublicEntry[]) {
+function mapHeroSection(items: PublicEntry[], auctions: AuctionItem[]) {
   const hero = items[0]
   const data = hero?.data ?? {}
-  const configuredLabel = asText(readData(data, 'nextAuctionLabel', 'nextauctionlabel', 'pillLabel', 'pilllabel'))
-  const nextAuctionLabel = getNextAuctionLabel(auctions)
   return {
-    heroPillLabel:
-      configuredLabel ||
-      nextAuctionLabel ||
-      FALLBACK_CONTENT.heroPillLabel,
+    heroPillLabel: getNextAuctionLabel(auctions) || FALLBACK_CONTENT.heroPillLabel,
     homeHeroImage: asText(readData(data, 'image', 'homeHeroImage', 'homeheroimage')),
     logoImage: asText(readData(data, 'logoImage', 'logoimage', 'logo')),
-    aboutImage: asText(readData(data, 'aboutImage', 'aboutimage')),
-    historiaIntroImage: asText(readData(data, 'historiaIntroImage', 'historiaintroimage')),
   }
 }
 
@@ -378,16 +350,17 @@ async function loadCmsContent(): Promise<CmsContent> {
     asText(readData(item.data ?? {}, 'sourceNote', 'sourcenote'))
   )
   const historiaMapped = mapHistoria(historia)
+  const mappedAuctions = mapAuctions(auctions)
 
   return {
     services: mapServices(services),
-    auctions: mapAuctions(auctions),
+    auctions: mappedAuctions,
     lotes: mapLotes(lotes),
     prices: mapPrices(prices),
     ventasParticulares: mapVentasParticulares(ventasParticulares),
     team: mapTeam(team),
     ...historiaMapped,
-    ...mapHeroSection(heroSection, auctions),
+    ...mapHeroSection(heroSection, mappedAuctions),
     mercadoUpdatedLabel:
       asText(readData(priceMeta?.data ?? {}, 'updatedLabel', 'updatedlabel')) ||
       FALLBACK_CONTENT.mercadoUpdatedLabel,
