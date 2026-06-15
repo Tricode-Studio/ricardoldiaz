@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import styles from './VentasParticulares.module.css'
-import { VENTAS_PARTICULARES } from '../../data'
+import { useCmsContent } from '../../cms/CmsContentContext'
 
 const PinIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -44,11 +44,11 @@ function usePerPage() {
   return perPage
 }
 
-const TOTAL = VENTAS_PARTICULARES.length
-
 export function VentasParticulares() {
+  const { ventasParticulares } = useCmsContent()
   const perPage = usePerPage()
-  const totalPages = Math.ceil(TOTAL / perPage)
+  const total = ventasParticulares.length
+  const totalPages = Math.max(1, Math.ceil(total / perPage))
   const [page, setPage] = useState(0)
   const [paused, setPaused] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -72,7 +72,7 @@ export function VentasParticulares() {
     }
   }, [paused, totalPages])
 
-  const translateX = -((page * perPage) / TOTAL) * 100
+  const translateX = total > 0 ? -((page * perPage) / total) * 100 : 0
 
   return (
     <section className={`block ${styles.section}`} id="ventas-particulares" aria-labelledby="ventas-particulares-heading" style={{ paddingTop: 'clamp(20px, 2.5vw, 32px)' }}>
@@ -97,7 +97,7 @@ export function VentasParticulares() {
               ['--per-page' as string]: perPage,
             }}
           >
-            {VENTAS_PARTICULARES.map((venta) => (
+            {ventasParticulares.map((venta) => (
               <article key={venta.id} className={styles.card}>
                 <div className={styles.imgWrap}>
                   <img src={venta.image} alt={`${venta.ref} — ${venta.category}`} loading="lazy" />

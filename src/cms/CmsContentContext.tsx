@@ -7,6 +7,7 @@ import {
   PRICES,
   SERVICES,
   TEAM,
+  VENTAS_PARTICULARES,
 } from '../data'
 import type {
   AuctionItem,
@@ -17,6 +18,7 @@ import type {
   PriceRow,
   ServiceCard,
   TeamMember,
+  VentaCard,
 } from '../types'
 
 type PublicEntry = {
@@ -36,10 +38,12 @@ type CmsContent = {
   auctions: AuctionItem[]
   lotes: LoteCard[]
   prices: PriceRow[]
+  ventasParticulares: VentaCard[]
   team: TeamMember[]
   historiaTimeline: HistoriaEvent[]
   historiaGallery: GalleryPhoto[]
   historiaHero: HistoriaHeroContent
+  heroPillLabel: string
   mercadoUpdatedLabel?: string
   mercadoSourceNote?: string
 }
@@ -49,6 +53,7 @@ const FALLBACK_CONTENT: CmsContent = {
   auctions: AUCTIONS,
   lotes: LOTES,
   prices: PRICES,
+  ventasParticulares: VENTAS_PARTICULARES,
   team: TEAM,
   historiaTimeline: HISTORIA_TIMELINE,
   historiaGallery: HISTORIA_GALLERY,
@@ -58,6 +63,7 @@ const FALLBACK_CONTENT: CmsContent = {
     subtitle: 'Más de 50 años construyendo confianza en el campo uruguayo, operación a operación.',
     image: '/images/ig-0.PNG',
   },
+  heroPillLabel: '28 de mayo',
   mercadoUpdatedLabel: 'Datos actualizados · Semana N°21 · 17/05/26 al 23/05/26',
   mercadoSourceNote:
     '* Valores orientativos con fines informativos. Fuente: ACG – Semana N°21. La ganadería es el principal rubro exportador de Uruguay, con cerca de US$ 2.647 millones en exportaciones de carne y casi 695.000 toneladas enviadas a unos 100 destinos.',
@@ -66,8 +72,11 @@ const FALLBACK_CONTENT: CmsContent = {
 const CmsContentContext = createContext<CmsContent>(FALLBACK_CONTENT)
 
 const API_BASE_URL =
-  import.meta.env.VITE_TRICODE_PUBLIC_API_BASE_URL?.replace(/\/+$/, '') ??
-  'https://cms.tricode.studio/api/v1'
+  (
+    import.meta.env.VITE_TRICODE_PUBLIC_API_BASE_URL ??
+    import.meta.env.VITE_TRICODE_API_BASE_URL ??
+    'https://cms.tricode.studio/api/v1'
+  ).replace(/\/+$/, '')
 const TENANT_SLUG = import.meta.env.VITE_TRICODE_TENANT_SLUG ?? 'ricardo-l-diaz'
 
 function asText(value: unknown) {
@@ -116,6 +125,10 @@ async function fetchSection(section: string) {
   }
   const payload = (await response.json()) as PublicEntriesResponse
   return sortByPosition(payload.items ?? [])
+}
+
+async function fetchOptionalSection(section: string) {
+  return fetchSection(section).catch(() => [])
 }
 
 function mapServices(items: PublicEntry[]): ServiceCard[] {
@@ -192,6 +205,25 @@ function mapPrices(items: PublicEntry[]): PriceRow[] {
   })
 }
 
+function mapVentasParticulares(items: PublicEntry[]): VentaCard[] {
+  if (!items.length) return VENTAS_PARTICULARES
+  return items.map((item, index) => {
+    const data = item.data ?? {}
+    return {
+      id: asText(item.slug) || asText(item.id) || `venta-${index + 1}`,
+      ref: asText(readData(data, 'ref', 'reference', 'referencia')) || asText(item.title) || `VP · ${String(index + 1).padStart(2, '0')}`,
+      category: asText(data.category) || asText(data.categoria) || 'Hacienda',
+      heads: asNumber(readData(data, 'heads', 'cabezas')),
+      weightAvg: asNumber(readData(data, 'weightAvg', 'weightavg', 'pesoPromedio', 'pesopromedio')),
+      location: asText(data.location) || asText(data.ubicacion),
+      date: asText(data.date) || asText(data.fecha),
+      image: asText(data.image) || asText(data.imagen) || '/images/lote-1.jpg',
+      status: asText(data.status).toLowerCase() === 'disponible' ? 'disponible' : 'vendido',
+      price: asText(data.price) || asText(data.precio) || undefined,
+    }
+  })
+}
+
 function mapTeam(items: PublicEntry[]): TeamMember[] {
   if (!items.length) return TEAM
   return items.map((item, index) => {
@@ -260,14 +292,26 @@ function mapHistoria(items: PublicEntry[]) {
   }
 }
 
+function mapHeroSection(items: PublicEntry[]) {
+  const hero = items[0]
+  const data = hero?.data ?? {}
+  return {
+    heroPillLabel:
+      asText(readData(data, 'nextAuctionLabel', 'nextauctionlabel', 'pillLabel', 'pilllabel')) ||
+      FALLBACK_CONTENT.heroPillLabel,
+  }
+}
+
 async function loadCmsContent(): Promise<CmsContent> {
-  const [services, auctions, lotes, prices, team, historia] = await Promise.all([
+  const [services, auctions, lotes, prices, ventasParticulares, team, historia, heroSection] = await Promise.all([
     fetchSection('servicios-rurales'),
     fetchSection('agenda-remates'),
     fetchSection('remate-lote-21'),
     fetchSection('mercado-ganadero'),
+    fetchOptionalSection('ventas-particulares'),
     fetchSection('nuestra-gente'),
     fetchSection('historia'),
+    fetchOptionalSection('hero-section'),
   ])
 
   const priceMeta = prices.find((item) =>
@@ -281,8 +325,10 @@ async function loadCmsContent(): Promise<CmsContent> {
     auctions: mapAuctions(auctions),
     lotes: mapLotes(lotes),
     prices: mapPrices(prices),
+    ventasParticulares: mapVentasParticulares(ventasParticulares),
     team: mapTeam(team),
     ...historiaMapped,
+    ...mapHeroSection(heroSection),
     mercadoUpdatedLabel:
       asText(readData(priceMeta?.data ?? {}, 'updatedLabel', 'updatedlabel')) ||
       FALLBACK_CONTENT.mercadoUpdatedLabel,

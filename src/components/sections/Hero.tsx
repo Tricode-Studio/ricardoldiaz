@@ -1,6 +1,9 @@
 import styles from './Hero.module.css'
+import { useCmsContent } from '../../cms/CmsContentContext'
 
 export function Hero() {
+  const { heroPillLabel } = useCmsContent()
+
   return (
     <section className={styles.hero} id="inicio" aria-label="Inicio">
       {/* CSS scenery fallback */}
@@ -19,7 +22,7 @@ export function Hero() {
       {/* Live pill */}
       <div className={styles.livePill} aria-live="polite">
         <span className={styles.dot} aria-hidden="true" />
-        Próximo remate por pantalla · 28 de mayo
+        Próximo remate por pantalla · {heroPillLabel}
       </div>
 
       <div className={styles.content}>
