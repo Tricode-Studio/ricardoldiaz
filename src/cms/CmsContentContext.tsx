@@ -67,7 +67,7 @@ const FALLBACK_CONTENT: CmsContent = {
     subtitle: 'Más de 50 años construyendo confianza en el campo uruguayo, operación a operación.',
     image: '',
   },
-  heroPillLabel: '28 de mayo',
+  heroPillLabel: 'Consultar agenda',
   logoImage: '',
   homeHeroImage: '',
   aboutImage: '',
@@ -96,6 +96,11 @@ function asNumber(value: unknown, fallback = 0) {
   return Number.isFinite(parsed) ? parsed : fallback
 }
 
+function isEntryActive(item: PublicEntry) {
+  const active = item.data?.isactive ?? item.data?.isActive
+  return active !== false && active !== 'false' && active !== 0 && active !== '0'
+}
+
 function readData(data: Record<string, unknown>, ...keys: string[]) {
   for (const key of keys) {
     if (data[key] !== undefined && data[key] !== null && data[key] !== '') {
@@ -103,6 +108,45 @@ function readData(data: Record<string, unknown>, ...keys: string[]) {
     }
   }
   return undefined
+}
+
+function parseCmsDate(value: unknown) {
+  const text = asText(value)
+  if (!text) return null
+  const dateOnly = /^(\d{4})-(\d{2})-(\d{2})$/.exec(text)
+  const parsed = dateOnly
+    ? new Date(Date.UTC(Number(dateOnly[1]), Number(dateOnly[2]) - 1, Number(dateOnly[3])))
+    : new Date(text)
+  return Number.isNaN(parsed.getTime()) ? null : parsed
+}
+
+function formatAuctionDateLabel(date: Date) {
+  return new Intl.DateTimeFormat('es-UY', {
+    day: 'numeric',
+    month: 'long',
+    timeZone: 'UTC',
+  }).format(date)
+}
+
+function getNextAuctionLabel(items: PublicEntry[]) {
+  const now = new Date()
+  const todayUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())
+  const upcoming = items
+    .filter(isEntryActive)
+    .map((item) => {
+      const date = parseCmsDate(item.data?.date)
+      return date ? { item, date } : null
+    })
+    .filter((item): item is { item: PublicEntry; date: Date } => Boolean(item))
+    .filter(({ date }) => date.getTime() >= todayUtc)
+    .sort((a, b) => {
+      if (a.date.getTime() !== b.date.getTime()) return a.date.getTime() - b.date.getTime()
+      return asNumber(a.item.data?.position, 9999) - asNumber(b.item.data?.position, 9999)
+    })
+
+  const next = upcoming[0]
+  if (!next) return ''
+  return formatAuctionDateLabel(next.date)
 }
 
 function splitLines(value: unknown) {
@@ -300,12 +344,15 @@ function mapHistoria(items: PublicEntry[]) {
   }
 }
 
-function mapHeroSection(items: PublicEntry[]) {
+function mapHeroSection(items: PublicEntry[], auctions: PublicEntry[]) {
   const hero = items[0]
   const data = hero?.data ?? {}
+  const configuredLabel = asText(readData(data, 'nextAuctionLabel', 'nextauctionlabel', 'pillLabel', 'pilllabel'))
+  const nextAuctionLabel = getNextAuctionLabel(auctions)
   return {
     heroPillLabel:
-      asText(readData(data, 'nextAuctionLabel', 'nextauctionlabel', 'pillLabel', 'pilllabel')) ||
+      configuredLabel ||
+      nextAuctionLabel ||
       FALLBACK_CONTENT.heroPillLabel,
     homeHeroImage: asText(readData(data, 'image', 'homeHeroImage', 'homeheroimage')),
     logoImage: asText(readData(data, 'logoImage', 'logoimage', 'logo')),
@@ -340,7 +387,7 @@ async function loadCmsContent(): Promise<CmsContent> {
     ventasParticulares: mapVentasParticulares(ventasParticulares),
     team: mapTeam(team),
     ...historiaMapped,
-    ...mapHeroSection(heroSection),
+    ...mapHeroSection(heroSection, auctions),
     mercadoUpdatedLabel:
       asText(readData(priceMeta?.data ?? {}, 'updatedLabel', 'updatedlabel')) ||
       FALLBACK_CONTENT.mercadoUpdatedLabel,
