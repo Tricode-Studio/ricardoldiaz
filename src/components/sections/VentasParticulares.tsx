@@ -100,7 +100,11 @@ export function VentasParticulares() {
             {ventasParticulares.map((venta) => (
               <article key={venta.id} className={styles.card}>
                 <div className={styles.imgWrap}>
-                  <img src={venta.image} alt={`${venta.ref} — ${venta.category}`} loading="lazy" />
+                  {venta.image ? (
+                    <img src={venta.image} alt={`${venta.ref} — ${venta.category}`} loading="lazy" />
+                  ) : (
+                    <div className={styles.imgFallback} aria-hidden="true" />
+                  )}
                   <div className={`${styles.badge} ${venta.status === 'vendido' ? styles.badgeSold : styles.badgeAvail}`}>
                     {venta.status === 'vendido' ? 'Vendido' : 'Disponible'}
                     {venta.price && <span>{venta.price}</span>}

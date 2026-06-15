@@ -99,7 +99,11 @@ export function Lotes() {
             {lotes.map((lote) => (
               <article key={lote.id} className={styles.card}>
                 <div className={styles.imgWrap}>
-                  <img src={lote.image} alt={`${lote.lote} — ${lote.category}`} loading="lazy" />
+                  {lote.image ? (
+                    <img src={lote.image} alt={`${lote.lote} — ${lote.category}`} loading="lazy" />
+                  ) : (
+                    <div className={styles.imgFallback} aria-hidden="true" />
+                  )}
                   <div className={`${styles.badge} ${lote.status === 'vendido' ? styles.badgeSold : styles.badgeAvail}`}>
                     {lote.status === 'vendido' ? 'Vendido' : 'Disponible'}
                     {lote.price && <span>{lote.price}</span>}

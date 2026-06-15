@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './Nosotros.module.css'
+import { useCmsContent } from '../../cms/CmsContentContext'
 
 const values = [
   { title: 'Confianza', text: 'Relaciones de largo plazo, no transacciones aisladas.' },
@@ -8,6 +9,10 @@ const values = [
 ]
 
 export function Nosotros() {
+  const { aboutImage, historiaIntroImage, team } = useCmsContent()
+  const federicoImage = team.find((member) => member.name.toLowerCase().includes('federico'))?.image
+  const photoUrl = aboutImage || historiaIntroImage || federicoImage
+
   return (
     <section className="block" id="nosotros" aria-labelledby="nosotros-heading">
       <div className={`wrap ${styles.about}`}>
@@ -47,11 +52,13 @@ export function Nosotros() {
 
         <div className={`${styles.media} reveal`} style={{ transitionDelay: '0.2s' }}>
           <div className={styles.photo}>
-            <img
-              src="/images/federico-3.png"
-              alt="Rematador Ricardo L. Díaz"
-              loading="lazy"
-            />
+            {photoUrl && (
+              <img
+                src={photoUrl}
+                alt="Rematador Ricardo L. Díaz"
+                loading="lazy"
+              />
+            )}
           </div>
           <div className={styles.badge} aria-hidden="true">
             <b>+50</b>

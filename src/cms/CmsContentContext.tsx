@@ -44,6 +44,9 @@ type CmsContent = {
   historiaGallery: GalleryPhoto[]
   historiaHero: HistoriaHeroContent
   heroPillLabel: string
+  homeHeroImage?: string
+  aboutImage?: string
+  historiaIntroImage?: string
   mercadoUpdatedLabel?: string
   mercadoSourceNote?: string
 }
@@ -61,9 +64,12 @@ const FALLBACK_CONTENT: CmsContent = {
     eyebrow: 'Desde 1972',
     title: 'Nuestra Historia',
     subtitle: 'Más de 50 años construyendo confianza en el campo uruguayo, operación a operación.',
-    image: '/images/ig-0.PNG',
+    image: '',
   },
   heroPillLabel: '28 de mayo',
+  homeHeroImage: '',
+  aboutImage: '',
+  historiaIntroImage: '',
   mercadoUpdatedLabel: 'Datos actualizados · Semana N°21 · 17/05/26 al 23/05/26',
   mercadoSourceNote:
     '* Valores orientativos con fines informativos. Fuente: ACG – Semana N°21. La ganadería es el principal rubro exportador de Uruguay, con cerca de US$ 2.647 millones en exportaciones de carne y casi 695.000 toneladas enviadas a unos 100 destinos.',
@@ -181,7 +187,7 @@ function mapLotes(items: PublicEntry[]): LoteCard[] {
       weightAvg: asNumber(readData(data, 'weightAvg', 'weightavg')),
       location: asText(data.location),
       time: asText(data.time),
-      image: asText(data.image) || '/images/lote-1.jpg',
+      image: asText(data.image),
       status: asText(data.status).toLowerCase() === 'disponible' ? 'disponible' : 'vendido',
       price: asText(data.price) || undefined,
     }
@@ -217,7 +223,7 @@ function mapVentasParticulares(items: PublicEntry[]): VentaCard[] {
       weightAvg: asNumber(readData(data, 'weightAvg', 'weightavg', 'pesoPromedio', 'pesopromedio')),
       location: asText(data.location) || asText(data.ubicacion),
       date: asText(data.date) || asText(data.fecha),
-      image: asText(data.image) || asText(data.imagen) || '/images/lote-1.jpg',
+      image: asText(data.image) || asText(data.imagen),
       status: asText(data.status).toLowerCase() === 'disponible' ? 'disponible' : 'vendido',
       price: asText(data.price) || asText(data.precio) || undefined,
     }
@@ -278,7 +284,7 @@ function mapHistoria(items: PublicEntry[]) {
     historiaGallery: galleryItems.length
       ? galleryItems.map((item, index) => ({
           id: asText(item.slug) || asText(item.id) || `gallery-${index + 1}`,
-          src: asText(item.data?.image) || '/images/ig-2.PNG',
+          src: asText(item.data?.image),
           caption: asText(item.data?.caption) || asText(item.data?.title) || 'Historia',
           span: asText(item.data?.span) === 'wide' ? ('wide' as const) : undefined,
         }))
@@ -299,6 +305,9 @@ function mapHeroSection(items: PublicEntry[]) {
     heroPillLabel:
       asText(readData(data, 'nextAuctionLabel', 'nextauctionlabel', 'pillLabel', 'pilllabel')) ||
       FALLBACK_CONTENT.heroPillLabel,
+    homeHeroImage: asText(readData(data, 'image', 'homeHeroImage', 'homeheroimage')),
+    aboutImage: asText(readData(data, 'aboutImage', 'aboutimage')),
+    historiaIntroImage: asText(readData(data, 'historiaIntroImage', 'historiaintroimage')),
   }
 }
 

@@ -57,8 +57,11 @@ const VALORES = [
 export function Historia() {
   useScrollReveal()
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null)
-  const { historiaHero, historiaTimeline, historiaGallery, team } = useCmsContent()
+  const { historiaHero, historiaTimeline, historiaGallery, historiaIntroImage, aboutImage, team } = useCmsContent()
   const { hash } = useLocation()
+  const federicoImage = team.find((member) => member.name.toLowerCase().includes('federico'))?.image
+  const introImage = historiaIntroImage || aboutImage || federicoImage
+  const visibleGallery = historiaGallery.filter((photo) => photo.src)
 
   useEffect(() => {
     document.title = 'Nuestra Historia — Ricardo L. Díaz · Escritorio Rural'
@@ -83,10 +86,7 @@ export function Historia() {
         {/* ── HERO ── */}
         <section
           className={styles.hero}
-          style={{
-            backgroundImage:
-              `url(${historiaHero.image || '/images/ig-0.PNG'})`,
-          }}
+          style={historiaHero.image ? { backgroundImage: `url(${historiaHero.image})` } : undefined}
         >
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>
@@ -129,11 +129,13 @@ export function Historia() {
               </div>
 
               <div className={`${styles.introImg} reveal`} style={{ transitionDelay: '0.12s' }}>
-                <img
-                  src="/images/federico-1.png"
-                  alt="Rematador"
-                  loading="lazy"
-                />
+                {introImage && (
+                  <img
+                    src={introImage}
+                    alt="Rematador"
+                    loading="lazy"
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -180,7 +182,7 @@ export function Historia() {
             </div>
 
             <div className={styles.gallery}>
-              {historiaGallery.map((photo, i) => (
+              {visibleGallery.map((photo, i) => (
                 <div
                   key={photo.id}
                   className={`${styles.photoCard} ${photo.span === 'wide' ? styles.photoWide : ''} reveal`}

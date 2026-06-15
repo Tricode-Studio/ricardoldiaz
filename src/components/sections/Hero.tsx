@@ -2,7 +2,7 @@ import styles from './Hero.module.css'
 import { useCmsContent } from '../../cms/CmsContentContext'
 
 export function Hero() {
-  const { heroPillLabel } = useCmsContent()
+  const { heroPillLabel, homeHeroImage } = useCmsContent()
 
   return (
     <section className={styles.hero} id="inicio" aria-label="Inicio">
@@ -10,14 +10,16 @@ export function Hero() {
       <div className={styles.scene} aria-hidden="true" />
 
       {/* Photo background */}
-      <div className={styles.bg} aria-hidden="true">
-        <img
-          src="/images/portada-2.png"
-          alt="Campo y ganado en la pradera uruguaya al atardecer"
-          loading="eager"
-          fetchPriority="high"
-        />
-      </div>
+      {homeHeroImage && (
+        <div className={styles.bg} aria-hidden="true">
+          <img
+            src={homeHeroImage}
+            alt=""
+            loading="eager"
+            fetchPriority="high"
+          />
+        </div>
+      )}
 
       {/* Live pill */}
       <div className={styles.livePill} aria-live="polite">
