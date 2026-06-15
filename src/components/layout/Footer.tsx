@@ -1,10 +1,11 @@
 import { useLocation, Link } from 'react-router-dom'
 import styles from './Footer.module.css'
 import { FOOTER_COLUMNS, WA_NUMBER } from '../../data'
-import logo from '/logo.jpg'
+import { useCmsContent } from '../../cms/CmsContentContext'
 
 export function Footer() {
   const { pathname } = useLocation()
+  const { logoImage } = useCmsContent()
   const isHome = pathname === '/'
 
   const resolveHref = (href: string) =>
@@ -16,7 +17,7 @@ export function Footer() {
         <div className={styles.grid}>
           <div className={styles.brand}>
             <a href={resolveHref('#inicio')} className={styles.brandInner} aria-label="Inicio">
-              <img src={logo} alt="Logo Ricardo L. Díaz" width={48} height={48} />
+              {logoImage && <img src={logoImage} alt="Logo Ricardo L. Díaz" width={48} height={48} />}
               <div>
                 <b>Ricardo L. Díaz</b>
                 <span>Escritorio Rural</span>

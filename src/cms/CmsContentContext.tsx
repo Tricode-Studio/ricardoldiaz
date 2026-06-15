@@ -44,6 +44,7 @@ type CmsContent = {
   historiaGallery: GalleryPhoto[]
   historiaHero: HistoriaHeroContent
   heroPillLabel: string
+  logoImage?: string
   homeHeroImage?: string
   aboutImage?: string
   historiaIntroImage?: string
@@ -67,6 +68,7 @@ const FALLBACK_CONTENT: CmsContent = {
     image: '',
   },
   heroPillLabel: '28 de mayo',
+  logoImage: '',
   homeHeroImage: '',
   aboutImage: '',
   historiaIntroImage: '',
@@ -306,6 +308,7 @@ function mapHeroSection(items: PublicEntry[]) {
       asText(readData(data, 'nextAuctionLabel', 'nextauctionlabel', 'pillLabel', 'pilllabel')) ||
       FALLBACK_CONTENT.heroPillLabel,
     homeHeroImage: asText(readData(data, 'image', 'homeHeroImage', 'homeheroimage')),
+    logoImage: asText(readData(data, 'logoImage', 'logoimage', 'logo')),
     aboutImage: asText(readData(data, 'aboutImage', 'aboutimage')),
     historiaIntroImage: asText(readData(data, 'historiaIntroImage', 'historiaintroimage')),
   }

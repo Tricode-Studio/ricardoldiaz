@@ -3,7 +3,7 @@ import styles from './Header.module.css'
 import { useScrolled } from '../../hooks/useScrolled'
 import { useMobileMenu } from '../../hooks/useMobileMenu'
 import { NAV_LINKS, WA_NUMBER } from '../../data'
-import logo from '/logo.jpg'
+import { useCmsContent } from '../../cms/CmsContentContext'
 
 const WaIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width={18} height={18}>
@@ -13,6 +13,7 @@ const WaIcon = () => (
 
 export function Header() {
   const scrolled = useScrolled(60)
+  const { logoImage } = useCmsContent()
   const atTop = !scrolled
   const { open, toggle, close } = useMobileMenu()
   const { pathname } = useLocation()
@@ -36,7 +37,7 @@ export function Header() {
       >
         <div className={styles.inner}>
           <a href={resolveHref('#inicio')} className={styles.brand} aria-label="Ricardo L. Díaz — inicio">
-            <img src={logo} alt="Logo Ricardo L. Díaz" width={42} height={42} />
+            {logoImage && <img src={logoImage} alt="Logo Ricardo L. Díaz" width={42} height={42} />}
             <div className={styles.brandText}>
               <b>Ricardo L. Díaz</b>
               <span>Escritorio Rural</span>
@@ -95,7 +96,7 @@ export function Header() {
       >
         {/* Brand inside menu */}
         <div className={styles.menuBrand}>
-          <img src={logo} alt="Logo Ricardo L. Díaz" width={40} height={40} />
+          {logoImage && <img src={logoImage} alt="Logo Ricardo L. Díaz" width={40} height={40} />}
           <div>
             <strong>Ricardo L. Díaz</strong>
             <span>Escritorio Rural</span>
