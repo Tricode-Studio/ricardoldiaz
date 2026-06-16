@@ -1,12 +1,13 @@
 export const SITE_URL = 'https://www.ricardoldiaz.com'
 export const SITE_NAME = 'Ricardo L. Díaz - Escritorio Rural'
 export const SITE_SHORT_NAME = 'Ricardo L. Díaz'
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/portada-2.png`
-export const DEFAULT_OG_IMAGE_WIDTH = 1083
-export const DEFAULT_OG_IMAGE_HEIGHT = 864
 export const LOGO_IMAGE = `${SITE_URL}/favicon.jpg`
 export const LOGO_IMAGE_WIDTH = 640
 export const LOGO_IMAGE_HEIGHT = 640
+export const DEFAULT_OG_IMAGE = LOGO_IMAGE
+export const DEFAULT_OG_IMAGE_WIDTH = LOGO_IMAGE_WIDTH
+export const DEFAULT_OG_IMAGE_HEIGHT = LOGO_IMAGE_HEIGHT
+export const DEFAULT_OG_IMAGE_ALT = `Logotipo de ${SITE_NAME}`
 
 export type RouteSeo = {
   title: string
@@ -19,14 +20,14 @@ export const ROUTE_SEO: Record<string, RouteSeo> = {
   '/': {
     title: 'Ricardo L. Díaz - Escritorio Rural | Negocios Rurales en Uruguay desde 1973',
     description:
-      'Ricardo L. Díaz - Escritorio Rural en Trinidad, Flores. Mas de 50 anos en remates por pantalla, comercializacion ganadera, venta de campos y asesoramiento agropecuario en Uruguay.',
+      'Ricardo L. Díaz - Escritorio Rural en Trinidad, Flores. Más de 50 años en remates por pantalla, comercialización ganadera, venta de campos y asesoramiento agropecuario en Uruguay.',
     canonicalPath: '/',
     type: 'website',
   },
   '/historia': {
     title: 'Nuestra Historia | Ricardo L. Díaz - Escritorio Rural',
     description:
-      'Conozca la historia de Ricardo L. Díaz - Escritorio Rural: mas de cinco decadas de trayectoria, confianza y trabajo junto al productor ganadero uruguayo.',
+      'Conozca la historia de Ricardo L. Díaz - Escritorio Rural: más de cinco décadas de trayectoria, confianza y trabajo junto al productor ganadero uruguayo.',
     canonicalPath: '/historia',
     type: 'website',
   },
@@ -49,7 +50,7 @@ export function buildStructuredData(pathname: string): JsonLd[] {
     alternateName: SITE_SHORT_NAME,
     url: `${SITE_URL}/`,
     description:
-      'Negocios rurales, remates ganaderos por pantalla, comercializacion de ganado, venta de campos y asesoramiento agropecuario.',
+      'Negocios rurales, remates ganaderos por pantalla, comercialización de ganado, venta de campos y asesoramiento agropecuario.',
     foundingDate: '1973',
     telephone: '+59898334256',
     sameAs: ['https://www.instagram.com/ricardo.l.diaz/'],
@@ -100,7 +101,7 @@ export function buildStructuredData(pathname: string): JsonLd[] {
     name: SITE_NAME,
     url: `${SITE_URL}/`,
     description:
-      'Remates ganaderos por pantalla, comercializacion de ganado, ventas particulares, embarques a frigorificos y asesoramiento rural en Uruguay.',
+      'Remates ganaderos por pantalla, comercialización de ganado, ventas particulares, embarques a frigoríficos y asesoramiento rural en Uruguay.',
     image: LOGO_IMAGE,
     foundingDate: '1973',
     telephone: '+59898334256',

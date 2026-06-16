@@ -60,7 +60,7 @@ const FALLBACK_CONTENT: CmsContent = {
   historiaTimeline: HISTORIA_TIMELINE,
   historiaGallery: HISTORIA_GALLERY,
   historiaHero: {
-    eyebrow: 'Desde 1972',
+    eyebrow: 'Desde 1973',
     title: 'Nuestra Historia',
     subtitle: 'Más de 50 años construyendo confianza en el campo uruguayo, operación a operación.',
     image: '',

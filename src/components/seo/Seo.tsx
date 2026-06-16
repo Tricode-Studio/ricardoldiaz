@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import {
   buildStructuredData,
   DEFAULT_OG_IMAGE,
+  DEFAULT_OG_IMAGE_ALT,
   DEFAULT_OG_IMAGE_HEIGHT,
   DEFAULT_OG_IMAGE_WIDTH,
   SITE_NAME,
@@ -112,7 +113,7 @@ export function Seo({
     })
     upsertMeta('meta[property="og:image:alt"]', {
       property: 'og:image:alt',
-      content: 'Portada de Ricardo L. Díaz - Escritorio Rural',
+      content: DEFAULT_OG_IMAGE_ALT,
     })
     upsertMeta('meta[property="og:site_name"]', {
       property: 'og:site_name',
@@ -120,7 +121,7 @@ export function Seo({
     })
     upsertMeta('meta[name="twitter:card"]', {
       name: 'twitter:card',
-      content: 'summary_large_image',
+      content: 'summary',
     })
     upsertMeta('meta[name="twitter:title"]', {
       name: 'twitter:title',
@@ -136,7 +137,7 @@ export function Seo({
     })
     upsertMeta('meta[name="twitter:image:alt"]', {
       name: 'twitter:image:alt',
-      content: 'Portada de Ricardo L. Díaz - Escritorio Rural',
+      content: DEFAULT_OG_IMAGE_ALT,
     })
     upsertMeta('meta[name="application-name"]', {
       name: 'application-name',

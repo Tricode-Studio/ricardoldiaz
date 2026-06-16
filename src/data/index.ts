@@ -405,10 +405,10 @@ export const TEAM: TeamMember[] = [
     specialties: ['Dirección comercial', 'Remates en pantalla', 'Ventas particulares'],
   },
   {
-    id: 'm2', name: 'Alvaro Díaz', role: 'Comercial', initials: 'AD',
+    id: 'm2', name: 'Álvaro Díaz', role: 'Comercial', initials: 'AD',
     whatsapp: 'https://wa.me/59899364490', image: '/images/alvaro-2.jpeg',
     phone: '+598 99 364 490',
-    bio: 'Alvaro es el motor comercial del escritorio. Con amplia experiencia en la intermediación de hacienda, domina los circuitos de compra-venta en los principales mercados del sur uruguayo.',
+    bio: 'Álvaro es el motor comercial del escritorio. Con amplia experiencia en la intermediación de hacienda, domina los circuitos de compra-venta en los principales mercados del sur uruguayo.',
     specialties: ['Intermediación', 'Ventas directas', 'Campos'],
   },
   {
@@ -419,7 +419,7 @@ export const TEAM: TeamMember[] = [
     specialties: ['Inscripción de lotes', 'Embarques a frigoríficos', 'Atención al productor'],
   },
   {
-    id: 'm4', name: 'Romina Fernandez', role: 'Administrativa', initials: 'RF',
+    id: 'm4', name: 'Romina Fernández', role: 'Administrativa', initials: 'RF',
     whatsapp: 'https://wa.me/59898334256', image: '',
     phone: '+598 98 334 256',
     bio: 'Romina es el punto de contacto del escritorio. Coordina la agenda, gestiona la documentación y asegura que cada operación se procese con precisión y en tiempo.',
@@ -427,7 +427,7 @@ export const TEAM: TeamMember[] = [
   },
 ]
 
-// Número Esctitorio 98334256
+// Número escritorio 98334256
 
 export const BLOG_POSTS: BlogPost[] = [
   {

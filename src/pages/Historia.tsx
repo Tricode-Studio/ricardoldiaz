@@ -99,7 +99,7 @@ export function Historia() {
                 Inicio
               </Link>
             </nav>
-            <span className={styles.heroEyebrow}>{historiaHero.eyebrow || 'Desde 1972'}</span>
+            <span className={styles.heroEyebrow}>{historiaHero.eyebrow || 'Desde 1973'}</span>
             <h1>{historiaHero.title || 'Nuestra Historia'}</h1>
             <p className={styles.heroSub}>
               {historiaHero.subtitle || 'Más de 50 años construyendo confianza en el campo uruguayo, operación a operación.'}
@@ -134,7 +134,7 @@ export function Historia() {
               <div className={`${styles.introImg} reveal`} style={{ transitionDelay: '0.12s' }}>
                 <img
                   src="/images/federico-1.png"
-                  alt="Ricardo Diaz"
+                  alt="Ricardo Díaz"
                   loading="lazy"
                   decoding="async"
                   width={940}

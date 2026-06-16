@@ -32,7 +32,7 @@ function buildHeadMarkup(pathname, site) {
   return [
     `<title>${escapeHtml(route.title)}</title>`,
     `<meta name="description" content="${escapeHtml(route.description)}" />`,
-    '<meta name="keywords" content="escritorio rural Uruguay, negocios rurales, remates ganaderos, comercializacion de ganado, intermediacion agropecuaria, venta de hacienda, venta de campos, exportacion ganadera Uruguay, asesoria agropecuaria, Lote 21, Trinidad Flores" />',
+    '<meta name="keywords" content="escritorio rural Uruguay, negocios rurales, remates ganaderos, comercialización de ganado, intermediación agropecuaria, venta de hacienda, venta de campos, exportación ganadera Uruguay, asesoría agropecuaria, Lote 21, Trinidad Flores" />',
     `<meta name="author" content="${escapeHtml(site.SITE_NAME)}" />`,
     '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />',
     '<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />',
@@ -48,12 +48,12 @@ function buildHeadMarkup(pathname, site) {
     `<meta property="og:image:secure_url" content="${site.DEFAULT_OG_IMAGE}" />`,
     `<meta property="og:image:width" content="${site.DEFAULT_OG_IMAGE_WIDTH}" />`,
     `<meta property="og:image:height" content="${site.DEFAULT_OG_IMAGE_HEIGHT}" />`,
-    '<meta property="og:image:alt" content="Portada de Ricardo L. Díaz - Escritorio Rural" />',
-    '<meta name="twitter:card" content="summary_large_image" />',
+    `<meta property="og:image:alt" content="${escapeHtml(site.DEFAULT_OG_IMAGE_ALT)}" />`,
+    '<meta name="twitter:card" content="summary" />',
     `<meta name="twitter:title" content="${escapeHtml(route.title)}" />`,
     `<meta name="twitter:description" content="${escapeHtml(route.description)}" />`,
     `<meta name="twitter:image" content="${site.DEFAULT_OG_IMAGE}" />`,
-    '<meta name="twitter:image:alt" content="Portada de Ricardo L. Díaz - Escritorio Rural" />',
+    `<meta name="twitter:image:alt" content="${escapeHtml(site.DEFAULT_OG_IMAGE_ALT)}" />`,
     `<script id="route-jsonld" type="application/ld+json">${structuredData.replaceAll('<', '\\u003c')}</script>`,
   ].join('\n    ')
 }

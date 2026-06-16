@@ -79,7 +79,7 @@ export function Lotes() {
         <div className={`sec-head reveal ${styles.head}`}>
           <span className="eyebrow">Remate · Lote 21</span>
           <h2 id="lotes-heading">Lotes por pantalla</h2>
-          <p>Resultados del últimos y próximos remates en pantalla. 
+          <p>Resultados de los últimos y próximos remates en pantalla.
             <br />
             Todos los lotes cotizados con transparencia.</p>
         </div>
