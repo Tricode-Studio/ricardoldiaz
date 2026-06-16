@@ -165,9 +165,9 @@
 
 .introImg img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1/1;
   object-fit: cover;
-  object-position: center top;
+  object-position: top;
   border-radius: 18px;
   box-shadow: 0 20px 60px rgba(44, 58, 44, 0.18);
 }

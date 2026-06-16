@@ -128,8 +128,8 @@ export function Historia() {
 
               <div className={`${styles.introImg} reveal`} style={{ transitionDelay: '0.12s' }}>
                 <img
-                  src="/images/federico-1.png"
-                  alt="Rematador"
+                  src="/images/ricardo-1.png"
+                  alt="Ricardo Diaz"
                   loading="lazy"
                 />
               </div>
