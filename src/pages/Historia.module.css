@@ -119,7 +119,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
-  align-items: center;
+  align-items: stretch;
 }
 
 .introText h2 {
@@ -163,13 +163,21 @@
   line-height: 1.4;
 }
 
-.introImg img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  object-position: top;
+.introImg {
+  position: relative;
+  min-height: 580px;
   border-radius: 18px;
+  overflow: hidden;
   box-shadow: 0 20px 60px rgba(44, 58, 44, 0.18);
+}
+
+.introImg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
 
 /* ===========================
@@ -524,6 +532,11 @@
   .introGrid {
     grid-template-columns: 1fr;
     gap: 44px;
+  }
+
+  .introImg {
+    min-height: 400px;
+    max-height: 520px;
   }
 
   .gallery {
