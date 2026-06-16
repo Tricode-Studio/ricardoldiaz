@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.ricardoldiaz.uy/sitemap.xml
+Sitemap: https://www.ricardoldiaz.com/sitemap.xml

@@ -113,7 +113,7 @@ export function Contacto() {
                 </div>
                 <div className={styles.t}>
                   <b>Email</b>
-                  <span>contacto@ricardoldiaz.uy</span>
+                  <span>contacto@ricardoldiaz.com</span>
                 </div>
               </div> */}
 

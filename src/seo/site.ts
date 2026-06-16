@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://www.ricardoldiaz.uy'
+export const SITE_URL = 'https://www.ricardoldiaz.com'
 export const SITE_NAME = 'Ricardo L. Díaz - Escritorio Rural'
 export const SITE_SHORT_NAME = 'Ricardo L. Díaz'
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/portada-2.png`
