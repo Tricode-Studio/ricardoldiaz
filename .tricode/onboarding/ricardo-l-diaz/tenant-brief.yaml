@@ -1,0 +1,14 @@
+version: 1
+client: "Ricardo L. Diaz"
+slug: "ricardo-l-diaz"
+domain: "https://www.ricardoldiaz.uy"
+industry: "PROFESSIONAL_SERVICES"
+environment: "staging"
+frontendPath: "D:\\Tricode\\ricardoldiaz"
+cmsPath: "D:\\Tricode\\tricode-cms"
+framework: "vite"
+features:
+  content: true
+  forms: true
+  reservations: false
+  payments: true

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import styles from './Equipo.module.css'
 import type { TeamMember } from '../../types'
 import { TeamModal } from './TeamModal'
@@ -38,7 +38,7 @@ export function Equipo() {
             >
               <div className={styles.av} aria-hidden="true">
                 {member.image ? (
-                  <img src={member.image} alt={member.name} className={styles.photo} />
+                  <img src={member.image} alt={member.name} className={styles.photo} loading="lazy" decoding="async" />
                 ) : (
                   <svg className={styles.avatarSvg} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="50" cy="36" r="16" fill="#2c3a2c" fillOpacity="0.55" />

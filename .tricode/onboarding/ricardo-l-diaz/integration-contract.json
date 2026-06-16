@@ -1,0 +1,254 @@
+{
+  "version": 1,
+  "status": "DRAFT",
+  "approval": {
+    "approvedAt": null,
+    "approvedBy": null,
+    "contractSha256": null
+  },
+  "tenant": {
+    "name": "Ricardo L. Diaz",
+    "slug": "ricardo-l-diaz",
+    "industry": "PROFESSIONAL_SERVICES",
+    "domain": "https://www.ricardoldiaz.uy",
+    "environment": "staging",
+    "metadata": {
+      "onboardingSource": "tricode-tenant-onboarding",
+      "frontendFramework": "vite"
+    },
+    "workspaceProfile": {
+      "version": 1,
+      "defaultRoute": "/services",
+      "modules": [],
+      "customPages": [],
+      "adminResources": [
+        {
+          "source": "core",
+          "editorKind": "service",
+          "detailEnabled": true,
+          "createEnabled": true,
+          "editEnabled": true,
+          "deleteEnabled": true,
+          "permissions": {
+            "read": "content.read",
+            "write": "content.write"
+          },
+          "columns": [],
+          "filters": [],
+          "resourceKey": "services",
+          "label": "Servicios",
+          "singularLabel": "servicio",
+          "route": "/services",
+          "group": "comercial",
+          "icon": "briefcase",
+          "contentTypeSlug": "services",
+          "titleField": "name",
+          "order": 0
+        },
+        {
+          "source": "core",
+          "editorKind": "client",
+          "detailEnabled": true,
+          "createEnabled": true,
+          "editEnabled": true,
+          "deleteEnabled": true,
+          "permissions": {
+            "read": "content.read",
+            "write": "content.write"
+          },
+          "columns": [],
+          "filters": [],
+          "resourceKey": "clients",
+          "label": "Clientes",
+          "singularLabel": "cliente",
+          "route": "/clients",
+          "group": "comercial",
+          "icon": "users",
+          "titleField": "name",
+          "order": 1
+        },
+        {
+          "source": "core",
+          "editorKind": "generic-content",
+          "detailEnabled": false,
+          "createEnabled": false,
+          "editEnabled": true,
+          "deleteEnabled": false,
+          "permissions": {
+            "read": "content.read",
+            "write": "content.write"
+          },
+          "columns": [],
+          "filters": [],
+          "resourceKey": "calendar",
+          "label": "Calendario",
+          "singularLabel": "evento",
+          "route": "/calendar",
+          "group": "operaciones",
+          "icon": "calendar",
+          "order": 2
+        },
+        {
+          "source": "core",
+          "editorKind": "generic-content",
+          "detailEnabled": false,
+          "createEnabled": false,
+          "editEnabled": true,
+          "deleteEnabled": false,
+          "permissions": {
+            "read": "settings.read",
+            "write": "settings.write"
+          },
+          "columns": [],
+          "filters": [],
+          "resourceKey": "membership",
+          "label": "Membresía",
+          "singularLabel": "membresía",
+          "route": "/membership",
+          "group": "finanzas",
+          "icon": "dollar",
+          "order": 3
+        }
+      ]
+    }
+  },
+  "source": {
+    "frontendPath": "D:\\Tricode\\ricardoldiaz",
+    "cmsPath": "D:\\Tricode\\tricode-cms",
+    "framework": "vite"
+  },
+  "integration": {
+    "apiBaseUrl": "",
+    "publicBasePath": "/public/ricardo-l-diaz",
+    "corsOrigins": [
+      "https://www.ricardoldiaz.uy"
+    ],
+    "env": {
+      "VITE_TRICODE_API_BASE_URL": "",
+      "VITE_TRICODE_TENANT_SLUG": "ricardo-l-diaz"
+    },
+    "features": {
+      "content": true,
+      "forms": true,
+      "reservations": false,
+      "payments": true
+    }
+  },
+  "contentTypes": [],
+  "settings": [],
+  "assets": [
+    {
+      "key": "logo",
+      "sourcePath": "logo.jpg",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "alvaro-2",
+      "sourcePath": "public/images/alvaro-2.jpeg",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "ganado-2",
+      "sourcePath": "public/images/ganado-2.jpg",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "ig-0",
+      "sourcePath": "public/images/ig-0.PNG",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "ig-1",
+      "sourcePath": "public/images/ig-1.PNG",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "ig-2",
+      "sourcePath": "public/images/ig-2.PNG",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "ig-3",
+      "sourcePath": "public/images/ig-3.PNG",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "ig-4",
+      "sourcePath": "public/images/ig-4.PNG",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "ig-5",
+      "sourcePath": "public/images/ig-5.PNG",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "ig-6",
+      "sourcePath": "public/images/ig-6.PNG",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "ig-7",
+      "sourcePath": "public/images/ig-7.PNG",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "ig-8",
+      "sourcePath": "public/images/ig-8.PNG",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "lote-1",
+      "sourcePath": "public/images/lote-1.jpg",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "lote-2",
+      "sourcePath": "public/images/lote-2.jpg",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "lote-3",
+      "sourcePath": "public/images/lote-3.jpeg",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "lote-4",
+      "sourcePath": "public/images/lote-4.png",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "lote-5",
+      "sourcePath": "public/images/lote-5.png",
+      "upload": false,
+      "optimize": true
+    },
+    {
+      "key": "lote-6",
+      "sourcePath": "public/images/lote-6.png",
+      "upload": false,
+      "optimize": true
+    }
+  ],
+  "componentMappings": [],
+  "notes": [
+    "Completar contentTypes, settings y componentMappings antes de aprobar.",
+    "Marcar assets.upload=true sólo para archivos que deban administrarse desde CMS."
+  ]
+}

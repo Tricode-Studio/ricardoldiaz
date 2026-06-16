@@ -1,4 +1,4 @@
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation, Link } from 'react-router'
 import styles from './Footer.module.css'
 import { FOOTER_COLUMNS, WA_NUMBER } from '../../data'
 import { useCmsContent } from '../../cms/CmsContentContext'

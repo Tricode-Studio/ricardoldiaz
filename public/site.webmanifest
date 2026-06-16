@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo L. Diaz - Escritorio Rural",
+  "short_name": "Ricardo L. Diaz",
+  "description": "Escritorio rural en Trinidad, Flores. Remates, comercializacion ganadera, campos y asesoramiento.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4efe5",
+  "theme_color": "#2C3A2C",
+  "icons": [
+    {
+      "src": "/favicon.jpg",
+      "sizes": "640x640",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

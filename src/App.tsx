@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router'
 import { useScrollReveal } from './hooks/useScrollReveal'
 
 import { Header } from './components/layout/Header'
@@ -19,6 +19,8 @@ import { Equipo } from './components/sections/Equipo'
 import { Contacto } from './components/sections/Contacto'
 import { Historia } from './pages/Historia'
 import { CmsContentProvider } from './cms/CmsContentContext'
+import { Seo } from './components/seo/Seo'
+import { ROUTE_SEO } from './seo/site'
 
 function Home() {
   useScrollReveal()
@@ -34,6 +36,11 @@ function Home() {
 
   return (
     <>
+      <Seo
+        title={ROUTE_SEO['/'].title}
+        description={ROUTE_SEO['/'].description}
+        canonicalPath={ROUTE_SEO['/'].canonicalPath}
+      />
       <Header />
       <main>
         <Hero />

@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 import styles from './Servicios.module.css'
 import type { ServiceCard } from '../../types'
 import { useCmsContent } from '../../cms/CmsContentContext'

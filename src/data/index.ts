@@ -399,14 +399,14 @@ export const TESTIMONIALS: Testimonial[] = [
 export const TEAM: TeamMember[] = [
   {
     id: 'm1', name: 'Federico Díaz', role: 'Director', initials: 'FD',
-    whatsapp: 'https://wa.me/59899364509', image: '',
+    whatsapp: 'https://wa.me/59899364509', image: '/images/federico-3.png',
     phone: '+598 99 364 509',
     bio: 'Hijo del fundador Ricardo L. Díaz, Federico lleva más de 20 años al frente del escritorio. Su conocimiento del campo uruguayo y su red de contactos en toda la región lo convierten en un referente del sector ganadero.',
     specialties: ['Dirección comercial', 'Remates en pantalla', 'Ventas particulares'],
   },
   {
     id: 'm2', name: 'Alvaro Díaz', role: 'Comercial', initials: 'AD',
-    whatsapp: 'https://wa.me/59899364490', image: '',
+    whatsapp: 'https://wa.me/59899364490', image: '/images/alvaro-2.jpeg',
     phone: '+598 99 364 490',
     bio: 'Alvaro es el motor comercial del escritorio. Con amplia experiencia en la intermediación de hacienda, domina los circuitos de compra-venta en los principales mercados del sur uruguayo.',
     specialties: ['Intermediación', 'Ventas directas', 'Campos'],

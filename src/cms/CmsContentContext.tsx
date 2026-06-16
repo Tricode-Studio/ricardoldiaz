@@ -66,7 +66,7 @@ const FALLBACK_CONTENT: CmsContent = {
     image: '',
   },
   heroPillLabel: 'Consultar agenda',
-  logoImage: '',
+  logoImage: '/favicon.jpg',
   homeHeroImage: '',
   mercadoUpdatedLabel: 'Datos actualizados · Semana N°21 · 17/05/26 al 23/05/26',
   mercadoSourceNote:

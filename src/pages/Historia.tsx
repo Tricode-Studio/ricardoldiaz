@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router'
 import styles from './Historia.module.css'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { Header } from '../components/layout/Header'
@@ -10,6 +10,8 @@ import { TeamModal } from '../components/sections/TeamModal'
 import { WA_NUMBER } from '../data'
 import type { TeamMember } from '../types'
 import { useCmsContent } from '../cms/CmsContentContext'
+import { Seo } from '../components/seo/Seo'
+import { ROUTE_SEO } from '../seo/site'
 
 const VALORES = [
   {
@@ -62,7 +64,6 @@ export function Historia() {
   const visibleGallery = historiaGallery.filter((photo) => photo.src)
 
   useEffect(() => {
-    document.title = 'Nuestra Historia — Ricardo L. Díaz · Escritorio Rural'
     if (!hash) {
       window.scrollTo(0, 0)
     } else {
@@ -71,13 +72,15 @@ export function Historia() {
       }, 120)
       return () => clearTimeout(timer)
     }
-    return () => {
-      document.title = 'Ricardo L. Díaz · Escritorio Rural'
-    }
   }, [hash])
 
   return (
     <>
+      <Seo
+        title={ROUTE_SEO['/historia'].title}
+        description={ROUTE_SEO['/historia'].description}
+        canonicalPath={ROUTE_SEO['/historia'].canonicalPath}
+      />
       <Header />
 
       <main>
@@ -88,12 +91,14 @@ export function Historia() {
         >
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>
-            {/* <Link to="/" className={styles.back}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                <path d="M19 12H5M12 5l-7 7 7 7" />
-              </svg>
-              Volver al inicio
-            </Link> */}
+            <nav aria-label="Breadcrumb">
+              <Link to="/" className={styles.back}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                  <path d="M19 12H5M12 5l-7 7 7 7" />
+                </svg>
+                Inicio
+              </Link>
+            </nav>
             <span className={styles.heroEyebrow}>{historiaHero.eyebrow || 'Desde 1972'}</span>
             <h1>{historiaHero.title || 'Nuestra Historia'}</h1>
             <p className={styles.heroSub}>
@@ -131,6 +136,9 @@ export function Historia() {
                   src="/images/ricardo-1.png"
                   alt="Ricardo Diaz"
                   loading="lazy"
+                  decoding="async"
+                  width={940}
+                  height={1673}
                 />
               </div>
             </div>
@@ -184,7 +192,7 @@ export function Historia() {
                   className={`${styles.photoCard} ${photo.span === 'wide' ? styles.photoWide : ''} reveal`}
                   style={{ transitionDelay: `${i * 0.07}s` }}
                 >
-                  <img src={photo.src} alt={photo.caption} loading="lazy" />
+                  <img src={photo.src} alt={photo.caption} loading="lazy" decoding="async" />
                   <div className={styles.photoOverlay}>{photo.caption}</div>
                 </div>
               ))}
@@ -221,7 +229,7 @@ export function Historia() {
                 >
                   <div className={styles.av}>
                     {member.image ? (
-                      <img src={member.image} alt={member.name} className={styles.avImg} />
+                      <img src={member.image} alt={member.name} className={styles.avImg} loading="lazy" decoding="async" />
                     ) : (
                       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <circle cx="50" cy="36" r="16" fill="#2c3a2c" fillOpacity="0.55" />

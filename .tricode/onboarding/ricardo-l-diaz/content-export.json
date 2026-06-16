@@ -1,0 +1,1007 @@
+{
+  "generatedAt": "2026-06-15T13:26:51.825Z",
+  "source": {
+    "frontendPath": "D:\\Tricode\\ricardoldiaz",
+    "cmsPath": "D:\\Tricode\\tricode-cms",
+    "framework": "vite"
+  },
+  "inventory": {
+    "filesScanned": 80,
+    "sourceFiles": 32,
+    "assets": [
+      {
+        "key": "logo",
+        "sourcePath": "logo.jpg"
+      },
+      {
+        "key": "alvaro-2",
+        "sourcePath": "public/images/alvaro-2.jpeg"
+      },
+      {
+        "key": "ganado-2",
+        "sourcePath": "public/images/ganado-2.jpg"
+      },
+      {
+        "key": "ig-0",
+        "sourcePath": "public/images/ig-0.PNG"
+      },
+      {
+        "key": "ig-1",
+        "sourcePath": "public/images/ig-1.PNG"
+      },
+      {
+        "key": "ig-2",
+        "sourcePath": "public/images/ig-2.PNG"
+      },
+      {
+        "key": "ig-3",
+        "sourcePath": "public/images/ig-3.PNG"
+      },
+      {
+        "key": "ig-4",
+        "sourcePath": "public/images/ig-4.PNG"
+      },
+      {
+        "key": "ig-5",
+        "sourcePath": "public/images/ig-5.PNG"
+      },
+      {
+        "key": "ig-6",
+        "sourcePath": "public/images/ig-6.PNG"
+      },
+      {
+        "key": "ig-7",
+        "sourcePath": "public/images/ig-7.PNG"
+      },
+      {
+        "key": "ig-8",
+        "sourcePath": "public/images/ig-8.PNG"
+      },
+      {
+        "key": "lote-1",
+        "sourcePath": "public/images/lote-1.jpg"
+      },
+      {
+        "key": "lote-2",
+        "sourcePath": "public/images/lote-2.jpg"
+      },
+      {
+        "key": "lote-3",
+        "sourcePath": "public/images/lote-3.jpeg"
+      },
+      {
+        "key": "lote-4",
+        "sourcePath": "public/images/lote-4.png"
+      },
+      {
+        "key": "lote-5",
+        "sourcePath": "public/images/lote-5.png"
+      },
+      {
+        "key": "lote-6",
+        "sourcePath": "public/images/lote-6.png"
+      }
+    ],
+    "envNames": [
+      "VITE_TRICODE_PUBLIC_API_BASE_URL",
+      "VITE_TRICODE_TENANT_SLUG"
+    ],
+    "externalUrls": [
+      "http://www.w3.org/2000/svg",
+      "https://cms.tricode.studio/api/v1",
+      "https://comercioyjusticia.info/wp-content/uploads/2022/06/remate-de-ganado-bovino-e1654896865924.jpg",
+      "https://fonts.googleapis.com",
+      "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Archivo:wght@300;400;500;600;700&display=swap",
+      "https://fonts.gstatic.com",
+      "https://images.unsplash.com/photo-1586113381167-c1e68e4b9507?q=80&w=1175&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1590249426516-4ac3a513c4cd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGdhbmFkb3xlbnwwfDB8MHx8fDI%3D",
+      "https://images.unsplash.com/photo-1603165022668-8502a0277471?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1636300965325-83f9718b2ac2?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1658595152145-bdb556a1246c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://schema.org",
+      "https://wa.me/59897769995",
+      "https://wa.me/59898334256",
+      "https://wa.me/59899364490",
+      "https://wa.me/59899364509",
+      "https://www.instagram.com/ricardo.l.diaz/",
+      "https://www.ricardoldiaz.uy/",
+      "https://www.youtube.com/@lote21tv/streams"
+    ],
+    "routeCandidates": [
+      "#",
+      "#contacto",
+      "#equipo",
+      "#lotes",
+      "#mercado",
+      "#news",
+      "#nosotros",
+      "#remates",
+      "#servicios",
+      "/",
+      "/#contacto",
+      "/historia",
+      "/historia#equipo-hoy",
+      "/logo.jpg",
+      "https://fonts.googleapis.com",
+      "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Archivo:wght@300;400;500;600;700&display=swap",
+      "https://fonts.gstatic.com",
+      "https://www.instagram.com/ricardo.l.diaz/",
+      "https://www.ricardoldiaz.uy/",
+      "https://www.youtube.com/@lote21tv/streams"
+    ],
+    "forms": [
+      "src/components/layout/NewsletterStrip.tsx",
+      "src/components/layout/PhoneStrip.tsx",
+      "src/components/sections/Contacto.tsx"
+    ],
+    "capabilities": {
+      "calendar": {
+        "detected": true,
+        "files": [
+          "src/cms/CmsContentContext.tsx",
+          "src/components/sections/Contacto.tsx",
+          "src/components/sections/Remates.tsx",
+          "src/data/index.ts"
+        ]
+      },
+      "reservations": {
+        "detected": false,
+        "files": []
+      },
+      "services": {
+        "detected": true,
+        "files": [
+          "src/App.tsx",
+          "src/cms/CmsContentContext.tsx",
+          "src/components/sections/Servicios.tsx",
+          "src/data/index.ts",
+          "src/pages/Historia.tsx"
+        ]
+      },
+      "serviceCategories": {
+        "detected": true,
+        "files": [
+          "src/cms/CmsContentContext.tsx",
+          "src/components/sections/Blog.tsx",
+          "src/components/sections/Lotes.tsx",
+          "src/components/sections/Mercado.tsx",
+          "src/components/sections/VentasParticulares.tsx",
+          "src/data/index.ts",
+          "src/types/index.ts"
+        ]
+      },
+      "staff": {
+        "detected": true,
+        "files": [
+          "src/App.tsx",
+          "src/components/sections/Equipo.tsx",
+          "src/data/index.ts",
+          "src/pages/Historia.tsx"
+        ]
+      },
+      "vehicles": {
+        "detected": true,
+        "files": [
+          "src/data/index.ts",
+          "src/pages/Historia.tsx"
+        ]
+      },
+      "brands": {
+        "detected": true,
+        "files": [
+          "src/components/layout/Footer.tsx",
+          "src/components/layout/Header.tsx"
+        ]
+      },
+      "inventory": {
+        "detected": true,
+        "files": [
+          "src/cms/CmsContentContext.tsx",
+          "src/components/sections/Lotes.tsx",
+          "src/components/sections/VentasParticulares.tsx",
+          "src/data/index.ts",
+          "src/types/index.ts"
+        ]
+      },
+      "products": {
+        "detected": false,
+        "files": []
+      },
+      "clients": {
+        "detected": true,
+        "files": [
+          "src/App.tsx",
+          "src/cms/CmsContentContext.tsx",
+          "src/components/layout/PhoneStrip.tsx",
+          "src/components/sections/Campos.tsx",
+          "src/components/sections/Contacto.tsx",
+          "src/components/sections/Hero.tsx",
+          "src/components/sections/Remates.tsx",
+          "src/components/sections/Servicios.tsx",
+          "src/data/index.ts",
+          "src/pages/Historia.tsx"
+        ]
+      },
+      "promotions": {
+        "detected": false,
+        "files": []
+      },
+      "payments": {
+        "detected": true,
+        "files": [
+          "src/cms/CmsContentContext.tsx",
+          "src/components/sections/Campos.tsx",
+          "src/components/sections/Lotes.tsx",
+          "src/components/sections/Mercado.tsx",
+          "src/components/sections/VentasParticulares.tsx",
+          "src/data/index.ts",
+          "src/types/index.ts"
+        ]
+      },
+      "forms": {
+        "detected": true,
+        "files": [
+          "src/App.tsx",
+          "src/cms/CmsContentContext.tsx",
+          "src/components/layout/NewsletterStrip.tsx",
+          "src/components/layout/PhoneStrip.tsx",
+          "src/components/sections/Campos.tsx",
+          "src/components/sections/Contacto.tsx",
+          "src/components/sections/Hero.tsx",
+          "src/components/sections/Remates.tsx",
+          "src/components/sections/Servicios.tsx",
+          "src/data/index.ts",
+          "src/pages/Historia.tsx"
+        ]
+      }
+    },
+    "hardcodedCandidates": [
+      {
+        "file": "index.html",
+        "text": "width=device-width, initial-scale=1.0"
+      },
+      {
+        "file": "index.html",
+        "text": "Ricardo L. Díaz – Escritorio Rural"
+      },
+      {
+        "file": "index.html",
+        "text": "Ricardo L. Díaz – Escritorio Rural"
+      },
+      {
+        "file": "index.html",
+        "text": "Ricardo L. Díaz — Escritorio Rural · Negocios Rurales desde 1973"
+      },
+      {
+        "file": "index.html",
+        "text": "Su socio de confianza en negocios rurales. Remates por pantalla, comercialización de ganado, venta de campos y asesoría agropecuaria. Trinidad, Flores — Uruguay."
+      },
+      {
+        "file": "index.html",
+        "text": "Ricardo L. Díaz – Escritorio Rural"
+      },
+      {
+        "file": "index.html",
+        "text": "Negocios rurales, remates ganaderos por pantalla, comercialización de ganado, venta de campos y asesoría agropecuaria."
+      },
+      {
+        "file": "index.html",
+        "text": "Comercialización de ganado"
+      },
+      {
+        "file": "index.html",
+        "text": "Intermediación agropecuaria"
+      },
+      {
+        "file": "src/App.tsx",
+        "text": "./components/layout/Header"
+      },
+      {
+        "file": "src/App.tsx",
+        "text": "./components/layout/Footer"
+      },
+      {
+        "file": "src/App.tsx",
+        "text": "./components/layout/PhoneStrip"
+      },
+      {
+        "file": "src/App.tsx",
+        "text": "./components/layout/WhatsAppFab"
+      },
+      {
+        "file": "src/App.tsx",
+        "text": "./components/sections/Hero"
+      },
+      {
+        "file": "src/App.tsx",
+        "text": "./components/sections/Trust"
+      },
+      {
+        "file": "src/App.tsx",
+        "text": "./components/sections/Nosotros"
+      },
+      {
+        "file": "src/App.tsx",
+        "text": "./components/sections/Servicios"
+      },
+      {
+        "file": "src/App.tsx",
+        "text": "./components/sections/Remates"
+      },
+      {
+        "file": "src/App.tsx",
+        "text": "./components/sections/Lotes"
+      },
+      {
+        "file": "src/App.tsx",
+        "text": "./components/sections/VentasParticulares"
+      },
+      {
+        "file": "src/App.tsx",
+        "text": "./components/sections/Mercado"
+      },
+      {
+        "file": "src/App.tsx",
+        "text": "./components/sections/Equipo"
+      },
+      {
+        "file": "src/App.tsx",
+        "text": "./components/sections/Contacto"
+      },
+      {
+        "file": "src/cms/CmsContentContext.tsx",
+        "text": "Más de 50 años construyendo confianza en el campo uruguayo, operación a operación."
+      },
+      {
+        "file": "src/cms/CmsContentContext.tsx",
+        "text": "Datos actualizados · Semana N°21 · 17/05/26 al 23/05/26"
+      },
+      {
+        "file": "src/cms/CmsContentContext.tsx",
+        "text": "${API_BASE_URL}/public/${encodeURIComponent(TENANT_SLUG)}/content-types/${encodeURIComponent(section)}/entries?limit=48"
+      },
+      {
+        "file": "src/cms/CmsContentContext.tsx",
+        "text": "CMS ${section} ${response.status}"
+      },
+      {
+        "file": "src/cms/CmsContentContext.tsx",
+        "text": "].includes(icon) ? icon :"
+      },
+      {
+        "file": "src/cms/CmsContentContext.tsx",
+        "text": "[cms] usando contenido estático"
+      },
+      {
+        "file": "src/components/layout/Footer.tsx",
+        "text": "M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2z"
+      },
+      {
+        "file": "src/components/layout/Footer.tsx",
+        "text": "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+      },
+      {
+        "file": "src/components/layout/Footer.tsx",
+        "text": "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+      },
+      {
+        "file": "src/components/layout/Header.tsx",
+        "text": "../../hooks/useMobileMenu"
+      },
+      {
+        "file": "src/components/layout/Header.tsx",
+        "text": "Ricardo L. Díaz — inicio"
+      },
+      {
+        "file": "src/components/layout/Header.tsx",
+        "text": "strokeWidth={2} aria-hidden="
+      },
+      {
+        "file": "src/components/layout/Header.tsx",
+        "text": "btn btn-wa ${styles.menuWa}"
+      },
+      {
+        "file": "src/components/layout/NewsletterStrip.tsx",
+        "text": "./NewsletterStrip.module.css"
+      },
+      {
+        "file": "src/components/layout/PhoneStrip.tsx",
+        "text": "Ingresá un número de teléfono válido."
+      },
+      {
+        "file": "src/components/layout/PhoneStrip.tsx",
+        "text": "Hola, quisiera que me contacten. Mi número es: ${phone}"
+      },
+      {
+        "file": "src/components/layout/WhatsAppFab.tsx",
+        "text": "./WhatsAppFab.module.css"
+      },
+      {
+        "file": "src/components/layout/WhatsAppFab.tsx",
+        "text": "width={28} height={28} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Contacto.tsx",
+        "text": "Embarques a Frigoríficos"
+      },
+      {
+        "file": "src/components/sections/Contacto.tsx",
+        "text": "${styles.infoCol} reveal"
+      },
+      {
+        "file": "src/components/sections/Contacto.tsx",
+        "text": "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+      },
+      {
+        "file": "src/components/sections/Contacto.tsx",
+        "text": "M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+      },
+      {
+        "file": "src/components/sections/Contacto.tsx",
+        "text": "${styles.formWrap} reveal"
+      },
+      {
+        "file": "src/components/sections/Contacto.tsx",
+        "text": "strokeWidth={2} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Contacto.tsx",
+        "text": "M22 11.08V12a10 10 0 1 1-5.93-9.14"
+      },
+      {
+        "file": "src/components/sections/Contacto.tsx",
+        "text": "Cuéntenos en qué podemos ayudarlo…"
+      },
+      {
+        "file": "src/components/sections/Contacto.tsx",
+        "text": "btn btn-solid ${styles.submitBtn}"
+      },
+      {
+        "file": "src/components/sections/Contacto.tsx",
+        "text": "strokeWidth={2} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Equipo.tsx",
+        "text": "../../cms/CmsContentContext"
+      },
+      {
+        "file": "src/components/sections/Equipo.tsx",
+        "text": "Ver perfil de ${member.name}"
+      },
+      {
+        "file": "src/components/sections/Equipo.tsx",
+        "text": "M0 100 C0 68 22 57 50 57 C78 57 100 68 100 100 Z"
+      },
+      {
+        "file": "src/components/sections/Equipo.tsx",
+        "text": "M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2z"
+      },
+      {
+        "file": "src/components/sections/Hero.tsx",
+        "text": "../../cms/CmsContentContext"
+      },
+      {
+        "file": "src/components/sections/Hero.tsx",
+        "text": "Campo y ganado en la pradera uruguaya al atardecer"
+      },
+      {
+        "file": "src/components/sections/Hero.tsx",
+        "text": "strokeWidth={2} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Hero.tsx",
+        "text": "btn ${styles.ghostLight}"
+      },
+      {
+        "file": "src/components/sections/Lotes.tsx",
+        "text": "../../cms/CmsContentContext"
+      },
+      {
+        "file": "src/components/sections/Lotes.tsx",
+        "text": "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+      },
+      {
+        "file": "src/components/sections/Lotes.tsx",
+        "text": "strokeWidth={2} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Lotes.tsx",
+        "text": "strokeWidth={2.5} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Lotes.tsx",
+        "text": "strokeWidth={2.5} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Lotes.tsx",
+        "text": "clamp(36px, 4.5vw, 64px)"
+      },
+      {
+        "file": "src/components/sections/Lotes.tsx",
+        "text": "clamp(20px, 2.5vw, 32px)"
+      },
+      {
+        "file": "src/components/sections/Lotes.tsx",
+        "text": "sec-head reveal ${styles.head}"
+      },
+      {
+        "file": "src/components/sections/Lotes.tsx",
+        "text": "translateX(${translateX}%)"
+      },
+      {
+        "file": "src/components/sections/Lotes.tsx",
+        "text": "${lote.lote} — ${lote.category}"
+      },
+      {
+        "file": "src/components/sections/Mercado.tsx",
+        "text": "../../cms/CmsContentContext"
+      },
+      {
+        "file": "src/components/sections/Mercado.tsx",
+        "text": "strokeWidth={2.5} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Mercado.tsx",
+        "text": "strokeWidth={2.5} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Mercado.tsx",
+        "text": "${styles.priceGroup} reveal"
+      },
+      {
+        "file": "src/components/sections/Nosotros.tsx",
+        "text": "Relaciones de largo plazo, no transacciones aisladas."
+      },
+      {
+        "file": "src/components/sections/Nosotros.tsx",
+        "text": "Precios claros y resultados verificables en cada remate."
+      },
+      {
+        "file": "src/components/sections/Nosotros.tsx",
+        "text": "Conocemos cada productor y cada campo de la zona."
+      },
+      {
+        "file": "src/components/sections/Nosotros.tsx",
+        "text": "strokeWidth={2} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Nosotros.tsx",
+        "text": "Rematador Ricardo L. Díaz"
+      },
+      {
+        "file": "src/components/sections/Remates.tsx",
+        "text": "../../cms/CmsContentContext"
+      },
+      {
+        "file": "src/components/sections/Remates.tsx",
+        "text": "${styles.auction} reveal"
+      },
+      {
+        "file": "src/components/sections/Remates.tsx",
+        "text": "${auction.day} de ${auction.month}"
+      },
+      {
+        "file": "src/components/sections/Remates.tsx",
+        "text": "strokeWidth={2} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Servicios.tsx",
+        "text": "../../cms/CmsContentContext"
+      },
+      {
+        "file": "src/components/sections/Servicios.tsx",
+        "text": "strokeWidth={1.7} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Servicios.tsx",
+        "text": "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+      },
+      {
+        "file": "src/components/sections/Servicios.tsx",
+        "text": "M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"
+      },
+      {
+        "file": "src/components/sections/Servicios.tsx",
+        "text": "strokeWidth={1.7} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Servicios.tsx",
+        "text": "strokeWidth={1.7} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Servicios.tsx",
+        "text": "M11 3H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"
+      },
+      {
+        "file": "src/components/sections/Servicios.tsx",
+        "text": "strokeWidth={1.7} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Servicios.tsx",
+        "text": "/?motivo=${encodeURIComponent(motivo)}"
+      },
+      {
+        "file": "src/components/sections/Servicios.tsx",
+        "text": ")?.scrollIntoView({ behavior:"
+      },
+      {
+        "file": "src/components/sections/Servicios.tsx",
+        "text": "${styles.secHead} reveal"
+      },
+      {
+        "file": "src/components/sections/Servicios.tsx",
+        "text": "strokeWidth={2} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/TeamModal.tsx",
+        "text": "Perfil de ${member.name}"
+      },
+      {
+        "file": "src/components/sections/TeamModal.tsx",
+        "text": "strokeWidth={2.2} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/TeamModal.tsx",
+        "text": "M0 100 C0 68 22 57 50 57 C78 57 100 68 100 100 Z"
+      },
+      {
+        "file": "src/components/sections/TeamModal.tsx",
+        "text": "M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2z"
+      },
+      {
+        "file": "src/components/sections/TeamModal.tsx",
+        "text": "strokeWidth={2} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/Testimonials.tsx",
+        "text": "./Testimonials.module.css"
+      },
+      {
+        "file": "src/components/sections/Trust.tsx",
+        "text": "} style={{ transitionDelay:"
+      },
+      {
+        "file": "src/components/sections/VentasParticulares.tsx",
+        "text": "./VentasParticulares.module.css"
+      },
+      {
+        "file": "src/components/sections/VentasParticulares.tsx",
+        "text": "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+      },
+      {
+        "file": "src/components/sections/VentasParticulares.tsx",
+        "text": "strokeWidth={2} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/VentasParticulares.tsx",
+        "text": "strokeWidth={2.5} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/VentasParticulares.tsx",
+        "text": "strokeWidth={2.5} aria-hidden="
+      },
+      {
+        "file": "src/components/sections/VentasParticulares.tsx",
+        "text": "ventas-particulares-heading"
+      },
+      {
+        "file": "src/components/sections/VentasParticulares.tsx",
+        "text": "clamp(20px, 2.5vw, 32px)"
+      },
+      {
+        "file": "src/components/sections/VentasParticulares.tsx",
+        "text": "sec-head reveal ${styles.head}"
+      },
+      {
+        "file": "src/components/sections/VentasParticulares.tsx",
+        "text": "ventas-particulares-heading"
+      },
+      {
+        "file": "src/components/sections/VentasParticulares.tsx",
+        "text": "translateX(${translateX}%)"
+      },
+      {
+        "file": "src/components/sections/VentasParticulares.tsx",
+        "text": "${venta.ref} — ${venta.category}"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": ", isCount: true, countTarget: 50, suffix:"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": ", isCount: true, countTarget: 1000, suffix:"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Gestionamos la venta directa de su hacienda entre productores, con total transparencia y sin intermediarios innecesarios. Conectamos comprador y vendedor de forma ágil y segura."
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Consultar disponibilidad"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Remates en Vivo (Lote 21)"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Transmisión en vivo de cada remate a través de la plataforma Lote 21. Más alcance, más compradores y la comodidad de operar a distancia con respaldo profesional."
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Servicio especializado en la inscripción de lotes para remates, incluyendo manejo y cuidado del ganado antes de la venta."
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Venta de Campos y Cabañas"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Comercialización de establecimientos ganaderos y propiedades rurales. Asesoramos a inversores locales e internacionales sobre rentabilidad y oportunidades de la zona."
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Explorar campos disponibles"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Embarques a Frigoríficos"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Embarques a Frigoríficos"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Feria Mensual de Hacienda General"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Vacas, terneros y novillos"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Por kilo en cuarta balanza"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Por kilo en cuarta balanza"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Por kilo en cuarta balanza"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Precio móvil 30 días · Fuente: INAC – IMC"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Terneros de 140 a 180 kg"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Terneros de 140 a 180 kg"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Establecimiento Mixto · 1.200 ha"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Casa de Campo · 2 dormitorios"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Vendimos 500 terneras logrando cotizar el 100% del lote a un 15% por encima del promedio de mercado. Profesionalismo y agilidad de principio a fin."
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "El acompañamiento en la venta de nuestro campo fue impecable. Conocen la zona, conocen a la gente y eso se traduce en mejores negocios."
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Llevamos años trabajando con el escritorio. La transparencia en los precios y la palabra cumplida son lo que nos hace volver remate tras remate."
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Embarques a frigoríficos"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Romina es el punto de contacto del escritorio. Coordina la agenda, gestiona la documentación y asegura que cada operación se procese con precisión y en tiempo."
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Cómo vender ganado en remates por pantalla"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Una guía práctica para aprovechar al máximo la comercialización digital de hacienda en Uruguay."
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Valor del ganado hoy: qué mueve los precios"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "La demanda de China, los ciclos de exportación regional y su impacto en el bolsillo del productor."
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Invertir en campos en Uruguay: todo lo que debés saber"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Marco legal, zonas de mayor retorno y cómo evaluar la rentabilidad antes de comprar."
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Remates en Vivo (Lote 21)"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Embarques a Frigoríficos"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Fundación del escritorio"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Más de 50 años de trayectoria"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Panorama ganadero | Flores"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Raíces | Futuro | Amistad"
+      },
+      {
+        "file": "src/data/index.ts",
+        "text": "Panorama ganadero | Treinta y Tres"
+      },
+      {
+        "file": "src/hooks/useCountUp.ts",
+        "text": "${prefix}${value.toFixed(decimals)}${suffix}"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "../hooks/useScrollReveal"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "../components/layout/Header"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "../components/layout/Footer"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "../components/layout/PhoneStrip"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "../components/layout/WhatsAppFab"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "../components/sections/TeamModal"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "../cms/CmsContentContext"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "En el campo, la palabra vale tanto como cualquier contrato. Cada operación que cerramos es un compromiso que cumplimos."
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "strokeWidth={1.7} aria-hidden="
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "Décadas recorriendo establecimientos nos dan una visión única del negocio ganadero y de las realidades del productor."
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "strokeWidth={1.7} aria-hidden="
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "El productor está siempre primero. Trabajamos para que cada operación sea lo más conveniente y segura posible."
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "strokeWidth={1.7} aria-hidden="
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "Somos una empresa de familia que construye relaciones de largo plazo, no sólo operaciones. El vínculo con el productor dura décadas."
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "strokeWidth={1.7} aria-hidden="
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "Nuestra Historia — Ricardo L. Díaz · Escritorio Rural"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "Ricardo L. Díaz · Escritorio Rural"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "strokeWidth={2} aria-hidden="
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "Más de 50 años construyendo confianza en el campo uruguayo, operación a operación."
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "${styles.introText} reveal"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "${styles.introImg} reveal"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "${styles.teamCard} reveal"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "Ver perfil de ${member.name}"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "M0 100 C0 68 22 57 50 57 C78 57 100 68 100 100 Z"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "width={14} height={14} aria-hidden="
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2z"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "${styles.valHead} reveal"
+      },
+      {
+        "file": "src/pages/Historia.tsx",
+        "text": "${styles.valorCard} reveal"
+      }
+    ],
+    "foreignTenantSlugs": [],
+    "secretLikeLiterals": []
+  }
+}
