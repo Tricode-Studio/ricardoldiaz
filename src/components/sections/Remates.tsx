@@ -37,9 +37,9 @@ export function Remates() {
                 </div>
               </div>
 
-              {/* <span className={`${styles.tag} ${auction.type === 'screen' ? styles.tagScreen : styles.tagFeria}`}>
+              <span className={`${styles.tag} ${auction.type === 'screen' ? styles.tagScreen : styles.tagFeria}`}>
                 {auction.type === 'screen' ? 'Por pantalla' : 'Feria física'}
-              </span> */}
+              </span>
 
               <div className={styles.acts}>
                 <a href="#lotes">Ver lotes</a>

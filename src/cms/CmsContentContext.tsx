@@ -189,7 +189,9 @@ function mapAuctions(items: PublicEntry[]): AuctionItem[] {
       month:
         asText(data.month) ||
         (data.date
-          ? new Date(asText(data.date)).toLocaleDateString('es-UY', { month: 'short', timeZone: 'UTC' })
+          ? new Date(asText(data.date))
+              .toLocaleDateString('es-UY', { month: 'short', timeZone: 'UTC' })
+              .replace(/\.$/, '')
           : ''),
       title: asText(data.title) || asText(item.title) || 'Remate',
       details: [data.details ? splitLines(data.details) : [], asText(data.location), asText(data.time)]
