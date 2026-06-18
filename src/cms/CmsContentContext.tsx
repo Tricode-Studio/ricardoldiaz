@@ -139,6 +139,20 @@ function deriveDayMonth(data: Record<string, unknown>) {
   }
 }
 
+/** El signo de "change" (ej. "+0,06" / "-0,04") ya indica la dirección — no hace falta pedirla aparte. */
+function deriveDirection(change: string, legacyDirection: unknown): 'up' | 'down' {
+  const trimmed = change.trim()
+  if (trimmed.startsWith('-')) return 'down'
+  if (trimmed.startsWith('+')) return 'up'
+  return asText(legacyDirection) === 'down' ? 'down' : 'up'
+}
+
+/** wa.me solo necesita los dígitos del teléfono (con código de país) — sin armar la URL a mano. */
+function toWhatsAppHref(phone: string) {
+  const digits = phone.replace(/\D/g, '')
+  return digits ? `https://wa.me/${digits}` : ''
+}
+
 /** Entre todos los remates, el que tenga la fecha más próxima (hoy o futura) — no el primero por orden manual. */
 function findNextAuctionEntry(items: PublicEntry[]) {
   const today = new Date()
@@ -267,7 +281,7 @@ function mapPrices(items: PublicEntry[]): PriceRow[] {
       value: asText(data.value),
       unit: asText(data.unit),
       change: asText(data.change),
-      direction: asText(data.direction) === 'down' ? 'down' : 'up',
+      direction: deriveDirection(asText(data.change), data.direction),
       group: asText(data.group) || 'Ganado a Faena',
       prev: asText(data.prev) || undefined,
     }
@@ -301,6 +315,7 @@ function mapTeam(items: PublicEntry[]): TeamMember[] {
   return items.map((item, index) => {
     const data = item.data ?? {}
     const name = asText(data.name) || asText(item.title) || 'Integrante'
+    const phone = asText(data.phone)
     return {
       id: asText(item.slug) || asText(item.id) || `member-${index + 1}`,
       name,
@@ -313,8 +328,8 @@ function mapTeam(items: PublicEntry[]): TeamMember[] {
           .slice(0, 2)
           .map((part) => part[0]?.toUpperCase() ?? '')
           .join(''),
-      whatsapp: asText(data.whatsapp),
-      phone: asText(data.phone),
+      whatsapp: toWhatsAppHref(phone) || asText(data.whatsapp),
+      phone,
       image: asText(data.image),
       bio: asText(data.bio),
       specialties: splitLines(data.specialties),
