@@ -232,6 +232,8 @@ function mapAuctions(items: PublicEntry[]): AuctionItem[] {
         .flat()
         .filter(Boolean),
       type: asText(data.type) === 'feria' ? 'feria' : 'screen',
+      ctaLabel: asText(readData(data, 'ctaLabel', 'ctalabel')) || 'Ver lotes',
+      ctaHref: asText(readData(data, 'ctaHref', 'ctahref')) || '#lotes',
     }
   })
 }
@@ -278,7 +280,10 @@ function mapVentasParticulares(items: PublicEntry[]): VentaCard[] {
     const data = item.data ?? {}
     return {
       id: asText(item.slug) || asText(item.id) || `venta-${index + 1}`,
-      ref: asText(readData(data, 'ref', 'reference', 'referencia')) || asText(item.title) || `VP · ${String(index + 1).padStart(2, '0')}`,
+      ref:
+        asText(readData(data, 'ref', 'reference', 'referencia', 'lote')) ||
+        asText(item.title) ||
+        `VP · ${String(index + 1).padStart(2, '0')}`,
       category: asText(data.category) || asText(data.categoria) || 'Hacienda',
       heads: asNumber(readData(data, 'heads', 'cabezas')),
       weightAvg: asNumber(readData(data, 'weightAvg', 'weightavg', 'pesoPromedio', 'pesopromedio')),

@@ -91,6 +91,8 @@ export const AUCTIONS: AuctionItem[] = [
     title: 'Remate · Lote 21',
     details: ['', 'Montevideo, Uruguay', '9:00 hs'],
     type: 'screen',
+    ctaLabel: 'Ver lotes',
+    ctaHref: '#lotes',
   },
   // {
   //   id: 'a2',
@@ -99,6 +101,8 @@ export const AUCTIONS: AuctionItem[] = [
   //   title: 'Feria Mensual de Hacienda General',
   //   details: ['Vacas, terneros y novillos', 'Local Feria Flores', '10:00 h'],
   //   type: 'feria',
+  //   ctaLabel: 'Ver lotes',
+  //   ctaHref: '#lotes',
   // },
   {
     id: 'a3',
@@ -107,6 +111,8 @@ export const AUCTIONS: AuctionItem[] = [
     title: 'Remate · Lote 21',
     details: ['', 'Montevideo, Uruguay', '9:00 hs'],
     type: 'screen',
+    ctaLabel: 'Ver lotes',
+    ctaHref: '#lotes',
   },
 ]
 

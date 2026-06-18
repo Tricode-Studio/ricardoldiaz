@@ -42,7 +42,7 @@ export function Remates() {
               </span>
 
               <div className={styles.acts}>
-                <a href="#lotes">Ver lotes</a>
+                <a href={auction.ctaHref}>{auction.ctaLabel}</a>
                 {/* <a href="#news">Alertas</a> */}
               </div>
             </li>

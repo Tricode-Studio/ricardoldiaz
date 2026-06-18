@@ -28,6 +28,8 @@ export interface AuctionItem {
   title: string
   details: string[]
   type: 'screen' | 'feria'
+  ctaLabel: string
+  ctaHref: string
 }
 
 export interface PriceRow {
