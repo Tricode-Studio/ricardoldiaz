@@ -122,10 +122,51 @@ function fullMonthNameEs(month: string) {
   return MONTH_NAMES_ES[key] || month
 }
 
-function getNextAuctionLabel(auctions: AuctionItem[]) {
-  const next = auctions[0]
-  if (!next?.day || !next?.month) return ''
-  return `${next.day} de ${fullMonthNameEs(next.month)}`
+function parseEntryDate(data: Record<string, unknown>): Date | null {
+  const raw = asText(data.date)
+  if (!raw) return null
+  const parsed = new Date(raw)
+  return Number.isNaN(parsed.valueOf()) ? null : parsed
+}
+
+function deriveDayMonth(data: Record<string, unknown>) {
+  const date = parseEntryDate(data)
+  return {
+    day: asText(data.day) || (date ? String(date.getUTCDate()) : ''),
+    month:
+      asText(data.month) ||
+      (date ? date.toLocaleDateString('es-UY', { month: 'short', timeZone: 'UTC' }).replace(/\.$/, '') : ''),
+  }
+}
+
+/** Entre todos los remates, el que tenga la fecha más próxima (hoy o futura) — no el primero por orden manual. */
+function findNextAuctionEntry(items: PublicEntry[]) {
+  const today = new Date()
+  today.setUTCHours(0, 0, 0, 0)
+
+  const withDates = items
+    .map((item) => ({ item, date: parseEntryDate(item.data ?? {}) }))
+    .filter((entry): entry is { item: PublicEntry; date: Date } => entry.date !== null)
+
+  const upcoming = withDates
+    .filter((entry) => entry.date >= today)
+    .sort((a, b) => a.date.getTime() - b.date.getTime())
+  if (upcoming.length) return upcoming[0].item
+
+  // Si no hay remates futuros, usar el más reciente como referencia en vez de no mostrar nada.
+  if (withDates.length) {
+    return withDates.sort((a, b) => b.date.getTime() - a.date.getTime())[0].item
+  }
+
+  return items[0]
+}
+
+function getNextAuctionLabel(items: PublicEntry[]) {
+  const next = findNextAuctionEntry(items)
+  if (!next) return ''
+  const { day, month } = deriveDayMonth(next.data ?? {})
+  if (!day || !month) return ''
+  return `${day} de ${fullMonthNameEs(month)}`
 }
 
 function splitLines(value: unknown) {
@@ -185,14 +226,7 @@ function mapAuctions(items: PublicEntry[]): AuctionItem[] {
     const data = item.data ?? {}
     return {
       id: asText(item.slug) || asText(item.id) || `auction-${index + 1}`,
-      day: asText(data.day) || (data.date ? String(new Date(asText(data.date)).getUTCDate()) : ''),
-      month:
-        asText(data.month) ||
-        (data.date
-          ? new Date(asText(data.date))
-              .toLocaleDateString('es-UY', { month: 'short', timeZone: 'UTC' })
-              .replace(/\.$/, '')
-          : ''),
+      ...deriveDayMonth(data),
       title: asText(data.title) || asText(item.title) || 'Remate',
       details: [data.details ? splitLines(data.details) : [], asText(data.location), asText(data.time)]
         .flat()
@@ -325,11 +359,11 @@ function mapHistoria(items: PublicEntry[]) {
   }
 }
 
-function mapHeroSection(items: PublicEntry[], auctions: AuctionItem[]) {
+function mapHeroSection(items: PublicEntry[], auctionEntries: PublicEntry[]) {
   const hero = items[0]
   const data = hero?.data ?? {}
   return {
-    heroPillLabel: getNextAuctionLabel(auctions) || FALLBACK_CONTENT.heroPillLabel,
+    heroPillLabel: getNextAuctionLabel(auctionEntries) || FALLBACK_CONTENT.heroPillLabel,
     homeHeroImage: asText(readData(data, 'image', 'homeHeroImage', 'homeheroimage')),
     logoImage: asText(readData(data, 'logoImage', 'logoimage', 'logo')),
   }
@@ -362,7 +396,7 @@ async function loadCmsContent(): Promise<CmsContent> {
     ventasParticulares: mapVentasParticulares(ventasParticulares),
     team: mapTeam(team),
     ...historiaMapped,
-    ...mapHeroSection(heroSection, mappedAuctions),
+    ...mapHeroSection(heroSection, auctions),
     mercadoUpdatedLabel:
       asText(readData(priceMeta?.data ?? {}, 'updatedLabel', 'updatedlabel')) ||
       FALLBACK_CONTENT.mercadoUpdatedLabel,
