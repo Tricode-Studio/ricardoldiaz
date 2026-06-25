@@ -21,6 +21,7 @@ import { Historia } from './pages/Historia'
 import { CmsContentProvider } from './cms/CmsContentContext'
 import { Seo } from './components/seo/Seo'
 import { ROUTE_SEO } from './seo/site'
+import { TrackingScript } from './tracking/TrackingScript'
 
 function Home() {
   useScrollReveal()
@@ -64,6 +65,7 @@ function Home() {
 export default function App() {
   return (
     <CmsContentProvider>
+      <TrackingScript />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/historia" element={<Historia />} />
