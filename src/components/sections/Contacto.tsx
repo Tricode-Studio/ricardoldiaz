@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router'
+import { submitContactForm } from '../../cms/submitContactForm'
 import styles from './Contacto.module.css'
 
 type FormState = {
@@ -33,6 +34,8 @@ export function Contacto() {
     mensaje: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const [errors, setErrors] = useState<Partial<FormState>>({})
 
   // Limpiar el query param de la URL una vez leído, sin afectar el historial
@@ -44,18 +47,28 @@ export function Contacto() {
     const next: Partial<FormState> = {}
     if (!form.nombre.trim()) next.nombre = 'Requerido'
     if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) next.email = 'Email inválido'
+    if (!form.telefono.trim()) next.telefono = 'Requerido'
     if (!form.mensaje.trim()) next.mensaje = 'Requerido'
     return next
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length) {
       setErrors(errs)
       return
     }
-    setSubmitted(true)
+    setSubmitError('')
+    setSubmitting(true)
+    try {
+      await submitContactForm(form)
+      setSubmitted(true)
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'No se pudo enviar el mensaje. Intente nuevamente.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const set = (field: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -185,7 +198,7 @@ export function Contacto() {
                     {errors.email && <span className={styles.err}>{errors.email}</span>}
                   </div>
                   <div className={styles.field}>
-                    <label htmlFor="telefono">Teléfono</label>
+                    <label htmlFor="telefono">Teléfono *</label>
                     <input
                       id="telefono"
                       type="tel"
@@ -194,6 +207,7 @@ export function Contacto() {
                       onChange={set('telefono')}
                       autoComplete="tel"
                     />
+                    {errors.telefono && <span className={styles.err}>{errors.telefono}</span>}
                   </div>
                 </div>
 
@@ -219,8 +233,10 @@ export function Contacto() {
                   {errors.mensaje && <span className={styles.err}>{errors.mensaje}</span>}
                 </div>
 
-                <button type="submit" className={`btn btn-solid ${styles.submitBtn}`}>
-                  Enviar consulta
+                {submitError && <span className={styles.err}>{submitError}</span>}
+
+                <button type="submit" className={`btn btn-solid ${styles.submitBtn}`} disabled={submitting}>
+                  {submitting ? 'Enviando…' : 'Enviar consulta'}
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
