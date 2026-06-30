@@ -218,7 +218,6 @@ async function fetchOptionalSection(section: string) {
 }
 
 function mapServices(items: PublicEntry[]): ServiceCard[] {
-  if (!items.length) return SERVICES
   return items.map((item, index) => {
     const data = item.data ?? {}
     const icon = asText(data.icon) as ServiceCard['icon']
@@ -235,7 +234,6 @@ function mapServices(items: PublicEntry[]): ServiceCard[] {
 }
 
 function mapAuctions(items: PublicEntry[]): AuctionItem[] {
-  if (!items.length) return AUCTIONS
   return items.map((item, index) => {
     const data = item.data ?? {}
     return {
@@ -253,7 +251,6 @@ function mapAuctions(items: PublicEntry[]): AuctionItem[] {
 }
 
 function mapLotes(items: PublicEntry[]): LoteCard[] {
-  if (!items.length) return LOTES
   return items.map((item, index) => {
     const data = item.data ?? {}
     return {
@@ -272,7 +269,6 @@ function mapLotes(items: PublicEntry[]): LoteCard[] {
 }
 
 function mapPrices(items: PublicEntry[]): PriceRow[] {
-  if (!items.length) return PRICES
   return items.map((item) => {
     const data = item.data ?? {}
     return {
@@ -289,7 +285,6 @@ function mapPrices(items: PublicEntry[]): PriceRow[] {
 }
 
 function mapVentasParticulares(items: PublicEntry[]): VentaCard[] {
-  if (!items.length) return VENTAS_PARTICULARES
   return items.map((item, index) => {
     const data = item.data ?? {}
     return {
@@ -311,7 +306,6 @@ function mapVentasParticulares(items: PublicEntry[]): VentaCard[] {
 }
 
 function mapTeam(items: PublicEntry[]): TeamMember[] {
-  if (!items.length) return TEAM
   return items.map((item, index) => {
     const data = item.data ?? {}
     const name = asText(data.name) || asText(item.title) || 'Integrante'
@@ -338,14 +332,6 @@ function mapTeam(items: PublicEntry[]): TeamMember[] {
 }
 
 function mapHistoria(items: PublicEntry[]) {
-  if (!items.length) {
-    return {
-      historiaTimeline: HISTORIA_TIMELINE,
-      historiaGallery: HISTORIA_GALLERY,
-      historiaHero: FALLBACK_CONTENT.historiaHero,
-    }
-  }
-
   const byKind = (kind: string) =>
     items.filter((item) => asText(item.data?.kind).toLowerCase() === kind)
 
@@ -355,21 +341,17 @@ function mapHistoria(items: PublicEntry[]) {
   const galleryItems = byKind('gallery')
 
   return {
-    historiaTimeline: timelineItems.length
-      ? timelineItems.map((item) => ({
-          year: asText(item.data?.year),
-          title: asText(item.data?.title) || asText(item.title),
-          description: asText(item.data?.description) || asText(item.data?.subtitle),
-        }))
-      : HISTORIA_TIMELINE,
-    historiaGallery: galleryItems.length
-      ? galleryItems.map((item, index) => ({
-          id: asText(item.slug) || asText(item.id) || `gallery-${index + 1}`,
-          src: asText(item.data?.image),
-          caption: asText(item.data?.caption) || asText(item.data?.title) || 'Historia',
-          span: asText(item.data?.span) === 'wide' ? ('wide' as const) : undefined,
-        }))
-      : HISTORIA_GALLERY,
+    historiaTimeline: timelineItems.map((item) => ({
+      year: asText(item.data?.year),
+      title: asText(item.data?.title) || asText(item.title),
+      description: asText(item.data?.description) || asText(item.data?.subtitle),
+    })),
+    historiaGallery: galleryItems.map((item, index) => ({
+      id: asText(item.slug) || asText(item.id) || `gallery-${index + 1}`,
+      src: asText(item.data?.image),
+      caption: asText(item.data?.caption) || asText(item.data?.title) || 'Historia',
+      span: asText(item.data?.span) === 'wide' ? ('wide' as const) : undefined,
+    })),
     historiaHero: {
       eyebrow: asText(heroData.year) || FALLBACK_CONTENT.historiaHero.eyebrow,
       title: asText(heroData.title) || FALLBACK_CONTENT.historiaHero.title,
