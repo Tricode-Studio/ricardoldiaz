@@ -5,13 +5,25 @@ const API_BASE_URL = (
 ).replace(/\/+$/, '')
 const TENANT_SLUG = import.meta.env.VITE_TRICODE_TENANT_SLUG ?? 'ricardo-l-diaz'
 
-export async function submitAuctionAlertSubscription(phone: string): Promise<void> {
+type AuctionAlertSubscriptionInput = {
+  phone: string
+  name?: string
+  email?: string
+}
+
+export async function submitAuctionAlertSubscription(input: AuctionAlertSubscriptionInput): Promise<void> {
+  const payload = {
+    phone: input.phone.trim(),
+    ...(input.name?.trim() ? { name: input.name.trim() } : {}),
+    ...(input.email?.trim() ? { email: input.email.trim() } : {}),
+  }
+
   const response = await fetch(
     `${API_BASE_URL}/public/${encodeURIComponent(TENANT_SLUG)}/auction-alert-subscriptions`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({ phone: phone.trim() }),
+      body: JSON.stringify(payload),
     },
   )
 

@@ -7,12 +7,16 @@ export function Remates() {
   const { auctions } = useCmsContent()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [phone, setPhone] = useState('')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const [message, setMessage] = useState('')
 
   const closeModal = () => {
     setIsModalOpen(false)
     setPhone('')
+    setName('')
+    setEmail('')
     setStatus('idle')
     setMessage('')
   }
@@ -51,15 +55,22 @@ export function Remates() {
       setMessage('Ingresá un número de teléfono válido.')
       return
     }
+    if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setStatus('error')
+      setMessage('Ingresá un correo válido o dejá el campo vacío.')
+      return
+    }
 
     setStatus('submitting')
     setMessage('')
 
     try {
-      await submitAuctionAlertSubscription(phone)
+      await submitAuctionAlertSubscription({ phone, name, email })
       setStatus('success')
       setMessage('Listo. Te sumamos al grupo de difusión de remates.')
       setPhone('')
+      setName('')
+      setEmail('')
     } catch (error) {
       setStatus('error')
       setMessage(error instanceof Error ? error.message : 'No se pudo registrar el número.')
@@ -153,7 +164,7 @@ export function Remates() {
               </p>
 
               <form id="auction-alert-form" className={styles.alertForm} onSubmit={handleSubmit} noValidate>
-                <div className={styles.alertField}>
+                <div className={`${styles.alertField} ${styles.alertFieldPrimary}`}>
                   <label htmlFor="auction-alert-phone">Teléfono</label>
                   <input
                     id="auction-alert-phone"
@@ -174,6 +185,47 @@ export function Remates() {
                     autoFocus
                     required
                   />
+                </div>
+
+                <div className={styles.optionalGrid}>
+                  <div className={styles.alertField}>
+                    <label htmlFor="auction-alert-name">Nombre opcional</label>
+                    <input
+                      id="auction-alert-name"
+                      type="text"
+                      placeholder="Ej: Ricardo Díaz"
+                      value={name}
+                      onChange={(event) => {
+                        setName(event.target.value)
+                        if (status === 'error') {
+                          setStatus('idle')
+                          setMessage('')
+                        }
+                      }}
+                      disabled={status === 'submitting'}
+                      autoComplete="name"
+                    />
+                  </div>
+
+                  <div className={styles.alertField}>
+                    <label htmlFor="auction-alert-email">Correo opcional</label>
+                    <input
+                      id="auction-alert-email"
+                      type="email"
+                      inputMode="email"
+                      placeholder="nombre@email.com"
+                      value={email}
+                      onChange={(event) => {
+                        setEmail(event.target.value)
+                        if (status === 'error') {
+                          setStatus('idle')
+                          setMessage('')
+                        }
+                      }}
+                      disabled={status === 'submitting'}
+                      autoComplete="email"
+                    />
+                  </div>
                 </div>
                 <button type="submit" className={styles.alertSubmit} disabled={status === 'submitting'}>
                   {status === 'submitting' ? 'Enviando...' : 'Enviar solicitud'}
