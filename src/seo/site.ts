@@ -53,7 +53,7 @@ export function buildStructuredData(pathname: string): JsonLd[] {
       'Negocios rurales, remates ganaderos por pantalla, comercialización de ganado, venta de campos y asesoramiento agropecuario.',
     foundingDate: '1973',
     telephone: '+59898334256',
-    sameAs: ['https://www.instagram.com/ricardo.l.diaz/'],
+    sameAs: ['https://www.instagram.com/ricardodiazuy/'],
     logo: {
       '@type': 'ImageObject',
       url: LOGO_IMAGE,
@@ -113,7 +113,7 @@ export function buildStructuredData(pathname: string): JsonLd[] {
       addressCountry: 'UY',
     },
     areaServed: 'UY',
-    sameAs: ['https://www.instagram.com/ricardo.l.diaz/'],
+    sameAs: ['https://www.instagram.com/ricardodiazuy/'],
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',

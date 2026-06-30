@@ -4,7 +4,6 @@ import styles from './Historia.module.css'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { Header } from '../components/layout/Header'
 import { Footer } from '../components/layout/Footer'
-import { PhoneStrip } from '../components/layout/PhoneStrip'
 import { WhatsAppFab } from '../components/layout/WhatsAppFab'
 import { TeamModal } from '../components/sections/TeamModal'
 import { WA_NUMBER } from '../data'
@@ -318,7 +317,6 @@ export function Historia() {
         <TeamModal member={selectedMember} onClose={() => setSelectedMember(null)} />
       )}
 
-      <PhoneStrip />
       <Footer />
       <WhatsAppFab />
     </>

@@ -4,7 +4,6 @@ import { useScrollReveal } from './hooks/useScrollReveal'
 
 import { Header } from './components/layout/Header'
 import { Footer } from './components/layout/Footer'
-import { PhoneStrip } from './components/layout/PhoneStrip'
 import { WhatsAppFab } from './components/layout/WhatsAppFab'
 
 import { Hero } from './components/sections/Hero'
@@ -55,7 +54,6 @@ function Home() {
         <Equipo />
         <Contacto />
       </main>
-      <PhoneStrip />
       <Footer />
       <WhatsAppFab />
     </>

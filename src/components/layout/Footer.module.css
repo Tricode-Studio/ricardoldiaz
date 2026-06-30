@@ -110,6 +110,21 @@
   font-size: 0.8rem;
 }
 
+.poweredBy {
+  color: rgba(245, 241, 231, 0.42);
+  white-space: nowrap;
+}
+
+.poweredBy a {
+  color: rgba(245, 241, 231, 0.62);
+  font-weight: 700;
+  transition: color 0.25s;
+}
+
+.poweredBy a:hover {
+  color: var(--beige);
+}
+
 .seoLine {
   font-size: 0.74rem;
   color: rgba(245, 241, 231, 0.32);

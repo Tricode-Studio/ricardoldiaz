@@ -104,6 +104,159 @@
   border-color: var(--forest);
 }
 
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 31, 24, 0.62);
+  padding: 24px;
+}
+
+.modal {
+  position: relative;
+  width: min(100%, 520px);
+  border: 1px solid rgba(210, 199, 177, 0.7);
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: 0 28px 80px rgba(20, 31, 24, 0.32);
+  padding: 34px;
+}
+
+.modalClose {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--forest);
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, border-color 0.25s, opacity 0.25s;
+}
+
+.modalClose:hover:not(:disabled) {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--bone);
+}
+
+.modalClose:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.modalClose svg {
+  width: 18px;
+  height: 18px;
+}
+
+.modalEyebrow {
+  display: inline-flex;
+  margin-bottom: 12px;
+  color: var(--sage-deep);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.modal h3 {
+  max-width: 420px;
+  color: var(--forest);
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  line-height: 1;
+}
+
+.modalText {
+  margin: 14px 0 24px;
+  max-width: 430px;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.alertForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.alertField {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.alertField label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+}
+
+.alertField input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: var(--paper);
+  color: var(--forest);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  padding: 13px 18px;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.alertField input:focus {
+  outline: none;
+  border-color: var(--sage);
+  box-shadow: 0 0 0 4px rgba(91, 112, 97, 0.12);
+}
+
+.alertSubmit {
+  border: 1.5px solid var(--forest);
+  border-radius: 100px;
+  background: var(--forest);
+  color: var(--bone);
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.86rem;
+  font-weight: 700;
+  padding: 14px 20px;
+  transition: transform 0.25s, opacity 0.25s;
+  width: 100%;
+}
+
+.alertSubmit:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.alertSubmit:disabled {
+  cursor: wait;
+  opacity: 0.64;
+}
+
+.alertSuccess,
+.alertError {
+  font-size: 0.86rem;
+  margin: 0;
+}
+
+.alertSuccess {
+  color: var(--sage-deep);
+}
+
+.alertError {
+  color: #9c4636;
+}
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 800px) {
   .auction {
@@ -148,5 +301,22 @@
 
   .meta {
     justify-content: center;
+  }
+
+  .modalOverlay {
+    align-items: end;
+    padding: 14px;
+  }
+
+  .modal {
+    padding: 28px 20px 22px;
+  }
+
+  .modal h3 {
+    padding-right: 34px;
+  }
+
+  .alertSubmit {
+    width: 100%;
   }
 }

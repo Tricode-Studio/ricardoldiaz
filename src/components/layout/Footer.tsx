@@ -37,7 +37,7 @@ export function Footer() {
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                 </svg>
               </a> */}
-              <a href="https://www.instagram.com/ricardo.l.diaz/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a href="https://www.instagram.com/ricardodiazuy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} width={17} height={17}>
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
@@ -64,6 +64,12 @@ export function Footer() {
 
         <div className={styles.bottom}>
           <span>© {new Date().getFullYear()} Ricardo L. Díaz – Escritorio Rural. Trinidad, Flores, Uruguay.</span>
+          <span className={styles.poweredBy}>
+            Desarrollado por{' '}
+            <a href="https://tricode.studio/" target="_blank" rel="noopener noreferrer">
+              Tricode Studio
+            </a>
+          </span>
           {/* <span>RUT: 000000000000 · Inscripto en el MGAP</span> */}
           {/* Comentado-meet-1 */}
         </div>
