@@ -186,13 +186,22 @@ export function Lotes() {
             )}
           </>
         ) : (
-          <div className={styles.empty} role="status">
-            <EmptyIcon />
-            <p className={styles.emptyTitle}>No hay lotes disponibles por el momento</p>
-            <p className={styles.emptyText}>
-              Estamos preparando los próximos lotes para remate. Volvé a consultar pronto o suscribite a
-              la agenda de remates para enterarte en cuanto se publiquen.
-            </p>
+          <div className={styles.emptyWrap}>
+            <article className={styles.emptyCard} role="status">
+              <div className={styles.imgWrap}>
+                <div className={styles.imgFallback} aria-hidden="true" />
+                <div className={styles.emptyIconWrap}>
+                  <EmptyIcon />
+                </div>
+              </div>
+              <div className={`${styles.body} ${styles.empty}`}>
+                <p className={styles.emptyTitle}>No hay lotes disponibles por el momento</p>
+                <p className={styles.emptyText}>
+                  Estamos preparando los próximos lotes para remate. Volvé a consultar pronto o
+                  suscribite a la agenda de remates para enterarte en cuanto se publiquen.
+                </p>
+              </div>
+            </article>
           </div>
         )}
       </div>
