@@ -156,90 +156,106 @@ export function Remates() {
                 </svg>
               </button>
 
-              <span className={styles.modalEyebrow}>Alertas de remates</span>
-              <h3 id="auction-alert-title">Sumate al grupo de difusión.</h3>
-              <p id="auction-alert-description" className={styles.modalText}>
-                Dejanos tu teléfono y te agregamos a un grupo donde compartiremos las próximas fechas de
-                remates, novedades importantes y avisos vinculados a la agenda.
-              </p>
-
-              <form id="auction-alert-form" className={styles.alertForm} onSubmit={handleSubmit} noValidate>
-                <div className={`${styles.alertField} ${styles.alertFieldPrimary}`}>
-                  <label htmlFor="auction-alert-phone">Teléfono</label>
-                  <input
-                    id="auction-alert-phone"
-                    type="tel"
-                    inputMode="tel"
-                    placeholder="Ej: 099 123 456"
-                    value={phone}
-                    onChange={(event) => {
-                      setPhone(event.target.value)
-                      if (status === 'error') {
-                        setStatus('idle')
-                        setMessage('')
-                      }
-                    }}
-                    disabled={status === 'submitting'}
-                    aria-describedby={message ? 'auction-alert-message' : undefined}
-                    autoComplete="tel"
-                    autoFocus
-                    required
-                  />
-                </div>
-
-                <div className={styles.optionalGrid}>
-                  <div className={styles.alertField}>
-                    <label htmlFor="auction-alert-name">Nombre opcional</label>
-                    <input
-                      id="auction-alert-name"
-                      type="text"
-                      placeholder="Ej: Ricardo Díaz"
-                      value={name}
-                      onChange={(event) => {
-                        setName(event.target.value)
-                        if (status === 'error') {
-                          setStatus('idle')
-                          setMessage('')
-                        }
-                      }}
-                      disabled={status === 'submitting'}
-                      autoComplete="name"
-                    />
-                  </div>
-
-                  <div className={styles.alertField}>
-                    <label htmlFor="auction-alert-email">Correo opcional</label>
-                    <input
-                      id="auction-alert-email"
-                      type="email"
-                      inputMode="email"
-                      placeholder="nombre@email.com"
-                      value={email}
-                      onChange={(event) => {
-                        setEmail(event.target.value)
-                        if (status === 'error') {
-                          setStatus('idle')
-                          setMessage('')
-                        }
-                      }}
-                      disabled={status === 'submitting'}
-                      autoComplete="email"
-                    />
-                  </div>
-                </div>
-                <button type="submit" className={styles.alertSubmit} disabled={status === 'submitting'}>
-                  {status === 'submitting' ? 'Enviando...' : 'Enviar solicitud'}
-                </button>
-                {message && (
-                  <p
-                    id="auction-alert-message"
-                    className={status === 'success' ? styles.alertSuccess : styles.alertError}
-                    role={status === 'error' ? 'alert' : 'status'}
-                  >
-                    {message}
+              {status === 'success' ? (
+                <div className={styles.successPanel} role="status">
+                  <span className={styles.successIcon} aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 13l4 4L19 7" />
+                    </svg>
+                  </span>
+                  <span className={styles.modalEyebrow}>Listo</span>
+                  <h3 id="auction-alert-title">Enviado.</h3>
+                  <p id="auction-alert-description" className={styles.modalText}>
+                    {message || 'Te sumamos al grupo de difusión de remates. Te avisaremos por las próximas fechas y novedades.'}
                   </p>
-                )}
-              </form>
+                  <button type="button" className={styles.alertSubmit} onClick={closeModal}>
+                    Cerrar
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <span className={styles.modalEyebrow}>Alertas de remates</span>
+                  <h3 id="auction-alert-title">Sumate al grupo de difusión.</h3>
+                  <p id="auction-alert-description" className={styles.modalText}>
+                    Dejanos tu teléfono y te agregamos a un grupo donde compartiremos las próximas fechas de
+                    remates, novedades importantes y avisos vinculados a la agenda.
+                  </p>
+
+                  <form id="auction-alert-form" className={styles.alertForm} onSubmit={handleSubmit} noValidate>
+                    <div className={`${styles.alertField} ${styles.alertFieldPrimary}`}>
+                      <label htmlFor="auction-alert-phone">Teléfono</label>
+                      <input
+                        id="auction-alert-phone"
+                        type="tel"
+                        inputMode="tel"
+                        placeholder="Ej: 099 123 456"
+                        value={phone}
+                        onChange={(event) => {
+                          setPhone(event.target.value)
+                          if (status === 'error') {
+                            setStatus('idle')
+                            setMessage('')
+                          }
+                        }}
+                        disabled={status === 'submitting'}
+                        aria-describedby={message ? 'auction-alert-message' : undefined}
+                        autoComplete="tel"
+                        autoFocus
+                        required
+                      />
+                    </div>
+
+                    <div className={styles.optionalGrid}>
+                      <div className={styles.alertField}>
+                        <label htmlFor="auction-alert-name">Nombre opcional</label>
+                        <input
+                          id="auction-alert-name"
+                          type="text"
+                          placeholder="Ej: Ricardo Díaz"
+                          value={name}
+                          onChange={(event) => {
+                            setName(event.target.value)
+                            if (status === 'error') {
+                              setStatus('idle')
+                              setMessage('')
+                            }
+                          }}
+                          disabled={status === 'submitting'}
+                          autoComplete="name"
+                        />
+                      </div>
+
+                      <div className={styles.alertField}>
+                        <label htmlFor="auction-alert-email">Correo opcional</label>
+                        <input
+                          id="auction-alert-email"
+                          type="email"
+                          inputMode="email"
+                          placeholder="nombre@email.com"
+                          value={email}
+                          onChange={(event) => {
+                            setEmail(event.target.value)
+                            if (status === 'error') {
+                              setStatus('idle')
+                              setMessage('')
+                            }
+                          }}
+                          disabled={status === 'submitting'}
+                          autoComplete="email"
+                        />
+                      </div>
+                    </div>
+                    <button type="submit" className={styles.alertSubmit} disabled={status === 'submitting'}>
+                      {status === 'submitting' ? 'Enviando...' : 'Enviar solicitud'}
+                    </button>
+                    {status === 'error' && message && (
+                      <p id="auction-alert-message" className={styles.alertError} role="alert">
+                        {message}
+                      </p>
+                    )}
+                  </form>
+                </>
+              )}
             </div>
           </div>
         )}
