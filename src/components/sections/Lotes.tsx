@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import styles from './Lotes.module.css'
 import { useCmsContent } from '../../cms/CmsContentContext'
+import { formatUsd } from '../../lib/format'
 
 const PinIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -118,7 +119,7 @@ export function Lotes() {
                       )}
                       <div className={`${styles.badge} ${lote.status === 'vendido' ? styles.badgeSold : styles.badgeAvail}`}>
                         {lote.status === 'vendido' ? 'Vendido' : 'Disponible'}
-                        {lote.price && <span>{lote.price}</span>}
+                        {formatUsd(lote.price) && <span>{formatUsd(lote.price)}</span>}
                       </div>
                       <div className={styles.imgMeta}>
                         <span>
@@ -127,7 +128,7 @@ export function Lotes() {
                         </span>
                         <span>
                           <ClockIcon />
-                          {lote.time}
+                          {lote.time && `${lote.time} hs`}
                         </span>
                       </div>
                     </div>

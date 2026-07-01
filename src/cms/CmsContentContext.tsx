@@ -89,6 +89,11 @@ function asNumber(value: unknown, fallback = 0) {
   return Number.isFinite(parsed) ? parsed : fallback
 }
 
+function asOptionalNumber(value: unknown) {
+  const parsed = Number(value)
+  return Number.isFinite(parsed) && value !== '' && value !== null ? parsed : undefined
+}
+
 function readData(data: Record<string, unknown>, ...keys: string[]) {
   for (const key of keys) {
     if (data[key] !== undefined && data[key] !== null && data[key] !== '') {
@@ -237,7 +242,11 @@ function mapAuctions(items: PublicEntry[]): AuctionItem[] {
       id: asText(item.slug) || asText(item.id) || `auction-${index + 1}`,
       ...deriveDayMonth(data),
       title: asText(data.title) || asText(item.title) || 'Remate',
-      details: [data.details ? splitLines(data.details) : [], asText(data.location), asText(data.time)]
+      details: [
+        data.details ? splitLines(data.details) : [],
+        asText(data.location),
+        asText(data.time) && `${asText(data.time)} hs`,
+      ]
         .flat()
         .filter(Boolean),
       type: asText(data.type) === 'feria' ? 'feria' : 'screen',
@@ -260,7 +269,7 @@ function mapLotes(items: PublicEntry[]): LoteCard[] {
       time: asText(data.time),
       image: asText(data.image),
       status: asText(data.status).toLowerCase() === 'disponible' ? 'disponible' : 'vendido',
-      price: asText(data.price) || undefined,
+      price: asOptionalNumber(data.price),
     }
   })
 }
@@ -297,7 +306,7 @@ function mapVentasParticulares(items: PublicEntry[]): VentaCard[] {
       date: asText(data.date) || asText(data.fecha),
       image: asText(data.image) || asText(data.imagen),
       status: asText(data.status).toLowerCase() === 'disponible' ? 'disponible' : 'vendido',
-      price: asText(data.price) || asText(data.precio) || undefined,
+      price: asOptionalNumber(readData(data, 'price', 'precio')),
     }
   })
 }

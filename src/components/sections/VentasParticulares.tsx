@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import styles from './VentasParticulares.module.css'
 import { useCmsContent } from '../../cms/CmsContentContext'
+import { formatUsd } from '../../lib/format'
 
 const PinIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -112,7 +113,7 @@ export function VentasParticulares() {
                       )}
                       <div className={`${styles.badge} ${venta.status === 'vendido' ? styles.badgeSold : styles.badgeAvail}`}>
                         {venta.status === 'vendido' ? 'Vendido' : 'Disponible'}
-                        {venta.price && <span>{venta.price}</span>}
+                        {formatUsd(venta.price) && <span>{formatUsd(venta.price)}</span>}
                       </div>
                       <div className={styles.imgMeta}>
                         <span>

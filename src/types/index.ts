@@ -95,7 +95,7 @@ export interface LoteCard {
   time: string
   image: string
   status: 'vendido' | 'disponible'
-  price?: string
+  price?: number
 }
 
 export interface VentaCard {
@@ -108,7 +108,7 @@ export interface VentaCard {
   date: string
   image: string
   status: 'vendido' | 'disponible'
-  price?: string
+  price?: number
 }
 
 export interface HistoriaEvent {
