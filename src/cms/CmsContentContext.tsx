@@ -141,12 +141,24 @@ function deriveDayMonth(data: Record<string, unknown>) {
   }
 }
 
-/** El signo de "change" (ej. "+0,06" / "-0,04") ya indica la dirección — no hace falta pedirla aparte. */
-function deriveDirection(change: string, legacyDirection: unknown): 'up' | 'down' {
-  const trimmed = change.trim()
-  if (trimmed.startsWith('-')) return 'down'
-  if (trimmed.startsWith('+')) return 'up'
-  return asText(legacyDirection) === 'down' ? 'down' : 'up'
+/** "5,19" / "5.19" -> 5.19. Los valores de mercado se escriben con coma decimal (formato local). */
+function parseLocaleNumber(value: unknown) {
+  const parsed = Number(asText(value).replace(',', '.'))
+  return Number.isFinite(parsed) ? parsed : undefined
+}
+
+/**
+ * El cambio ("+0,06" / "-0,04") y su flecha ya no se escriben a mano en el CMS — se
+ * calculan acá a partir de "Valor" y "Valor anterior", así nunca quedan desincronizados.
+ */
+function computeChange(value: unknown, prev: unknown): { change: string; direction: 'up' | 'down' } {
+  const current = parseLocaleNumber(value)
+  const previous = parseLocaleNumber(prev)
+  if (current === undefined || previous === undefined) return { change: '', direction: 'up' }
+  const diff = current - previous
+  const sign = diff > 0 ? '+' : diff < 0 ? '-' : '='
+  const change = `${sign}${Math.abs(diff).toFixed(2).replace('.', ',')}`
+  return { change, direction: diff < 0 ? 'down' : 'up' }
 }
 
 /** wa.me solo necesita los dígitos del teléfono (con código de país) — sin armar la URL a mano. */
@@ -277,13 +289,14 @@ function mapLotes(items: PublicEntry[]): LoteCard[] {
 function mapPrices(items: PublicEntry[]): PriceRow[] {
   return items.map((item) => {
     const data = item.data ?? {}
+    const { change, direction } = computeChange(data.value, data.prev)
     return {
       category: asText(data.category) || asText(item.title) || 'Categoría',
       sub: asText(data.sub),
       value: asText(data.value),
       unit: asText(data.unit),
-      change: asText(data.change),
-      direction: deriveDirection(asText(data.change), data.direction),
+      change,
+      direction,
       group: asText(data.group) || 'Ganado a Faena',
       prev: asText(data.prev) || undefined,
     }
