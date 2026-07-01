@@ -128,5 +128,4 @@ export interface HistoriaHeroContent {
   eyebrow?: string
   title?: string
   subtitle?: string
-  image?: string
 }

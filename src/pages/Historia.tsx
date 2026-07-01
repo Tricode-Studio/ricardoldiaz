@@ -84,10 +84,7 @@ export function Historia() {
 
       <main>
         {/* ── HERO ── */}
-        <section
-          className={styles.hero}
-          style={historiaHero.image ? { backgroundImage: `url(${historiaHero.image})` } : undefined}
-        >
+        <section className={styles.hero}>
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>
             <nav aria-label="Breadcrumb">

@@ -45,7 +45,6 @@ type CmsContent = {
   historiaHero: HistoriaHeroContent
   heroPillLabel: string
   logoImage?: string
-  homeHeroImage?: string
   mercadoUpdatedLabel?: string
   mercadoSourceNote?: string
 }
@@ -63,11 +62,9 @@ const FALLBACK_CONTENT: CmsContent = {
     eyebrow: 'Desde 1973',
     title: 'Nuestra Historia',
     subtitle: 'Más de 50 años construyendo confianza en el campo uruguayo, operación a operación.',
-    image: '',
   },
   heroPillLabel: 'Consultar agenda',
   logoImage: '/favicon.jpg',
-  homeHeroImage: '',
   mercadoUpdatedLabel: 'Datos actualizados · Semana N°21 · 17/05/26 al 23/05/26',
   mercadoSourceNote:
     '* Valores orientativos con fines informativos. Fuente: ACG – Semana N°21. La ganadería es el principal rubro exportador de Uruguay, con cerca de US$ 2.647 millones en exportaciones de carne y casi 695.000 toneladas enviadas a unos 100 destinos.',
@@ -356,7 +353,6 @@ function mapHistoria(items: PublicEntry[]) {
       eyebrow: asText(heroData.year) || FALLBACK_CONTENT.historiaHero.eyebrow,
       title: asText(heroData.title) || FALLBACK_CONTENT.historiaHero.title,
       subtitle: asText(heroData.subtitle) || FALLBACK_CONTENT.historiaHero.subtitle,
-      image: asText(heroData.image) || FALLBACK_CONTENT.historiaHero.image,
     },
   }
 }
@@ -366,7 +362,6 @@ function mapHeroSection(items: PublicEntry[], auctionEntries: PublicEntry[]) {
   const data = hero?.data ?? {}
   return {
     heroPillLabel: getNextAuctionLabel(auctionEntries) || FALLBACK_CONTENT.heroPillLabel,
-    homeHeroImage: asText(readData(data, 'image', 'homeHeroImage', 'homeheroimage')),
     logoImage: asText(readData(data, 'logoImage', 'logoimage', 'logo')),
   }
 }
